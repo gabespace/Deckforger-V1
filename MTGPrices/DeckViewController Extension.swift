@@ -164,7 +164,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.amountLabel.text = "\(land.amount)"
             cell.title.text = land.name
             cell.subtitle.text = land.type
-            if !land.isDownloadingImage && land.imageUrl != nil {
+            if !land.isDownloadingImage && land.imageUrl != nil && land.imageData != nil {
                 cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
                 cell.cardImageView.image = UIImage(data: land.imageData! as Data)

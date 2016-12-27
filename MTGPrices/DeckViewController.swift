@@ -41,6 +41,10 @@ class DeckViewController: UIViewController, StoreSubscriber {
         tabBar.delegate = self
         tabBar.selectedItem = tabBar.items![0]
         
+        colorPieChartView.delegate = self
+        typePieChartView.delegate = self
+        costBarChartView.delegate = self
+        
         statsScrollView.delegate = self
         statsScrollView.isHidden = true
         statsScrollView.backgroundColor = Colors.background

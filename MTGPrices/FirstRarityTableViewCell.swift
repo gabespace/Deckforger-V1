@@ -63,7 +63,7 @@ class FirstRarityTableViewCell: UITableViewCell {
         static let borderMargin: CGFloat = 15
         
         struct Button {
-            static let color = UIColor.black
+            static let color = UIColor.darkGray
             static let textColor = UIColor.black
             static let fontSize: CGFloat = 14
             static let size: CGFloat = 24

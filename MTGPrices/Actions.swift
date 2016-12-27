@@ -25,7 +25,6 @@ struct EditDeck: Action {
 
 struct DeleteDeck: Action {
     let deck: Deck
-    let index: Int
 }
 
 

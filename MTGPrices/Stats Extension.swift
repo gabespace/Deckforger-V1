@@ -31,13 +31,13 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         }
         let totalColoredSymbols = coloredSymbols.reduce(0.0) { $0 + $1 }
         let colorNames = ["White", "Blue", "Black", "Red", "Green"]
-        let colorList = [NSUIColor(cgColor: Colors.manaWhite.cgColor), NSUIColor(cgColor: UIColor.blue.cgColor), NSUIColor(cgColor: Colors.manaBlack.cgColor), NSUIColor(cgColor: UIColor.red.cgColor), NSUIColor(cgColor: Colors.manaGreen.cgColor)]
+        let colorList = [Colors.manaWhite, UIColor.blue, Colors.manaBlack, UIColor.red, Colors.manaGreen]
         
         var entries = [PieChartDataEntry]()
         var colors = [NSUIColor]()
         
         for (index, color) in coloredSymbols.enumerated() where color > 0 {
-            let dataEntry = PieChartDataEntry(value: color / totalColoredSymbols, label: colorNames[index])
+            let dataEntry = PieChartDataEntry(value: color / totalColoredSymbols, label: colorNames[index], data: coloredSymbols[index] as AnyObject)
             entries.append(dataEntry)
             colors.append(colorList[index])
         }
@@ -50,34 +50,37 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         data.setValueTextColor(UIColor.clear)
         colorPieChartView.data = data
         
+        colorPieChartView.drawEntryLabelsEnabled = false
         colorPieChartView.chartDescription?.text = "Mana Symbols"
     }
     
     func setTypePieChartData() {
-        var cardTypes = Array<Double>(repeatElement(0.0, count: 6))
+        var cardTypes = Array<Double>(repeatElement(0.0, count: 7))
         cardTypes[0] = Double(creaturesCount)
-        cardTypes[5] = Double(landsCount)
+        cardTypes[6] = Double(landsCount)
         
         for card in spells {
-            if card.type.contains("Instant") || card.type.contains("Sorcery") {
+            if card.type.contains("Instant") {
                 cardTypes[1] += Double(card.amount)
-            } else if card.type.contains("Planeswalker") {
+            } else if card.type.contains("Sorcery") {
                 cardTypes[2] += Double(card.amount)
-            } else if card.type.contains("Artifact") {
+            } else if card.type.contains("Planeswalker") {
                 cardTypes[3] += Double(card.amount)
-            } else if card.type.contains("Enchantment") {
+            } else if card.type.contains("Artifact") {
                 cardTypes[4] += Double(card.amount)
+            } else if card.type.contains("Enchantment") {
+                cardTypes[5] += Double(card.amount)
             }
         }
         let totalCards = cardTypes.reduce(0.0) { $0 + $1 }
-        let typeNames = ["Creatures", "Instants & Sorceries", "Planeswalkers", "Artifacts", "Enchantments", "Lands"]
-        let colorList = [NSUIColor(cgColor: Colors.creatureColor.cgColor), NSUIColor(cgColor: Colors.instantSorceryColor.cgColor), NSUIColor(cgColor: Colors.planeswalkerColor.cgColor), NSUIColor(cgColor: Colors.artifactColor.cgColor), NSUIColor(cgColor: Colors.enchantmentColor.cgColor), NSUIColor(cgColor: Colors.landColor.cgColor)]
+        let typeNames = ["Creatures", "Instants", "Sorceries", "Planeswalkers", "Artifacts", "Enchantments", "Lands"]
+        let colorList = [Colors.creatureColor, Colors.instantColor, Colors.sorceryColor, Colors.planeswalkerColor, Colors.artifactColor, Colors.enchantmentColor, Colors.landColor]
         
         var entries = [PieChartDataEntry]()
         var colors = [NSUIColor]()
         
         for (index, type) in cardTypes.enumerated() where type > 0 {
-            let dataEntry = PieChartDataEntry(value: type / totalCards, label: typeNames[index])
+            let dataEntry = PieChartDataEntry(value: type / totalCards, label: typeNames[index], data: Int(cardTypes[index]) as AnyObject)
             entries.append(dataEntry)
             colors.append(colorList[index])
         }
@@ -90,6 +93,7 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         data.setValueTextColor(UIColor.clear)
         typePieChartView.data = data
         
+        typePieChartView.drawEntryLabelsEnabled = false
         typePieChartView.chartDescription?.text = "Card Types"
     }
     
@@ -113,6 +117,7 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         }
         let dataSet = BarChartDataSet(values: dataSets, label: "CMC")
         dataSet.drawValuesEnabled = false
+        dataSet.valueFormatter = BarChartValueFormatter()
         let data = BarChartData()
         data.addDataSet(dataSet)
         costBarChartView.data = data
@@ -143,7 +148,8 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         static let manaBlack = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         static let manaGreen = UIColor(red: 0.18, green: 0.76, blue: 0.36, alpha: 1.0)
         static let creatureColor = UIColor(red: 0.2, green: 0.85, blue: 1.0, alpha: 1.0)
-        static let instantSorceryColor = UIColor(red: 0.6, green: 1.0, blue: 0.2, alpha: 1.0)
+        static let instantColor = UIColor(red: 0.6, green: 1.0, blue: 0.2, alpha: 1.0)
+        static let sorceryColor = UIColor(red: 0.3, green: 0.6, blue: 0.8, alpha: 1.0)
         static let planeswalkerColor = UIColor(red: 0.48, green: 0.2, blue: 1.0, alpha: 1.0)
         static let artifactColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
         static let enchantmentColor = UIColor(red: 0.94, green: 0.93, blue: 0.4, alpha: 1.0)
@@ -152,8 +158,38 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
     
 }
 
+extension DeckViewController: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        if chartView is BarChartView {
+            chartView.data?.dataSets[0].drawValuesEnabled = true
+        } else {
+            chartView.data?.setDrawValues(true)
+            chartView.data?.setValueTextColor(Colors.background)
+            chartView.data?.dataSets[0].valueFormatter = ShowTitleOnlyFormatter()
+        }
+    }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        costBarChartView.data?.dataSets[0].drawValuesEnabled = false
+        chartView.data?.setDrawValues(false)
+        chartView.data?.setValueTextColor(UIColor.clear)
+    }
+}
+
 public class BarChartFormatter: NSObject, IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return String(Int(value))
+    }
+}
+
+public class BarChartValueFormatter: NSObject, IValueFormatter {
+    public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return String(Int(value))
+    }
+}
+
+public class ShowTitleOnlyFormatter: NSObject, IValueFormatter {
+    public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return "\(entry.data!)"
     }
 }

@@ -18,6 +18,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     
     // MARK: - Properties
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var decks = [Deck]()
     
@@ -28,6 +29,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
         
         title = "Decklist Viewer"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Decks", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +47,14 @@ class DeckListViewController: UIViewController, StoreSubscriber {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: - Methods
+    
+    func addDeck() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as! EditDeckTableViewController
+        vc.isCreatingNewDeck = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     // MARK: - StoreSubscriber Delegate Methods
     

@@ -51,6 +51,7 @@ struct StateReducer: Reducer {
         case let action as EditDeck:
             action.deck.name = action.name ?? action.deck.name
             action.deck.format = action.format ?? action.deck.format
+            appDelegate.saveContext()
             
         case let action as DeleteDeck:
             let request = Card.createFetchRequest()
@@ -64,7 +65,6 @@ struct StateReducer: Reducer {
             }
             appDelegate.persistentContainer.viewContext.delete(action.deck)
             appDelegate.saveContext()
-            state.decks.remove(at: action.index)
 
             
         // MARK: - Card Actions
