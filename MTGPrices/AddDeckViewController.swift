@@ -18,9 +18,9 @@ class AddDeckViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     
     // MARK: - Properties
-    let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "EDH", "Pauper"]
-    var name = "Untitled"
-    var format = "Casual"
+    private let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "EDH", "Pauper"]
+    private var name = "Untitled"
+    private var format = "Casual"
     
     // MARK: - IBActions
     
@@ -49,9 +49,7 @@ class AddDeckViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         store.unsubscribe(self)
     }
     
-    func newState(state: State) {
-        
-    }
+    func newState(state: State) { }
     
     
     // MARK: - UIPickerView Data Source & Delegate

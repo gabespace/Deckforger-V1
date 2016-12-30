@@ -85,7 +85,6 @@ class AddCardViewController: UIViewController, StoreSubscriber {
         isDirty = true
         self.searchBar.resignFirstResponder()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AdvancedSearchTableViewController") as? AdvancedSearchTableViewController {
-            vc.cardName = searchBar.text
             navigationController?.pushViewController(vc, animated: true)
         }
     }

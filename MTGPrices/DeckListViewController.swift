@@ -50,7 +50,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     // MARK: - Methods
     
-    func addDeck() {
+    @objc private func addDeck() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as! EditDeckTableViewController
         vc.isCreatingNewDeck = true
         navigationController?.pushViewController(vc, animated: true)

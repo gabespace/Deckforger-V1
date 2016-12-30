@@ -27,7 +27,7 @@
 		CB48D3741DEFB53A00004F4D /* DeckViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48D3731DEFB53A00004F4D /* DeckViewController Extension.swift */; };
 		CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */; };
 		CB68A16B1E0357A60093E8D6 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68A16A1E0357A60093E8D6 /* AddDeckViewController.swift */; };
-		CB6CFB0C1DF2AC1D0035E181 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFB0B1DF2AC1D0035E181 /* NameTableViewCell.swift */; };
+		CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */; };
 		CB735B931DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB735B921DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift */; };
 		CB7883531DED00F500E45F7D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883521DED00F500E45F7D /* Actions.swift */; };
 		CB7883621DED05C200E45F7D /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835C1DED05C200E45F7D /* Deck+CoreDataClass.swift */; };
@@ -35,13 +35,6 @@
 		CB7883641DED05C200E45F7D /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */; };
 		CB7883651DED05C200E45F7D /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */; };
 		CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883661DED06BD00E45F7D /* Reducer.swift */; };
-		CB7A88FE1DF39106005FF2B6 /* ColorSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A88FD1DF39106005FF2B6 /* ColorSelectionTableViewCell.swift */; };
-		CB7A89001DF394C0005FF2B6 /* ColorConstraintsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A88FF1DF394C0005FF2B6 /* ColorConstraintsTableViewCell.swift */; };
-		CB7A89031DF3956F005FF2B6 /* FirstRarityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A89021DF3956F005FF2B6 /* FirstRarityTableViewCell.swift */; };
-		CB7A89051DF39628005FF2B6 /* SecondRarityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A89041DF39628005FF2B6 /* SecondRarityTableViewCell.swift */; };
-		CB7A89071DF3985D005FF2B6 /* FirstTypeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A89061DF3985D005FF2B6 /* FirstTypeSelectionTableViewCell.swift */; };
-		CB7A89091DF398A5005FF2B6 /* SecondTypeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A89081DF398A5005FF2B6 /* SecondTypeSelectionTableViewCell.swift */; };
-		CB7A890B1DF398BE005FF2B6 /* ThirdTypeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A890A1DF398BE005FF2B6 /* ThirdTypeSelectionTableViewCell.swift */; };
 		CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA2741DEE673000C95B83 /* DeckViewController.swift */; };
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
 		CB89B7AA1DECF36F009FCAA9 /* DeckListViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A91DECF36F009FCAA9 /* DeckListViewController Extension.swift */; };
@@ -50,6 +43,7 @@
 		CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */; };
 		CBB2F7311DFF5EB200A5BDB6 /* Stats Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2F7301DFF5EB200A5BDB6 /* Stats Extension.swift */; };
 		CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */; };
+		CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */; };
 		CBDF2D811DF100A400579430 /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF2D801DF100A400579430 /* String Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +72,7 @@
 		CB48D3731DEFB53A00004F4D /* DeckViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeckViewController Extension.swift"; sourceTree = "<group>"; };
 		CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchTableViewController.swift; sourceTree = "<group>"; };
 		CB68A16A1E0357A60093E8D6 /* AddDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
-		CB6CFB0B1DF2AC1D0035E181 /* NameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		CB735B921DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchForAdditionalCardsActionCreator.swift; sourceTree = "<group>"; };
 		CB7883521DED00F500E45F7D /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		CB78835C1DED05C200E45F7D /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -86,13 +80,6 @@
 		CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB7883661DED06BD00E45F7D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		CB7A88FD1DF39106005FF2B6 /* ColorSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A88FF1DF394C0005FF2B6 /* ColorConstraintsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConstraintsTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A89021DF3956F005FF2B6 /* FirstRarityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRarityTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A89041DF39628005FF2B6 /* SecondRarityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondRarityTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A89061DF3985D005FF2B6 /* FirstTypeSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTypeSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A89081DF398A5005FF2B6 /* SecondTypeSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTypeSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		CB7A890A1DF398BE005FF2B6 /* ThirdTypeSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTypeSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		CB7CA2741DEE673000C95B83 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB89B7A91DECF36F009FCAA9 /* DeckListViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeckListViewController Extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +88,7 @@
 		CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResultTableViewCell.swift; sourceTree = "<group>"; };
 		CBB2F7301DFF5EB200A5BDB6 /* Stats Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stats Extension.swift"; sourceTree = "<group>"; };
 		CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintTableViewCell.swift; sourceTree = "<group>"; };
 		CBDF2D801DF100A400579430 /* String Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,7 +208,8 @@
 			children = (
 				CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */,
 				CB16D3621DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift */,
-				CB7A89011DF394EC005FF2B6 /* Custom Cells */,
+				CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */,
+				CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */,
 			);
 			name = "Advanced Search";
 			sourceTree = "<group>";
@@ -240,21 +229,6 @@
 				CB735B921DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift */,
 			);
 			name = "Action Creators";
-			sourceTree = "<group>";
-		};
-		CB7A89011DF394EC005FF2B6 /* Custom Cells */ = {
-			isa = PBXGroup;
-			children = (
-				CB6CFB0B1DF2AC1D0035E181 /* NameTableViewCell.swift */,
-				CB7A88FD1DF39106005FF2B6 /* ColorSelectionTableViewCell.swift */,
-				CB7A88FF1DF394C0005FF2B6 /* ColorConstraintsTableViewCell.swift */,
-				CB7A89021DF3956F005FF2B6 /* FirstRarityTableViewCell.swift */,
-				CB7A89041DF39628005FF2B6 /* SecondRarityTableViewCell.swift */,
-				CB7A89061DF3985D005FF2B6 /* FirstTypeSelectionTableViewCell.swift */,
-				CB7A89081DF398A5005FF2B6 /* SecondTypeSelectionTableViewCell.swift */,
-				CB7A890A1DF398BE005FF2B6 /* ThirdTypeSelectionTableViewCell.swift */,
-			);
-			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		CB7CA2731DEE66FB00C95B83 /* View Controllers */ = {
@@ -438,36 +412,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB7A89051DF39628005FF2B6 /* SecondRarityTableViewCell.swift in Sources */,
 				CB32FAAB1DF8A9A500B7F3FD /* CardTableViewCell.swift in Sources */,
-				CB7A88FE1DF39106005FF2B6 /* ColorSelectionTableViewCell.swift in Sources */,
 				CB2212291DEF930400C51044 /* AddCardViewController Extension.swift in Sources */,
-				CB7A89031DF3956F005FF2B6 /* FirstRarityTableViewCell.swift in Sources */,
 				CB0F99971DECE5F70085C721 /* DeckListViewController.swift in Sources */,
 				CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */,
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* Stats Extension.swift in Sources */,
 				CB89B7AA1DECF36F009FCAA9 /* DeckListViewController Extension.swift in Sources */,
-				CB7A890B1DF398BE005FF2B6 /* ThirdTypeSelectionTableViewCell.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* searchForCardsActionCreator.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DeckViewController Extension.swift in Sources */,
 				CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */,
+				CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */,
 				CB271ABC1DEE3F6A00AD44FD /* ApiResult.swift in Sources */,
-				CB7A89001DF394C0005FF2B6 /* ColorConstraintsTableViewCell.swift in Sources */,
 				CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */,
 				CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */,
 				CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */,
 				CB046DAD1E11D4BF006E059A /* DeckListTableViewCell.swift in Sources */,
-				CB6CFB0C1DF2AC1D0035E181 /* NameTableViewCell.swift in Sources */,
+				CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */,
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* ErrorCode.swift in Sources */,
-				CB7A89091DF398A5005FF2B6 /* SecondTypeSelectionTableViewCell.swift in Sources */,
 				CB68A16B1E0357A60093E8D6 /* AddDeckViewController.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String Extension.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,
 				CB7883531DED00F500E45F7D /* Actions.swift in Sources */,
-				CB7A89071DF3985D005FF2B6 /* FirstTypeSelectionTableViewCell.swift in Sources */,
 				CB7883621DED05C200E45F7D /* Deck+CoreDataClass.swift in Sources */,
 				CB16D3631DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift in Sources */,
 				CB735B931DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift in Sources */,

@@ -11,12 +11,17 @@ import ReSwift
 
 class EditDeckTableViewController: UITableViewController, StoreSubscriber {
     
+    // MARK: - Properties
+    
     var isCreatingNewDeck = false
     
     var deck: Deck?
-    let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "EDH", "Pauper"]
+    private let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "EDH", "Pauper"]
     private var currentFormatIndex: Int!
     private var newName = "Untitled"
+    
+    
+    // MARK: - View Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +48,10 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
         // Dispose of any resources that can be recreated.
     }
     
-    func saveEdits() {
+    
+    // MARK: - Methods
+    
+    @objc private func saveEdits() {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DeckNameTableViewCell
         if !cell.nameTextField.text!.isEmpty {
             newName = cell.nameTextField.text!

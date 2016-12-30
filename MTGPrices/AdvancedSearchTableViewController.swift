@@ -9,20 +9,22 @@
 import UIKit
 import ReSwift
 
-// Probably change this whole implementation to make it look something like Yelp's filter screen
-
 class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber {
     
     // MARK: - Stored Properties
     
     var cardName: String?
-    var parameters = [String: Any]()
+    var rulesText: String?
+    var subtype: String?
     var colors = [String]()
-    var rarities = [String]()
     var types = [String]()
+    var rarities = [String]()
     
     var matchColorsExactly = false
     var andColors = false
+    var andTypes = false
+    
+    var sectionBeingEdited: Int?
     
     
     // MARK: - View Lifecycle Methods
@@ -32,14 +34,6 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         
         title = "Filters"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
-        
-        tableView.register(ColorSelectionTableViewCell.self, forCellReuseIdentifier: Cell.colorSelectionCell)
-        tableView.register(ColorConstraintsTableViewCell.self, forCellReuseIdentifier: Cell.colorConstraintCell)
-        tableView.register(FirstRarityTableViewCell.self, forCellReuseIdentifier: Cell.firstRarityCell)
-        tableView.register(SecondRarityTableViewCell.self, forCellReuseIdentifier: Cell.secondRarityCell)
-        tableView.register(FirstTypeSelectionTableViewCell.self, forCellReuseIdentifier: Cell.firstTypeSelectionCell)
-        tableView.register(SecondTypeSelectionTableViewCell.self, forCellReuseIdentifier: Cell.secondTypeSelectionCell)
-        tableView.register(ThirdTypeSelectionTableViewCell.self, forCellReuseIdentifier: Cell.thirdTypeSelectionCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,22 +51,32 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         store.unsubscribe(self)
     }
     
+    
     // MARK: - Methods
     
-    func searchButtonTapped() {
-        configureParameters()
-        store.dispatch(PrepareForSearch(parameters: parameters))
+    @objc private func searchButtonTapped() {
+        if let section = sectionBeingEdited {
+            // User is editing a text field.
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: section)) as! TextTableViewCell
+            cell.textField.resignFirstResponder()
+        }
+        store.dispatch(PrepareForSearch(parameters: createParameters()))
         _ = navigationController!.popViewController(animated: true)
     }
     
-    func configureParameters() {
-        parameters.removeAll()
+    private func createParameters() -> [String: Any] {
+        var parameters = [String: Any]()
         
         parameters["orderBy"] = "name"
         
-        // Name
         if let name = cardName {
             parameters["name"] = name
+        }
+        if let rules = rulesText {
+            parameters["text"] = rules
+        }
+        if let subtype = subtype {
+            parameters["subtypes"] = subtype
         }
         
         // Colors
@@ -92,81 +96,57 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["colors"] = colorString
         }
         
+        // Types
+        if !types.isEmpty {
+            parameters["types"] = types.joined(separator: andTypes ? "," : "|")
+        }
+        
         // Rarities
         if !rarities.isEmpty {
             parameters["rarity"] = rarities.joined(separator: "|")
         }
         
-        // Types
-        if !types.isEmpty {
-            parameters["types"] = types.joined(separator: "|")
-        }
+        return parameters
     }
     
-    func colorSelectionButtonSelected(sender: UIButton!) {
-        guard sender.tag == ButtonTags.colorSelection else { return }
+    private func configureInitialSelections(_ initialParameters: [String: Any]?) {
+        guard let parameters = initialParameters else { return }
         
-        let color = sender.titleLabel!.text!
-        if sender.isSelected {
-            colors.append(color)
-        } else {
-            colors.remove(at: colors.index(of: color)!)
-        }
-    }
-    
-    func colorConstraintsButtonSelected(sender: UIButton!) {
-        guard sender.tag == ButtonTags.colorConstraint else { return }
+        cardName = parameters["name"] as? String
+        rulesText = parameters["text"] as? String
+        subtype = parameters["subtypes"] as? String
         
-        if sender.titleLabel!.text! == "Match Exactly" {
-            matchColorsExactly = sender.isSelected
-        } else {
-            andColors = sender.isSelected
+        if let initialColors = parameters["colors"] as? String {
+            if initialColors.contains("\"") {
+                matchColorsExactly = true
+            }
+            if initialColors.contains(",") {
+                colors = initialColors.replacingOccurrences(of: "\"", with: "").components(separatedBy: ",")
+                andColors = true
+            } else {
+                colors = initialColors.replacingOccurrences(of: "\"", with: "").components(separatedBy: "|")
+            }
         }
-    }
-    
-    func rarityButtonSelected(sender: UIButton!) {
-        guard sender.tag == ButtonTags.raritySelection else { return }
         
-        let rarity = sender.titleLabel!.text!
-        if sender.isSelected {
-            rarities.append(rarity)
-        } else {
-            rarities.remove(at: rarities.index(of: rarity)!)
+        if let initialTypes = parameters["types"] as? String {
+            if initialTypes.contains(",") {
+                types = initialTypes.components(separatedBy: ",")
+                andTypes = true
+            } else {
+                types = initialTypes.components(separatedBy: "|")
+            }
         }
-    }
-    
-    func typeSelectionButtonSelected(sender: UIButton!) {
-        guard sender.tag == ButtonTags.typeSelection else { return }
         
-        let type = sender.titleLabel!.text!
-        if sender.isSelected {
-            types.append(type)
-        } else {
-            types.remove(at: types.index(of: type)!)
+        if let initialRarities = parameters["rarity"] as? String {
+            rarities = initialRarities.components(separatedBy: "|")
         }
-    }
-    
-    // TODO: - Implement this somehow
-    private func restoreButtonSelections(parameters storeParameters: [String: Any]?) {
-        
-    }
-    
-    
-    // MARK: - Supporting Functionality
-    
-    struct ButtonTags {
-        static let colorSelection = 0
-        static let colorConstraint = 1
-        static let raritySelection = 2
-        static let typeSelection = 3
-        static let typeConstraint = 4
     }
     
     
     // MARK: - StoreSubscriber Delegate Methods
     
     func newState(state: State) {
-        restoreButtonSelections(parameters: state.parameters)
+        configureInitialSelections(state.parameters)
     }
     
 }

@@ -95,14 +95,14 @@ class DeckViewController: UIViewController, StoreSubscriber {
         statsScrollView.contentSize = statsScrollView.frame.size
     }
     
-    func searchForCards() {
+    @objc private func searchForCards() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddCardViewController") as? AddCardViewController {
             vc.deck = deck
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func fetchCards() {
+    private func fetchCards() {
         let cardRequest = Card.createFetchRequest()
         cardRequest.predicate = NSPredicate(format: "deck.id == %@", deck.id)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(cardRequest) {
@@ -111,10 +111,6 @@ class DeckViewController: UIViewController, StoreSubscriber {
         } else {
             print("core data error fetching")
         }
-    }
-    
-    func viewRotated() {
-        guard !statsScrollView.isHidden else { return }
     }
     
     
