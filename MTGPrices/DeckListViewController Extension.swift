@@ -82,12 +82,21 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
         cell.editButton.setImage(UIImage(named: "edit.png"), for: .normal)
         let mainCount = deck.mainboardCount
         let sideCount = deck.sideboardCount
-        cell.countLabel.text = "Main: \(mainCount) Side: \(sideCount)"
-        if mainCount < 60 || sideCount < 15 {
-            cell.countLabel.textColor = UIColor.red
+        var mainAttributes = [String: Any]()
+        var sideAttributes = [String: Any]()
+        if mainCount < 60 {
+            mainAttributes[NSForegroundColorAttributeName] = UIColor.red
         } else {
-            cell.countLabel.textColor = UIColor.black
+            mainAttributes[NSForegroundColorAttributeName] = UIColor.black
         }
+        if sideCount < 15 {
+            sideAttributes[NSForegroundColorAttributeName] = UIColor.red
+        } else {
+            sideAttributes[NSForegroundColorAttributeName] = UIColor.black
+        }
+        let attributedText = NSMutableAttributedString(string: "Main: \(mainCount)", attributes: mainAttributes)
+        attributedText.append(NSMutableAttributedString(string: " Side: \(sideCount)", attributes: sideAttributes))
+        cell.countLabel.attributedText = attributedText
         return cell
     }
     

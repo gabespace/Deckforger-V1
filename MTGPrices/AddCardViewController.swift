@@ -52,8 +52,6 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self)
-        
-        searchBar.selectedScopeButtonIndex = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +100,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
             isDownloadingInitialResults = true
             cardResults.removeAll()
             tableView.reloadData()
+            searchBar.selectedScopeButtonIndex = 0
             store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
         } else {
             if let result = state.cardResults {
