@@ -16,7 +16,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
     var isCreatingNewDeck = false
     
     var deck: Deck?
-    private let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "EDH", "Pauper"]
+    private let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "Commander", "Pauper"]
     private var currentFormatIndex: Int!
     private var newName = "Untitled"
     
@@ -94,6 +94,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckName, for: indexPath) as! DeckNameTableViewCell
             cell.selectionStyle = .none
             cell.nameTextField.text = deck?.name ?? ""
+            cell.nameTextField.autocapitalizationType = .words
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)

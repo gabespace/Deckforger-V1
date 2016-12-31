@@ -27,7 +27,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Decklist Viewer"
+        title = "Decks"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Decks", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
     }
@@ -60,7 +60,14 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: State) {
         self.decks = state.decks
+//        for deck in decks {
+//            if deck.format == "EDH" {
+//                deck.format = "Commander"
+//            }
+//        }
+//        appDelegate.saveContext()
         tableView.reloadData()
+        
     }
     
 }

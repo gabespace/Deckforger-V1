@@ -53,11 +53,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
         super.viewWillAppear(animated)
         store.subscribe(self)
         
-        switch searchBar.selectedScopeButtonIndex {
-        case 0: parameters["orderBy"] = "name"
-        case 1: parameters["orderBy"] = "colors"
-        default: parameters["orderBy"] = "cmc"
-        }
+        searchBar.selectedScopeButtonIndex = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {

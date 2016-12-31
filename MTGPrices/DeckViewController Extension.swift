@@ -221,6 +221,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let card = getCardAtIndexPath(indexPath)
             cards.remove(at: cards.index(of: card)!)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             store.dispatch(RemoveCardFromDeck(card: card))
         }
     }

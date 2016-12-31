@@ -26,7 +26,6 @@
 		CB32FAAB1DF8A9A500B7F3FD /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32FAAA1DF8A9A500B7F3FD /* CardTableViewCell.swift */; };
 		CB48D3741DEFB53A00004F4D /* DeckViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48D3731DEFB53A00004F4D /* DeckViewController Extension.swift */; };
 		CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */; };
-		CB68A16B1E0357A60093E8D6 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68A16A1E0357A60093E8D6 /* AddDeckViewController.swift */; };
 		CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */; };
 		CB735B931DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB735B921DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift */; };
 		CB7883531DED00F500E45F7D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883521DED00F500E45F7D /* Actions.swift */; };
@@ -71,7 +70,6 @@
 		CB32FAAA1DF8A9A500B7F3FD /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		CB48D3731DEFB53A00004F4D /* DeckViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeckViewController Extension.swift"; sourceTree = "<group>"; };
 		CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchTableViewController.swift; sourceTree = "<group>"; };
-		CB68A16A1E0357A60093E8D6 /* AddDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		CB735B921DFB380200263E39 /* searchForAdditionalCardsActionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchForAdditionalCardsActionCreator.swift; sourceTree = "<group>"; };
 		CB7883521DED00F500E45F7D /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
@@ -214,14 +212,6 @@
 			name = "Advanced Search";
 			sourceTree = "<group>";
 		};
-		CB68A16C1E0357AC0093E8D6 /* Add Deck */ = {
-			isa = PBXGroup;
-			children = (
-				CB68A16A1E0357A60093E8D6 /* AddDeckViewController.swift */,
-			);
-			name = "Add Deck";
-			sourceTree = "<group>";
-		};
 		CB735B941DFB380500263E39 /* Action Creators */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,7 +226,6 @@
 			children = (
 				CB2212231DEF845C00C51044 /* DeckList Viewer */,
 				CB046DB01E11DE1F006E059A /* Edit Deck */,
-				CB68A16C1E0357AC0093E8D6 /* Add Deck */,
 				CB2212241DEF846B00C51044 /* Deck Viewer */,
 				CBBCC2E01DF6181400344614 /* Card Detail */,
 				CB2212271DEF8AE900C51044 /* Add Card */,
@@ -431,7 +420,6 @@
 				CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */,
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* ErrorCode.swift in Sources */,
-				CB68A16B1E0357A60093E8D6 /* AddDeckViewController.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String Extension.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,

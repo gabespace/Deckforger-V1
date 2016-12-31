@@ -38,7 +38,7 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     }
     
     var edhDecks: [Deck] {
-        return decks.filter { $0.format == "EDH" }
+        return decks.filter { $0.format == "Commander" || $0.format == "EDH" }
     }
     
     var pauperDecks: [Deck] {

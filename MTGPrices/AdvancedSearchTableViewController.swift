@@ -17,8 +17,10 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     var rulesText: String?
     var subtype: String?
     var colors = [String]()
+    var supertypes = [String]()
     var types = [String]()
     var rarities = [String]()
+    var formats = [String]()
     
     var matchColorsExactly = false
     var andColors = false
@@ -79,7 +81,6 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["subtypes"] = subtype
         }
         
-        // Colors
         if !colors.isEmpty {
             var colorString: String
             switch (matchColorsExactly, andColors) {
@@ -96,14 +97,20 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["colors"] = colorString
         }
         
-        // Types
         if !types.isEmpty {
             parameters["types"] = types.joined(separator: andTypes ? "," : "|")
         }
         
-        // Rarities
+        if !supertypes.isEmpty {
+            parameters["supertypes"] = supertypes.joined(separator: ",")
+        }
+        
         if !rarities.isEmpty {
             parameters["rarity"] = rarities.joined(separator: "|")
+        }
+        
+        if !formats.isEmpty {
+            parameters["gameFormat"] = formats.joined(separator: "|")
         }
         
         return parameters
@@ -137,8 +144,16 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             }
         }
         
+        if let initialSupertypes = parameters["supertypes"] as? String {
+            supertypes = initialSupertypes.components(separatedBy: ",")
+        }
+        
         if let initialRarities = parameters["rarity"] as? String {
             rarities = initialRarities.components(separatedBy: "|")
+        }
+        
+        if let initialFormats = parameters["gameFormat"] as? String {
+            formats = initialFormats.components(separatedBy: "|")
         }
     }
     
