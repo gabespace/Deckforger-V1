@@ -38,7 +38,7 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     }
     
     var edhDecks: [Deck] {
-        return decks.filter { $0.format == "Commander" || $0.format == "EDH" }
+        return decks.filter { $0.format == "Commander" }
     }
     
     var pauperDecks: [Deck] {
@@ -84,18 +84,16 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
         let sideCount = deck.sideboardCount
         var mainAttributes = [String: Any]()
         var sideAttributes = [String: Any]()
-        if mainCount < 60 {
-            mainAttributes[NSForegroundColorAttributeName] = UIColor.red
+        if deck.format == "Commander" {
+            mainAttributes[NSForegroundColorAttributeName] = mainCount < 100 ? UIColor.red : UIColor.black
         } else {
-            mainAttributes[NSForegroundColorAttributeName] = UIColor.black
+            mainAttributes[NSForegroundColorAttributeName] = mainCount < 60 ? UIColor.red : UIColor.black
         }
-        if sideCount < 15 {
-            sideAttributes[NSForegroundColorAttributeName] = UIColor.red
-        } else {
-            sideAttributes[NSForegroundColorAttributeName] = UIColor.black
-        }
+        sideAttributes[NSForegroundColorAttributeName] = sideCount < 15 ? UIColor.red : UIColor.black
         let attributedText = NSMutableAttributedString(string: "Main: \(mainCount)", attributes: mainAttributes)
-        attributedText.append(NSMutableAttributedString(string: " Side: \(sideCount)", attributes: sideAttributes))
+        if deck.hasSideboard {
+            attributedText.append(NSMutableAttributedString(string: " Side: \(sideCount)", attributes: sideAttributes))
+        }
         cell.countLabel.attributedText = attributedText
         return cell
     }

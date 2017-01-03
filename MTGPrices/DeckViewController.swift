@@ -26,6 +26,9 @@ class DeckViewController: UIViewController, StoreSubscriber {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var deck: Deck!
     var cards = [Card]()
+    lazy var isEDH: Bool = {
+       return self.deck.format == "Commander"
+    }()
     
     // MARK: - View Lifecycle Methods
     
@@ -119,9 +122,11 @@ class DeckViewController: UIViewController, StoreSubscriber {
     func newState(state: State) {
         fetchCards()
         if state.isDownloadingImages {
+            
         } else {
             tableView.reloadData()
         }
+        
     }
     
 }

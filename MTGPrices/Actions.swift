@@ -15,12 +15,14 @@ import Alamofire
 struct AddNewDeck: Action {
     let name: String?
     let format: String!
+    let hasSideboard: Bool
 }
 
 struct EditDeck: Action {
     let deck: Deck
     let name: String?
     let format: String?
+    let hasSideboard: Bool
 }
 
 struct DeleteDeck: Action {
@@ -77,6 +79,18 @@ struct RemoveCardFromDeck: Action {
 struct UpdateCardReference: Action {
     let deck: Deck
     let cardId: String
+}
+
+struct MakeCardCommander: Action {
+    let deck: Deck
+    let card: Card?
+    let cardResult: CardResult?
+}
+
+struct UnmakeCardCommander: Action {
+    let deck: Deck
+    let card: Card?
+    let cardResult: CardResult?
 }
 
 // MARK: - Search Actions

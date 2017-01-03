@@ -80,7 +80,7 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
             cell.textField.delegate = self
             cell.textField.text = rulesText
             cell.textField.tag = ButtonTags.text
-            cell.textField.placeholder = "Ex. Flying, Meld, Draw a card..."
+            cell.textField.placeholder = "Ex. Flying, Meld, Draw a card"
             cell.textField.autocorrectionType = .no
             cell.textField.autocapitalizationType = .sentences
             return cell
@@ -133,7 +133,7 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
             cell.textField.delegate = self
             cell.textField.text = subtype
             cell.textField.tag = ButtonTags.subtype
-            cell.textField.placeholder = "Ex. Aura, Goblin, Equipment..."
+            cell.textField.placeholder = "Ex. Aura, Goblin, Equipment"
             cell.textField.autocorrectionType = .no
             cell.textField.autocapitalizationType = .sentences
             return cell

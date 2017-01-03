@@ -67,7 +67,6 @@ class DeckListViewController: UIViewController, StoreSubscriber {
 //        }
 //        appDelegate.saveContext()
         tableView.reloadData()
-        
     }
     
 }

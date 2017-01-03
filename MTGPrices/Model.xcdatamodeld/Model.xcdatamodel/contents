@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Card" representedClassName=".Card" syncable="YES">
         <attribute name="amount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cmc" attributeType="String" syncable="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCommander" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isDownloadingImage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isSideboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="layout" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +25,7 @@
     <entity name="Deck" representedClassName=".Deck" syncable="YES">
         <attribute name="folder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="format" attributeType="String" syncable="YES"/>
+        <attribute name="hasSideboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
@@ -34,7 +36,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Card" positionX="232" positionY="-184" width="128" height="330"/>
-        <element name="Deck" positionX="-38" positionY="-180" width="128" height="120"/>
+        <element name="Card" positionX="232" positionY="-184" width="128" height="345"/>
+        <element name="Deck" positionX="-38" positionY="-180" width="128" height="135"/>
     </elements>
 </model>

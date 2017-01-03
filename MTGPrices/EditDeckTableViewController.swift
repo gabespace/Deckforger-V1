@@ -9,7 +9,7 @@
 import UIKit
 import ReSwift
 
-class EditDeckTableViewController: UITableViewController, StoreSubscriber {
+class EditDeckTableViewController: UITableViewController, StoreSubscriber, SwitchDelegate {
     
     // MARK: - Properties
     
@@ -19,6 +19,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
     private let formats = ["Casual", "Standard", "Frontier", "Modern", "Legacy", "Vintage", "Commander", "Pauper"]
     private var currentFormatIndex: Int!
     private var newName = "Untitled"
+    private var hasSideboard: Bool!
     
     
     // MARK: - View Lifecycle Methods
@@ -31,6 +32,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdits))
         
         currentFormatIndex = isCreatingNewDeck ? 0 : formats.index(of: deck!.format)!
+        hasSideboard = deck?.hasSideboard ?? true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,52 +60,60 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
         }
         
         if isCreatingNewDeck {
-            store.dispatch(AddNewDeck(name: newName, format: formats[currentFormatIndex]))
+            store.dispatch(AddNewDeck(name: newName, format: formats[currentFormatIndex], hasSideboard: hasSideboard))
         } else {
-            store.dispatch(EditDeck(deck: deck!, name: newName, format: formats[currentFormatIndex]))
+            store.dispatch(EditDeck(deck: deck!, name: newName, format: formats[currentFormatIndex], hasSideboard: hasSideboard))
         }
         
         _ = navigationController!.popViewController(animated: true)
+    }
+    
+    func switchDidToggle(to value: Bool, tag: Int) {
+        hasSideboard = value
     }
     
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Name"
-        } else {
-            return "Format"
+        switch section {
+        case 0: return "Name"
+        case 1: return "Format"
+        case 2: return "Sideboard"
+        default: return nil
         }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return formats.count
+        switch section {
+        case 0: return 1
+        case 1: return formats.count
+        case 2: return 1
+        default: return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckName, for: indexPath) as! DeckNameTableViewCell
             cell.selectionStyle = .none
             cell.nameTextField.text = deck?.name ?? ""
             cell.nameTextField.autocapitalizationType = .words
             return cell
-        } else {
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)
             cell.textLabel?.text = formats[indexPath.row]
-            if indexPath.row == currentFormatIndex {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            cell.accessoryType = indexPath.row == currentFormatIndex ? .checkmark : .none
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckSideboard, for: indexPath) as! SideboardSwitchTableViewCell
+            cell.switchDelegate = self
+            cell.selectionSwitch.isOn = hasSideboard
             return cell
         }
     }
@@ -120,9 +130,13 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber {
     
     func newState(state: State) { }
     
+    
+    // MARK: - Supporting Functionality
+    
     struct Cell {
         static let deckName = "Deck Name"
         static let deckFormat = "Deck Format"
+        static let deckSideboard = "Deck Sideboard"
     }
 
 }

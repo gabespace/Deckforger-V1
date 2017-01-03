@@ -23,6 +23,7 @@ class CardResultTableViewCell: UITableViewCell {
             costStackView.isHidden = true
             return
         }
+        
         costStackView.isHidden = false
         for view in costStackView.arrangedSubviews {
             costStackView.removeArrangedSubview(view)

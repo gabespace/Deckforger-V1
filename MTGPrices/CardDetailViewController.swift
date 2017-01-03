@@ -44,9 +44,23 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var sideboardCountLabel: UILabel!
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var sideboardButton: UIButton!
+    @IBOutlet weak var decrementSideboardButton: UIButton!
+    @IBOutlet weak var makeCommanderButton: UIButton!
     
     
     // MARK: - IBActions
+    
+    @IBAction func makeCommanderButtonPressed(_ sender: UIButton) {
+        guard !sender.isHidden else { return }
+        
+        if sender.titleLabel!.text == "Make Commander" {
+            store.dispatch(MakeCardCommander(deck: deck, card: card, cardResult: cardResult))
+            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+        } else {
+            store.dispatch(UnmakeCardCommander(deck: deck, card: card, cardResult: cardResult))
+            makeCommanderButton.setTitle("Make Commander", for: .normal)
+        }
+    }
     
     @IBAction func flipButtonPressed(_ sender: UIButton) {
         guard !sender.isHidden else { return }
@@ -143,6 +157,20 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         
         getDeckCount()
         displayMainSideInfo()
+        
+        if !deck.hasSideboard {
+            sideboardButton.isHidden = true
+            decrementSideboardButton.isHidden = true
+            sideboardCountLabel.isHidden = true
+        }
+        
+        if deck.format != "Commander" {
+            makeCommanderButton.isHidden = true
+        } else if !shouldUseResult && card!.isCommander {
+            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+        } else {
+            makeCommanderButton.setTitle("Make Commander", for: .normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

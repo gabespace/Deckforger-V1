@@ -2,12 +2,13 @@
 //  Deck+CoreDataProperties.swift
 //  MTGPrices
 //
-//  Created by Gabriele Pregadio on 12/7/16.
+//  Created by Gabriele Pregadio on 12/31/16.
 //  Copyright © 2016 Gabriele Pregadio. All rights reserved.
 //
 
 import Foundation
 import CoreData
+
 
 extension Deck {
 
@@ -15,10 +16,11 @@ extension Deck {
         return NSFetchRequest<Deck>(entityName: "Deck");
     }
 
+    @NSManaged public var folder: String?
     @NSManaged public var format: String
     @NSManaged public var id: String
     @NSManaged public var name: String
-    @NSManaged public var folder: String?
+    @NSManaged public var hasSideboard: Bool
     @NSManaged public var cards: NSSet
 
 }
