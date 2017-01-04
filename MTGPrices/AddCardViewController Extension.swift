@@ -34,16 +34,14 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         parameters.removeAll()
         searchBar.resignFirstResponder()
         parameters["name"] = cardName
+        parameters["orderBy"] = sortFields[searchBar.selectedScopeButtonIndex]
         isDirty = true
         store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        switch selectedScope {
-        case 0: parameters["orderBy"] = "name"
-        case 1: parameters["orderBy"] = "colors"
-        default: parameters["orderBy"] = "cmc"
-        }
+        parameters["orderBy"] = sortFields[searchBar.selectedScopeButtonIndex]
+        
         if !cardResults.isEmpty {
             tableView.setContentOffset(CGPoint.zero, animated: false)
             currentPage = 1

@@ -122,6 +122,8 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         data.addDataSet(dataSet)
         costBarChartView.data = data
         
+        costBarChartView.isUserInteractionEnabled = false
+        
         costBarChartView.fitBars = true
         costBarChartView.legend.enabled = false
         costBarChartView.chartDescription?.text = "Mana Curve"
@@ -147,13 +149,13 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
         static let manaWhite = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         static let manaBlack = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         static let manaGreen = UIColor(red: 0.18, green: 0.76, blue: 0.36, alpha: 1.0)
-        static let creatureColor = UIColor(red: 0.2, green: 0.85, blue: 1.0, alpha: 1.0)
-        static let instantColor = UIColor(red: 0.6, green: 1.0, blue: 0.2, alpha: 1.0)
-        static let sorceryColor = UIColor(red: 0.3, green: 0.6, blue: 0.8, alpha: 1.0)
-        static let planeswalkerColor = UIColor(red: 0.48, green: 0.2, blue: 1.0, alpha: 1.0)
-        static let artifactColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
-        static let enchantmentColor = UIColor(red: 0.94, green: 0.93, blue: 0.4, alpha: 1.0)
-        static let landColor = UIColor(red: 0.89, green: 0.59, blue: 0.89, alpha: 1.0)
+        static let creatureColor = UIColor(red: 0.81, green: 0.92, blue: 1.0, alpha: 1.0)
+        static let instantColor = UIColor(red: 0.70, green: 0.86, blue: 0.93, alpha: 1.0)
+        static let sorceryColor = UIColor(red: 0.70, green: 0.70, blue: 1.0, alpha: 1.0)
+        static let planeswalkerColor = UIColor(red: 0.40, green: 0.40, blue: 1.0, alpha: 1.0)
+        static let artifactColor = UIColor(red: 0, green: 0, blue: 1.0, alpha: 1.0)
+        static let enchantmentColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        static let landColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
     }
     
 }

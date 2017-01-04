@@ -25,6 +25,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     var parameters: [String: Any] = [:]
     var headers: [AnyHashable: Any]?
     
+    let sortFields = ["name", "colors", "cmc"]
     var rowIsSelected = false
     var selectedIndexPath: IndexPath?
     var isDirty = true

@@ -78,7 +78,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isEDH {
             switch section {
-            case 0: return "Commander"
+            case 0: return "Commanders"
             case 1: return "Creatures (\(creaturesCount))"
             case 2: return "Noncreature Spells (\(spellsCount))"
             case 3: return "Lands (\(landsCount))"
