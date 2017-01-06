@@ -9,41 +9,21 @@
 import Foundation
 import UIKit
 
-extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate {
-    
-    // MARK: - UITextFieldDelegate Methods
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        sectionBeingEdited = textField.tag
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        sectionBeingEdited = nil
-        switch textField.tag {
-        case ButtonTags.name: cardName = textField.text
-        case ButtonTags.text: rulesText = textField.text
-        case ButtonTags.subtype: subtype = textField.text
-        default: return
-        }
-    }
-    
-    
-    // MARK: - Switch Delegate Methods
-    
-    func switchDidToggle(to value: Bool, tag: Int) {
-        switch tag {
-        case SwitchTags.matchColorsExactly: matchColorsExactly = value
-        case SwitchTags.andColors: andColors = value
-        case SwitchTags.andTypes: andTypes = value
-        default: return
-        }
-    }
-    
+extension AdvancedSearchTableViewController {
     
     // MARK: - UITableView Data Source & Delegate
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Filters.names[section]
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section, indexPath.row) {
+        case (Sections.cmc, 1): return isPickingCmc ? CellHeights.pickerCell : 0
+        case (Sections.pt, 1): return isPickingPower ? CellHeights.pickerCell : 0
+        case (Sections.pt, 3): return isPickingToughness ? CellHeights.pickerCell : 0
+        default: return CellHeights.normalCell
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,11 +33,13 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Sections.name: return 1
+        case Sections.cmc: return 2
         case Sections.rulesText: return 1
         case Sections.color: return Filters.colors.count + 2
         case Sections.type: return Filters.types.count + 1
         case Sections.supertype: return Filters.supertypes.count
         case Sections.subtype: return 1
+        case Sections.pt: return 4
         case Sections.rarity: return Filters.rarities.count
         case Sections.format: return Filters.formats.count
         default: return 0
@@ -75,6 +57,22 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
             cell.textField.autocorrectionType = .no
             cell.textField.autocapitalizationType = .sentences
             return cell
+        case Sections.cmc:
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.rangeCell, for: indexPath) as! RangeTableViewCell
+                cell.filterText.text = "CMC is"
+                cell.amountText.text = cmcRestriction + cmc
+                cell.amountText.textColor = isPickingCmc ? UIColor.red : UIColor.black
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.pickerCell, for: indexPath) as! PickerTableViewCell
+                cell.pickerView.tag = PickerViewTags.cmc
+                cell.pickerView.delegate = self
+                cell.pickerView.dataSource = self
+                cell.pickerView.selectRow(pickerViewRestrictions.index(of: cmcRestriction)!, inComponent: 0, animated: false)
+                cell.pickerView.selectRow((Int(cmc) ?? -1) + 1, inComponent: 1, animated: false)
+                return cell
+            }
         case Sections.rulesText:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textCell, for: indexPath) as! TextTableViewCell
             cell.textField.delegate = self
@@ -107,7 +105,7 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
                 cell.accessoryType = colors.contains(color) ? .checkmark : .none
                 return cell
             }
-        case Sections.type: // Type Cell
+        case Sections.type:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.constraintCell, for: indexPath) as! ConstraintTableViewCell
                 cell.label.text = "AND Types"
@@ -137,6 +135,37 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
             cell.textField.autocorrectionType = .no
             cell.textField.autocapitalizationType = .sentences
             return cell
+        case Sections.pt:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.rangeCell, for: indexPath) as! RangeTableViewCell
+                cell.filterText.text = "Power is"
+                cell.amountText.text = powerRestriction + power
+                cell.amountText.textColor = isPickingPower ? UIColor.red : UIColor.black
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.pickerCell, for: indexPath) as! PickerTableViewCell
+                cell.pickerView.tag = PickerViewTags.power
+                cell.pickerView.delegate = self
+                cell.pickerView.dataSource = self
+                cell.pickerView.selectRow(pickerViewRestrictions.index(of: powerRestriction)!, inComponent: 0, animated: false)
+                cell.pickerView.selectRow((Int(power) ?? -1) + 1, inComponent: 1, animated: false)
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.rangeCell, for: indexPath) as! RangeTableViewCell
+                cell.filterText.text = "Toughness is"
+                cell.amountText.text = toughnessRestriction + toughness
+                cell.amountText.textColor = isPickingToughness ? UIColor.red : UIColor.black
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.pickerCell, for: indexPath) as! PickerTableViewCell
+                cell.pickerView.tag = PickerViewTags.toughness
+                cell.pickerView.delegate = self
+                cell.pickerView.dataSource = self
+                cell.pickerView.selectRow(pickerViewRestrictions.index(of: toughnessRestriction)!, inComponent: 0, animated: false)
+                cell.pickerView.selectRow((Int(toughness) ?? -1) + 1, inComponent: 1, animated: false)
+                return cell
+            }
         case Sections.rarity:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.filterCell, for: indexPath)
             let rarity = Filters.rarities[indexPath.row]
@@ -156,6 +185,12 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
+        case Sections.cmc:
+            if indexPath.row == 1 { return }
+            isPickingCmc = !isPickingCmc
+            UIView.animate(withDuration: 0.3) { [unowned self] in
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.cmc), IndexPath(row: 1, section: Sections.cmc)], with: .automatic)
+            }
         case Sections.color:
             if indexPath.row < 2 { return }
             if let cell = tableView.cellForRow(at: indexPath) {
@@ -187,6 +222,20 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
                     supertypes.append(Filters.supertypes[indexPath.row])
                     cell.accessoryType = .checkmark
                 }
+            }
+        case Sections.pt:
+            if indexPath.row == 0 {
+                isPickingPower = !isPickingPower
+                UIView.animate(withDuration: 0.3) { [unowned self] in
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.pt), IndexPath(row: 1, section: Sections.pt)], with: .automatic)
+                }
+            } else if indexPath.row == 2 {
+                isPickingToughness = !isPickingToughness
+                UIView.animate(withDuration: 0.3) { [unowned self] in
+                    self.tableView.reloadRows(at: [IndexPath(row: 2, section: Sections.pt), IndexPath(row: 3, section: Sections.pt)], with: .automatic)
+                }
+            } else {
+                return
             }
         case Sections.rarity:
             if let cell = tableView.cellForRow(at: indexPath) {
@@ -220,12 +269,27 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
         static let textCell = "Text Cell"
         static let filterCell = "Filter Cell"
         static let constraintCell = "Constraint Cell"
+        static let rangeCell = "Range Cell"
+        static let pickerCell = "Picker Cell"
+    }
+    
+    struct CellHeights {
+        static let normalCell: CGFloat = 44
+        static let pickerCell: CGFloat = 219
     }
     
     struct ButtonTags {
         static let name = 0
-        static let text = 1
-        static let subtype = 5
+        static let cmcRestriction = 10
+        static let cmcAmount = 11
+        static let text = 2
+        static let subtype = 6
+    }
+    
+    struct PickerViewTags {
+        static let cmc = 0
+        static let power = 1
+        static let toughness = 2
     }
     
     struct SwitchTags {
@@ -235,7 +299,7 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
     }
     
     struct Filters {
-        static let names = ["Name", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Rarity", "Format"]
+        static let names = ["Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format"]
         static let colors = ["White", "Blue", "Red", "Black", "Green"]
         static let types = ["Artifact", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery", "Tribal"]
         static let supertypes = ["Legendary", "Snow"]
@@ -245,13 +309,15 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, SwitchDelegate
     
     struct Sections {
         static let name = 0
-        static let rulesText = 1
-        static let color = 2
-        static let type = 3
-        static let supertype = 4
-        static let subtype = 5
-        static let rarity = 6
-        static let format = 7
+        static let cmc = 1
+        static let rulesText = 2
+        static let color = 3
+        static let type = 4
+        static let supertype = 5
+        static let subtype = 6
+        static let pt = 7
+        static let rarity = 8
+        static let format = 9
     }
     
 }

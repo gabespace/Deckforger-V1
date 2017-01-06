@@ -16,6 +16,9 @@
 		CB0F999A1DECE5F70085C721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0F99981DECE5F70085C721 /* Main.storyboard */; };
 		CB0F999C1DECE5F70085C721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0F999B1DECE5F70085C721 /* Assets.xcassets */; };
 		CB0F999F1DECE5F70085C721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0F999D1DECE5F70085C721 /* LaunchScreen.storyboard */; };
+		CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B01E1EED6E00AC8F91 /* RangeTableViewCell.swift */; };
+		CB1217B31E1EF2E400AC8F91 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B21E1EF2E400AC8F91 /* PickerTableViewCell.swift */; };
+		CB1217B51E1EF3DF00AC8F91 /* AdvancedSearchTableViewController Extension 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B41E1EF3DF00AC8F91 /* AdvancedSearchTableViewController Extension 2.swift */; };
 		CB16D3631DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16D3621DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift */; };
 		CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212251DEF8AE500C51044 /* AddCardViewController.swift */; };
 		CB2212291DEF930400C51044 /* AddCardViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212281DEF930400C51044 /* AddCardViewController Extension.swift */; };
@@ -61,6 +64,9 @@
 		CB0F999B1DECE5F70085C721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB0F999E1DECE5F70085C721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB0F99A01DECE5F70085C721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB1217B01E1EED6E00AC8F91 /* RangeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeTableViewCell.swift; sourceTree = "<group>"; };
+		CB1217B21E1EF2E400AC8F91 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		CB1217B41E1EF3DF00AC8F91 /* AdvancedSearchTableViewController Extension 2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AdvancedSearchTableViewController Extension 2.swift"; sourceTree = "<group>"; };
 		CB16D3621DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AdvancedSearchTableViewController Extension.swift"; sourceTree = "<group>"; };
 		CB2212251DEF8AE500C51044 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		CB2212281DEF930400C51044 /* AddCardViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCardViewController Extension.swift"; sourceTree = "<group>"; };
@@ -209,8 +215,11 @@
 			children = (
 				CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */,
 				CB16D3621DF2079200893C3E /* AdvancedSearchTableViewController Extension.swift */,
+				CB1217B41E1EF3DF00AC8F91 /* AdvancedSearchTableViewController Extension 2.swift */,
 				CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */,
 				CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */,
+				CB1217B01E1EED6E00AC8F91 /* RangeTableViewCell.swift */,
+				CB1217B21E1EF2E400AC8F91 /* PickerTableViewCell.swift */,
 			);
 			name = "Advanced Search";
 			sourceTree = "<group>";
@@ -414,8 +423,10 @@
 				CB271AB61DEE275A00AD44FD /* searchForCardsActionCreator.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DeckViewController Extension.swift in Sources */,
 				CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */,
+				CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */,
 				CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */,
 				CB271ABC1DEE3F6A00AD44FD /* ApiResult.swift in Sources */,
+				CB1217B31E1EF2E400AC8F91 /* PickerTableViewCell.swift in Sources */,
 				CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */,
 				CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */,
 				CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */,
@@ -433,6 +444,7 @@
 				CB7883631DED05C200E45F7D /* Deck+CoreDataProperties.swift in Sources */,
 				CB0F99951DECE5F70085C721 /* AppDelegate.swift in Sources */,
 				CB046DAF1E11DE17006E059A /* EditDeckTableViewController.swift in Sources */,
+				CB1217B51E1EF3DF00AC8F91 /* AdvancedSearchTableViewController Extension 2.swift in Sources */,
 				CB81523E1E18693400D74D8A /* SideboardSwitchTableViewCell.swift in Sources */,
 				CB7883641DED05C200E45F7D /* Card+CoreDataClass.swift in Sources */,
 				CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */,

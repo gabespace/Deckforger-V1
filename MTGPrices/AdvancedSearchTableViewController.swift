@@ -14,11 +14,17 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     // MARK: - Stored Properties
     
     var cardName: String?
+    var cmcRestriction = "equal to "
+    var cmc = "any"
     var rulesText: String?
     var subtype: String?
     var colors = [String]()
     var supertypes = [String]()
     var types = [String]()
+    var powerRestriction = "equal to "
+    var power = "any"
+    var toughnessRestriction = "equal to "
+    var toughness = "any"
     var rarities = [String]()
     var formats = [String]()
     
@@ -27,6 +33,12 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     var andTypes = false
     
     var sectionBeingEdited: Int?
+    var isPickingCmc = false
+    var isPickingPower = false
+    var isPickingToughness = false
+    
+    let pickerViewRestrictions = ["less than ", "less than or equal to ", "equal to ", "greater than or equal to ", "greater than "]
+    let restrictionTerms = ["lt", "lte", "", "gte", "gt"]
     
     
     // MARK: - View Lifecycle Methods
@@ -113,6 +125,20 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["gameFormat"] = formats.joined(separator: "|")
         }
         
+        if let cost = Int(cmc) {
+            let restriction = restrictionTerms[pickerViewRestrictions.index(of: cmcRestriction)!]
+            parameters["cmc"] = restriction + "\(cost)"
+        }
+        
+        if let p = Int(power) {
+            let restriction = restrictionTerms[pickerViewRestrictions.index(of: powerRestriction)!]
+            parameters["power"] = restriction + "\(p)"
+        }
+        if let t = Int(toughness) {
+            let restriction = restrictionTerms[pickerViewRestrictions.index(of: toughnessRestriction)!]
+            parameters["toughness"] = restriction + "\(t)"
+        }
+        
         return parameters
     }
     
@@ -155,6 +181,39 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         if let initialFormats = parameters["gameFormat"] as? String {
             formats = initialFormats.components(separatedBy: "|")
         }
+        
+        if let initialCmc = parameters["cmc"] as? String {
+            if initialCmc.isANumber {
+                cmcRestriction = "equal to "
+                cmc = initialCmc
+            } else {
+                let components = initialCmc.restrictionComponents
+                cmcRestriction = pickerViewRestrictions[restrictionTerms.index(of: components[0])!]
+                cmc = components[1]
+            }
+        }
+        
+        if let initialPower = parameters["power"] as? String {
+            if initialPower.isANumber {
+                powerRestriction = "equal to "
+                power = initialPower
+            } else {
+                let components = initialPower.restrictionComponents
+                powerRestriction = pickerViewRestrictions[restrictionTerms.index(of: components[0])!]
+                power = components[1]
+            }
+        }
+        
+        if let initialToughness = parameters["toughness"] as? String {
+            if initialToughness.isANumber {
+                toughnessRestriction = "equal to "
+                toughness = initialToughness
+            } else {
+                let components = initialToughness.restrictionComponents
+                toughnessRestriction = pickerViewRestrictions[restrictionTerms.index(of: components[0])!]
+                toughness = components[1]
+            }
+        }
     }
     
     
@@ -164,4 +223,19 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         configureInitialSelections(state.parameters)
     }
     
+}
+
+extension String {
+    var isANumber: Bool {
+        return Int(self) != nil
+    }
+    
+    var restrictionComponents: [String] {
+        for (offset, char) in self.characters.enumerated() {
+            if String(char).isANumber {
+                return [self.substring(to: self.index(self.startIndex, offsetBy: offset)), self.substring(from: self.index(self.startIndex, offsetBy: offset))]
+            }
+        }
+        return []
+    }
 }
