@@ -19,15 +19,15 @@ extension String {
     }
     
     func createManaCostImages() -> [UIImageView] {
-        var images = [UIImageView]()
+        var imageViews = [UIImageView]()
         var costStrings = self.components(separatedBy: "{")
         for (index, string) in costStrings.enumerated() {
             costStrings[index] = string.replacingOccurrences(of: "}", with: "")
-            if let image = UIImage(named: costStrings[index]) {
-                images.append(UIImageView(image: image))
+            if let image = UIImage(named: costStrings[index].replacingOccurrences(of: "/", with: ":")) {
+                imageViews.append(UIImageView(image: image))
             }
         }
-        return images
+        return imageViews
     }
     
     var withoutBraces: String {

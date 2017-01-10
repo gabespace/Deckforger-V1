@@ -99,7 +99,7 @@ extension DeckViewController: UIScrollViewDelegate, UIPopoverPresentationControl
     
     func setCostBarChartData() {
         var costs = Array<Double>(repeatElement(0, count: 16))
-        for card in cards where !card.isSideboard {
+        for card in cards where !card.isSideboard && card.cmc.cmcToInt <= 16 {
             if let cmc = Int(card.cmc) {
                 costs[cmc] += Double(card.amount)
             }

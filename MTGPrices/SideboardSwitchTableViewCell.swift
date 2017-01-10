@@ -11,7 +11,6 @@ import UIKit
 class SideboardSwitchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var selectionSwitch: UISwitch!
-    
     var switchDelegate: SwitchDelegate?
     
     @IBAction func selectedSwitch(_ sender: UISwitch) {

@@ -27,7 +27,6 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     
     let sortFields = ["name", "colors", "cmc"]
     var rowIsSelected = false
-    var selectedIndexPath: IndexPath?
     var isDirty = true
     var isDownloadingInitialResults = false
     var isDownloadingAdditionalPages = false
@@ -53,14 +52,6 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if let indexPath = selectedIndexPath {
-            tableView.deselectRow(at: indexPath, animated: true)
-            selectedIndexPath = nil
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

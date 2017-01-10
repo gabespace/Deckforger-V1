@@ -92,11 +92,9 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard !rowIsSelected else { return }
-        guard !cardResults.isEmpty else {
-            tableView.deselectRow(at: indexPath, animated: true)
-            return
-        }
+        guard !cardResults.isEmpty else { return }
         
         rowIsSelected = true
         self.searchBar.resignFirstResponder()
@@ -110,7 +108,6 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
             store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
         } else {
             rowIsSelected = false
-            selectedIndexPath = indexPath
             let card = cardResults[indexPath.row]
             if let vc = storyboard?.instantiateViewController(withIdentifier: "CardDetailViewController") as? CardDetailViewController {
                 vc.cardResult = card

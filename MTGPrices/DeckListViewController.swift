@@ -29,6 +29,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
         
         title = "Decks"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Decks", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(showSettings))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
     }
     
@@ -49,6 +50,11 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     
     // MARK: - Methods
+    
+    @objc private func showSettings() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc private func addDeck() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as! EditDeckTableViewController

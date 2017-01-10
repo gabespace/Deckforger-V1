@@ -11,7 +11,7 @@ import UIKit
 class DeckListTableViewCell: UITableViewCell {
 
     @IBAction func editButtonTapped(_ sender: UIButton) {
-        sender.setImage(UIImage(named: "editSelected.png"), for: .normal)
+//        sender.setImage(UIImage(named: "editSelected.png"), for: .normal)
         buttonDelegate?.buttonTapped(deckId: deckId)
     }
     

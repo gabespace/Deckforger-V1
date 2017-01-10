@@ -33,6 +33,18 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, UIPickerViewDe
         return 2
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        switch (component, row) {
+        case (0, _): label.text = pickerViewRestrictions[row]
+        case (1, 0): label.text = "any"
+        default: label.text = "\(row - 1)"
+        }
+        return label
+    }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch (pickerView.tag, component) {
         case (_, 0): return 5
@@ -40,15 +52,6 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, UIPickerViewDe
         case (PickerViewTags.power, 1): return 17
         case (PickerViewTags.toughness, 1): return 17
         default: return 0
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch (component, row) {
-        case (0, _): return pickerViewRestrictions[row]
-        case (1, 0): return "any"
-        case (1, _): return "\(row - 1)"
-        default: return nil
         }
     }
     

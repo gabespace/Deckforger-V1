@@ -87,13 +87,13 @@ struct StateReducer: Reducer {
             if let existingCards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !existingCards.isEmpty {
                     // Card already exists in mainboard, just update its amount.
-                    existingCards[0].amount += 1
+                    existingCards[0].amount += action.amount
                 } else {
                     // Create new Card, add to deck.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
                     card.imageData = action.sideboardCard.imageData
                     card.isDownloadingImage = false
-                    card.amount = 1
+                    card.amount = action.amount
                     card.cmc = action.sideboardCard.cmc
                     card.colors = action.sideboardCard.colors
                     card.id = action.sideboardCard.id
@@ -124,7 +124,7 @@ struct StateReducer: Reducer {
                 if !existingCards.isEmpty {
                     // Card exists, just update its amount.
                     let card = existingCards[0]
-                    card.amount += 1
+                    card.amount += action.amount
                 } else {
                     // Create new card.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
@@ -166,7 +166,7 @@ struct StateReducer: Reducer {
                     card.deck = action.deck
                     card.layout = action.card.layout
                     card.isSideboard = false
-                    card.amount = 1
+                    card.amount = action.amount
                     card.isCommander = false
                 }
             } else {
@@ -180,13 +180,13 @@ struct StateReducer: Reducer {
             if let existingCards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !existingCards.isEmpty {
                     // Card already exists in sideboard, just update its amount.
-                    existingCards[0].amount += 1
+                    existingCards[0].amount += action.amount
                 } else {
                     // Create new Card, add to deck.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
                     card.imageData = action.mainboardCard.imageData
                     card.isDownloadingImage = false
-                    card.amount = 1
+                    card.amount = action.amount
                     card.cmc = action.mainboardCard.cmc
                     card.colors = action.mainboardCard.colors
                     card.id = action.mainboardCard.id
@@ -217,7 +217,7 @@ struct StateReducer: Reducer {
                 if !existingCards.isEmpty {
                     // Card exists, just update its amount.
                     let card = existingCards[0]
-                    card.amount += 1
+                    card.amount += action.amount
                 } else {
                     // Create new card.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
@@ -259,7 +259,7 @@ struct StateReducer: Reducer {
                     card.deck = action.deck
                     card.layout = action.card.layout
                     card.isSideboard = true
-                    card.amount = 1
+                    card.amount = action.amount
                     card.isCommander = false
                 }
             } else {
@@ -272,7 +272,7 @@ struct StateReducer: Reducer {
             request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false AND isCommander == false", action.deck.id, action.card.id)
             if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !cards.isEmpty {
-                    cards[0].amount += 1
+                    cards[0].amount += action.amount
                 }
             } else {
                 print("core data error fetching")
@@ -284,7 +284,7 @@ struct StateReducer: Reducer {
             request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == true AND isCommander == false", action.deck.id, action.card.id)
             if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !cards.isEmpty {
-                    cards[0].amount += 1
+                    cards[0].amount += action.amount
                 }
             } else {
                 print("core data error fetching")
@@ -296,7 +296,7 @@ struct StateReducer: Reducer {
             request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false AND isCommander == false", action.deck.id, action.cardId)
             if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !cards.isEmpty {
-                    cards[0].amount = max(cards[0].amount - 1, 0)
+                    cards[0].amount = max(cards[0].amount - action.amount, 0)
                 }
             } else {
                 print("core data error fetching")
@@ -308,7 +308,7 @@ struct StateReducer: Reducer {
             request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == true AND isCommander == false", action.deck.id, action.cardId)
             if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
                 if !cards.isEmpty {
-                    cards[0].amount = max(cards[0].amount - 1, 0)
+                    cards[0].amount = max(cards[0].amount - action.amount, 0)
                 }
             } else {
                 print("core data error fetching")

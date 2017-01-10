@@ -33,6 +33,8 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageUnavailableLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
@@ -40,12 +42,12 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var deckCountLabel: UILabel!
-    @IBOutlet weak var sideboardCountLabel: UILabel!
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var sideboardButton: UIButton!
     @IBOutlet weak var decrementSideboardButton: UIButton!
     @IBOutlet weak var makeCommanderButton: UIButton!
+    @IBOutlet weak var deckCountButton: UIButton!
+    @IBOutlet weak var sideCountButton: UIButton!
     
     
     // MARK: - IBActions
@@ -76,49 +78,48 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     @IBAction func addToSideboardButtonPressed(_ sender: UIButton) {
         if shouldUseResult {
-            store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!))
+            store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!, amount: 1))
         } else {
             if !card!.isSideboard {
-                store.dispatch(AddMainboardCardToSideboard(deck: deck, mainboardCard: card!))
+                store.dispatch(AddMainboardCardToSideboard(deck: deck, mainboardCard: card!, amount: 1))
             } else {
-                store.dispatch(IncrementSideboardCardAmount(deck: deck, card: card!))
+                store.dispatch(IncrementSideboardCardAmount(deck: deck, card: card!, amount: 1))
             }
         }
     }
 
     @IBAction func removeFromSideboardButtonPressed(_ sender: UIButton) {
-        if shouldUseResult {
-            store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: cardResult!.id))
-        } else {
-            store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: card!.id))
-        }
+        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: cardResult?.id ?? card!.id, amount: 1))
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if shouldUseResult {
-            store.dispatch(AddCardResultToDeck(deck: deck, card: cardResult!))
+            store.dispatch(AddCardResultToDeck(deck: deck, card: cardResult!, amount: 1))
         } else {
             if card!.isSideboard {
-                store.dispatch(AddSideboardCardToDeck(deck: deck, sideboardCard: card!))
+                store.dispatch(AddSideboardCardToDeck(deck: deck, sideboardCard: card!, amount: 1))
             } else {
-                store.dispatch(IncrementMainboardCardAmount(deck: deck, card: card!))
+                store.dispatch(IncrementMainboardCardAmount(deck: deck, card: card!, amount: 1))
             }
         }
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        if shouldUseResult {
-            store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: cardResult!.id))
-        } else {
-            store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: card!.id))
-        }
+        store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: cardResult?.id ?? card!.id, amount: 1))
     }
+    
     
     // MARK: - View Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        deckCountButton.isUserInteractionEnabled = false
+        sideCountButton.isUserInteractionEnabled = false
+        
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 100)
+        title = card?.name ?? cardResult?.name
+
         // Fetch/display main image.
         spinner.hidesWhenStopped = true
         imageUnavailableLabel.isHidden = true
@@ -161,10 +162,19 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         if !deck.hasSideboard {
             sideboardButton.isHidden = true
             decrementSideboardButton.isHidden = true
-            sideboardCountLabel.isHidden = true
+            sideCountButton.isHidden = true
+            toolBar.items!.remove(at: 7)
+            toolBar.items!.remove(at: 6)
+            toolBar.items!.remove(at: 5)
+        } else {
+            toolBar.items!.removeFirst()
         }
         
         if deck.format != "Commander" {
+            makeCommanderButton.isHidden = true
+        } else if shouldUseResult && !cardResult!.type.contains("Creature") && !cardResult!.type.contains("Planeswalker") {
+            makeCommanderButton.isHidden = true
+        } else if !shouldUseResult && !card!.type.contains("Creature") && !card!.type.contains("Planeswalker") {
             makeCommanderButton.isHidden = true
         } else if !shouldUseResult && card!.isCommander {
             makeCommanderButton.setTitle("Remove as Commander", for: .normal)
@@ -264,9 +274,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false", deck.id, cardId!)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
             if !cards.isEmpty {
-                deckCountLabel.text = "Deck Count: \(cards[0].amount)"
+                deckCountButton.setTitle("Main: \(cards[0].amount)", for: .normal)
             } else {
-                deckCountLabel.text = "Deck Count: 0"
+                deckCountButton.setTitle("Main: 0", for: .normal)
             }
         } else {
             print("error fetching card count in deck")
@@ -274,14 +284,16 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
     
     private func getSideboardCount() {
+        guard deck.hasSideboard else { return }
+        
         let request = Card.createFetchRequest()
         let cardId = shouldUseResult ? cardResult!.id : card!.id
         request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == true", deck.id, cardId!)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
             if !cards.isEmpty {
-                sideboardCountLabel.text = "Sideboard Count: \(cards[0].amount)"
+                sideCountButton.setTitle("Side: \(cards[0].amount)", for: .normal)
             } else {
-                sideboardCountLabel.text = "Sideboard Count: 0"
+                sideCountButton.setTitle("Side: 0", for: .normal)
             }
         } else {
             print("error fetching card count in deck")

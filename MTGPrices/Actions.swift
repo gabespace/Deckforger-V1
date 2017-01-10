@@ -35,41 +35,49 @@ struct DeleteDeck: Action {
 struct AddSideboardCardToDeck: Action {
     let deck: Deck
     let sideboardCard: Card
+    let amount: Int16
 }
 
 struct AddCardResultToDeck: Action {
     let deck: Deck
     let card: CardResult
+    let amount: Int16
 }
 
 struct AddMainboardCardToSideboard: Action {
     let deck: Deck
     let mainboardCard: Card
+    let amount: Int16
 }
 
 struct AddCardResultToSideboard: Action {
     let deck: Deck
     let card: CardResult
+    let amount: Int16
 }
 
 struct IncrementMainboardCardAmount: Action {
     let deck: Deck
     let card: Card
+    let amount: Int16
 }
 
 struct IncrementSideboardCardAmount: Action {
     let deck: Deck
     let card: Card
+    let amount: Int16
 }
 
 struct DecrementMainboardCardAmount: Action {
     let deck: Deck
     let cardId: String
+    let amount: Int16
 }
 
 struct DecrementSideboardCardAmount: Action {
     let deck: Deck
     let cardId: String
+    let amount: Int16
 }
 
 struct RemoveCardFromDeck: Action {
