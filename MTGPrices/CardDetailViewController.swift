@@ -23,6 +23,40 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     var cardResult: CardResult?
     var card: Card?
     
+    lazy var type: String = {
+       return self.cardResult?.type ?? self.card!.type
+    }()
+    
+    lazy var name: String = {
+        return self.cardResult?.name ?? self.card!.name
+    }()
+    
+    lazy var isCommander: Bool = {
+        return self.card?.isCommander ?? false
+    }()
+    
+    lazy var layout: String = {
+        return self.cardResult?.layout ?? self.card!.layout
+    }()
+    
+    lazy var id: String = {
+        return self.cardResult?.id ?? self.card!.id
+    }()
+    
+    lazy var manaCost: String? = {
+        return self.shouldUseResult ? self.cardResult!.manaCost : self.card!.manaCost
+    }()
+    
+    lazy var text: String? = {
+        return self.shouldUseResult ? self.cardResult!.text : self.card!.text
+    }()
+    
+    lazy var set: String = {
+        return self.cardResult?.set ?? self.card!.set
+    }()
+
+    var tableViewData = Array<String>(repeatElement("", count: Sections.names.count))
+    
     var mainImage: UIImage?
     
     var flippedCard: CardResult?
@@ -30,19 +64,19 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     var waitingForFlippedResult = false
     var isFlipped = false
     
+    var image: UIImage? {
+        didSet {
+            imageView.image = image
+        }
+    }
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageUnavailableLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var cardNameLabel: UILabel!
-    @IBOutlet weak var costLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var flipButton: UIButton!
+    @IBOutlet weak var imageView: CorneredImageView!
     @IBOutlet weak var sideboardButton: UIButton!
     @IBOutlet weak var decrementSideboardButton: UIButton!
     @IBOutlet weak var makeCommanderButton: UIButton!
@@ -64,18 +98,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         }
     }
     
-    @IBAction func flipButtonPressed(_ sender: UIButton) {
-        guard !sender.isHidden else { return }
-        
-        if isFlipped {
-            displayMainSideInfo()
-            isFlipped = false
-        } else {
-            displayFlipSideInfo()
-            isFlipped = true
-        }
-    }
-    
     @IBAction func addToSideboardButtonPressed(_ sender: UIButton) {
         if shouldUseResult {
             store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!, amount: 1))
@@ -89,7 +111,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func removeFromSideboardButtonPressed(_ sender: UIButton) {
-        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: cardResult?.id ?? card!.id, amount: 1))
+        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: id, amount: 1))
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
@@ -105,7 +127,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: cardResult?.id ?? card!.id, amount: 1))
+        store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: id, amount: 1))
     }
     
     
@@ -114,12 +136,26 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        imageView.clipsToBounds = true
+        
         deckCountButton.isUserInteractionEnabled = false
         sideCountButton.isUserInteractionEnabled = false
         
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 100)
         title = card?.name ?? cardResult?.name
-
+        
+        if deck.format != "Commander" {
+            makeCommanderButton.isHidden = true
+        } else if !type.contains("Creature") && !type.contains("Planeswalker") {
+            makeCommanderButton.isHidden = true
+        } else if isCommander {
+            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+        } else {
+            makeCommanderButton.setTitle("Make Commander", for: .normal)
+        }
+        
         // Fetch/display main image.
         spinner.hidesWhenStopped = true
         imageUnavailableLabel.isHidden = true
@@ -135,7 +171,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         } else if !shouldUseResult && !card!.isDownloadingImage {
             // Display existing card image.
             mainImage = UIImage(data: card!.imageData! as Data)
-            imageView.image = mainImage
+            image = mainImage
             spinner.stopAnimating()
         } else if !shouldUseResult && card!.isDownloadingImage {
             // Card image is being downloaded - keep animating spinner.
@@ -147,9 +183,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         }
         
         // Fetch flip card & its image.
-        flipButton.isHidden = true
-        let hasFlipSide = shouldUseResult ? cardResult!.layout == "double-faced" : card!.layout == "double-faced"
-        if hasFlipSide {
+        if layout == "double-faced" {
             var parameters: [String: Any] = [:]
             parameters["name"] = getFlippedName()
             waitingForFlippedResult = true
@@ -169,18 +203,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         } else {
             toolBar.items!.removeFirst()
         }
-        
-        if deck.format != "Commander" {
-            makeCommanderButton.isHidden = true
-        } else if shouldUseResult && !cardResult!.type.contains("Creature") && !cardResult!.type.contains("Planeswalker") {
-            makeCommanderButton.isHidden = true
-        } else if !shouldUseResult && !card!.type.contains("Creature") && !card!.type.contains("Planeswalker") {
-            makeCommanderButton.isHidden = true
-        } else if !shouldUseResult && card!.isCommander {
-            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
-        } else {
-            makeCommanderButton.setTitle("Make Commander", for: .normal)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,43 +217,47 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if shouldUseResult {
-            store.dispatch(UpdateCardReference(deck: deck, cardId: cardResult!.id))
-        } else {
-            store.dispatch(UpdateCardReference(deck: deck, cardId: card!.id))
-        }
+        store.dispatch(UpdateCardReference(deck: deck, cardId: id))
         store.unsubscribe(self)
     }
     
+    
     // MARK: - Methods
+    
+    func displayFlipButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "flip"), style: .plain, target: self, action: #selector(flipButtonPressed))
+    }
+    
+    func flipButtonPressed() {
+        isFlipped ? displayMainSideInfo() : displayFlipSideInfo()
+        isFlipped = !isFlipped
+        tableView.reloadData()
+    }
     
     private func mainImageDownloadComplete() {
         if !shouldUseResult && spinner.isAnimating {
             mainImage = UIImage(data: card!.imageData! as Data)
-            imageView.image = mainImage
+            image = mainImage
             spinner.stopAnimating()
         }
     }
     
     private func displayFlipSideInfo() {
-        cardNameLabel.text = flippedCard!.name
-        costLabel.text = "Cost: None"
-        typeLabel.text = "Types: \(flippedCard!.type!)"
-        textLabel.text = flippedCard!.text?.withoutBraces
-        imageView.image = flippedImage
+        tableViewData[0] = flippedCard!.name
+        tableViewData[1] = ""
+        tableViewData[2] = flippedCard!.type!
+        tableViewData[3] = "SET"
+        tableViewData[4] = flippedCard!.text ?? ""
+        image = flippedImage
     }
     
     private func displayMainSideInfo() {
-        let cardName = shouldUseResult ? cardResult!.name : card!.name
-        let cost = shouldUseResult ? cardResult!.manaCost : card!.manaCost
-        let type = shouldUseResult ? cardResult!.type : card!.type
-        let text = shouldUseResult ? cardResult!.text : card!.text
-        
-        cardNameLabel.text = cardName
-        costLabel.text = "Cost: \(cost?.withoutBraces ?? "None")"
-        typeLabel.text = "Types: \(type!)"
-        textLabel.text = text?.withoutBraces
-        imageView.image = mainImage
+        tableViewData[0] = name
+        tableViewData[1] = manaCost?.withoutBraces ?? ""
+        tableViewData[2] = type
+        tableViewData[3] = set
+        tableViewData[4] = text ?? ""
+        image = mainImage
     }
     
     private func fetchMainImage(from urlString: String) {
@@ -242,7 +268,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 DispatchQueue.main.async {
                     let mainImage = UIImage(data: data)
                     self?.spinner.stopAnimating()
-                    self?.imageView.image = mainImage
+                    self?.image = mainImage
                     self?.mainImage = mainImage
                 }
             } else {
@@ -258,11 +284,11 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     private func fetchFlipImage(from urlString: String) {
         let cardUrl = URL(string: urlString)!
         
-        DispatchQueue.global(qos: .userInteractive).async { [unowned self] in
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             if let data = try? Data(contentsOf: cardUrl) {
                 DispatchQueue.main.async {
-                    self.flippedImage = UIImage(data: data)
-                    self.flipButton.isHidden = false
+                    self?.flippedImage = UIImage(data: data)
+                    self?.displayFlipButton()
                 }
             }
         }
@@ -270,8 +296,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     private func getDeckCount() {
         let request = Card.createFetchRequest()
-        let cardId = shouldUseResult ? cardResult!.id : card!.id
-        request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false", deck.id, cardId!)
+        request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false", deck.id, id)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
             if !cards.isEmpty {
                 deckCountButton.setTitle("Main: \(cards[0].amount)", for: .normal)
@@ -287,8 +312,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         guard deck.hasSideboard else { return }
         
         let request = Card.createFetchRequest()
-        let cardId = shouldUseResult ? cardResult!.id : card!.id
-        request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == true", deck.id, cardId!)
+        request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == true", deck.id, id)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
             if !cards.isEmpty {
                 sideCountButton.setTitle("Side: \(cards[0].amount)", for: .normal)

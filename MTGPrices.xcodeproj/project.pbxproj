@@ -38,8 +38,12 @@
 		CB7883641DED05C200E45F7D /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */; };
 		CB7883651DED05C200E45F7D /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */; };
 		CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883661DED06BD00E45F7D /* Reducer.swift */; };
+		CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */; };
 		CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA2741DEE673000C95B83 /* DeckViewController.swift */; };
 		CB81523E1E18693400D74D8A /* SideboardSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */; };
+		CB857ABD1E25841B000C2B5F /* CardDetailViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CardDetailViewController Extension.swift */; };
+		CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */; };
+		CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */; };
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
 		CB89B7AA1DECF36F009FCAA9 /* DeckListViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A91DECF36F009FCAA9 /* DeckListViewController Extension.swift */; };
 		CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7C51DECF91A009FCAA9 /* CardResult.swift */; };
@@ -87,8 +91,12 @@
 		CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB7883661DED06BD00E45F7D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorneredImageView.swift; sourceTree = "<group>"; };
 		CB7CA2741DEE673000C95B83 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideboardSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		CB857ABC1E25841B000C2B5F /* CardDetailViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardDetailViewController Extension.swift"; sourceTree = "<group>"; };
+		CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
+		CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB89B7A91DECF36F009FCAA9 /* DeckListViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeckListViewController Extension.swift"; sourceTree = "<group>"; };
 		CB89B7C51DECF91A009FCAA9 /* CardResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResult.swift; sourceTree = "<group>"; };
@@ -296,6 +304,10 @@
 			isa = PBXGroup;
 			children = (
 				CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */,
+				CB857ABC1E25841B000C2B5F /* CardDetailViewController Extension.swift */,
+				CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */,
+				CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */,
+				CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */,
 			);
 			name = "Card Detail";
 			sourceTree = "<group>";
@@ -426,6 +438,7 @@
 			files = (
 				CB32FAAB1DF8A9A500B7F3FD /* CardTableViewCell.swift in Sources */,
 				CB2212291DEF930400C51044 /* AddCardViewController Extension.swift in Sources */,
+				CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */,
 				CB0F99971DECE5F70085C721 /* DeckListViewController.swift in Sources */,
 				CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */,
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
@@ -433,6 +446,7 @@
 				CBB2F7311DFF5EB200A5BDB6 /* Stats Extension.swift in Sources */,
 				CB89B7AA1DECF36F009FCAA9 /* DeckListViewController Extension.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* searchForCardsActionCreator.swift in Sources */,
+				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DeckViewController Extension.swift in Sources */,
 				CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */,
 				CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */,
@@ -444,9 +458,11 @@
 				CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */,
 				CB046DAD1E11D4BF006E059A /* DeckListTableViewCell.swift in Sources */,
 				CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */,
+				CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */,
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* ErrorCode.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String Extension.swift in Sources */,
+				CB857ABD1E25841B000C2B5F /* CardDetailViewController Extension.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,
 				CB7883531DED00F500E45F7D /* Actions.swift in Sources */,

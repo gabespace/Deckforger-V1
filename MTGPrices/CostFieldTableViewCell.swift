@@ -1,17 +1,15 @@
 //
-//  CardResultTableViewCell.swift
+//  CostFieldTableViewCell.swift
 //  MTGPrices
 //
-//  Created by Gabriele Pregadio on 12/9/16.
-//  Copyright © 2016 Gabriele Pregadio. All rights reserved.
+//  Created by Gabriele Pregadio on 1/10/17.
+//  Copyright © 2017 Gabriele Pregadio. All rights reserved.
 //
 
 import UIKit
 
-class CardResultTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+class CostFieldTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var costStackView: UIStackView!
     
     func configureCost(from imageViews: [UIImageView]?) {
