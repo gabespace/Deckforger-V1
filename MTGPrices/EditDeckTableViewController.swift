@@ -9,7 +9,7 @@
 import UIKit
 import ReSwift
 
-class EditDeckTableViewController: UITableViewController, StoreSubscriber, SwitchDelegate {
+class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITextFieldDelegate, SwitchDelegate {
     
     // MARK: - Properties
     
@@ -20,6 +20,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
     private var currentFormatIndex: Int!
     private var newName = "Untitled"
     private var hasSideboard: Bool!
+    private var isNameBeingEdited = false
     
     
     // MARK: - View Lifecycle Methods
@@ -28,6 +29,8 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         super.viewDidLoad()
         
         title = isCreatingNewDeck ? "New Deck" : "Edit Deck"
+        
+        newName = deck?.name ?? "Untitled"
         
         if isCreatingNewDeck {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(saveEdits))
@@ -58,9 +61,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
     // MARK: - Methods
     
     @objc private func saveEdits() {
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DeckNameTableViewCell
-        if !cell.nameTextField.text!.isEmpty {
-            newName = cell.nameTextField.text!
+        if isNameBeingEdited {
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DeckNameTableViewCell
+            cell.nameTextField.resignFirstResponder()
         }
         
         if isCreatingNewDeck {
@@ -111,8 +114,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckName, for: indexPath) as! DeckNameTableViewCell
+            cell.nameTextField.delegate = self
             cell.selectionStyle = .none
-            cell.nameTextField.text = deck?.name ?? ""
+            cell.nameTextField.text = newName
             cell.nameTextField.autocapitalizationType = .words
             return cell
         case 1:
@@ -152,6 +156,20 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         default: return
         }
     }
+    
+    
+    // MARK: - UITextFieldDelegate Methods
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        isNameBeingEdited = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isNameBeingEdited = false
+        newName = textField.text!.isEmpty ? "Untitled" : textField.text!
+    }
+    
+    
     
     func newState(state: State) { }
     

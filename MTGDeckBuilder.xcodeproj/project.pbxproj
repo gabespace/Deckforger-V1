@@ -39,6 +39,8 @@
 		CB7883651DED05C200E45F7D /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */; };
 		CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883661DED06BD00E45F7D /* Reducer.swift */; };
 		CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */; };
+		CB7B65751E2816820055C390 /* MPlantin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B65731E2816820055C390 /* MPlantin Italic.otf */; };
+		CB7B65761E2816820055C390 /* MPlantin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B65741E2816820055C390 /* MPlantin.ttf */; };
 		CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA2741DEE673000C95B83 /* DeckViewController.swift */; };
 		CB81523E1E18693400D74D8A /* SideboardSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */; };
 		CB857ABD1E25841B000C2B5F /* CardDetailViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CardDetailViewController Extension.swift */; };
@@ -92,6 +94,8 @@
 		CB78835F1DED05C200E45F7D /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB7883661DED06BD00E45F7D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorneredImageView.swift; sourceTree = "<group>"; };
+		CB7B65731E2816820055C390 /* MPlantin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPlantin Italic.otf"; sourceTree = "<group>"; };
+		CB7B65741E2816820055C390 /* MPlantin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MPlantin.ttf; sourceTree = "<group>"; };
 		CB7CA2741DEE673000C95B83 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideboardSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		CB857ABC1E25841B000C2B5F /* CardDetailViewController Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardDetailViewController Extension.swift"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				CB0F999B1DECE5F70085C721 /* Assets.xcassets */,
 				CB0F999D1DECE5F70085C721 /* LaunchScreen.storyboard */,
 				CB0F99A01DECE5F70085C721 /* Info.plist */,
+				CB7B65741E2816820055C390 /* MPlantin.ttf */,
+				CB7B65731E2816820055C390 /* MPlantin Italic.otf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -342,7 +348,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Gabriele Pregadio";
 				TargetAttributes = {
 					CB0F99901DECE5F70085C721 = {
@@ -375,6 +381,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7B65761E2816820055C390 /* MPlantin.ttf in Resources */,
+				CB7B65751E2816820055C390 /* MPlantin Italic.otf in Resources */,
 				CB0F999F1DECE5F70085C721 /* LaunchScreen.storyboard in Resources */,
 				CB0F999C1DECE5F70085C721 /* Assets.xcassets in Resources */,
 				CB0F999A1DECE5F70085C721 /* Main.storyboard in Resources */,

@@ -4,6 +4,7 @@
         <attribute name="amount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cmc" attributeType="String" syncable="YES"/>
         <attribute name="colors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flavor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,7 +17,7 @@
         <attribute name="names" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rarity" attributeType="String" syncable="YES"/>
-        <attribute name="set" attributeType="String" syncable="YES"/>
+        <attribute name="setName" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toughness" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,7 +37,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Card" positionX="232" positionY="-184" width="128" height="345"/>
+        <element name="Card" positionX="232" positionY="-184" width="128" height="360"/>
         <element name="Deck" positionX="-38" positionY="-180" width="128" height="135"/>
     </elements>
 </model>

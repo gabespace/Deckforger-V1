@@ -30,11 +30,19 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if Sections.names[indexPath.section] == "Cost" {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.costFieldCell, for: indexPath) as! CostFieldTableViewCell
             cell.configureCost(from: shouldUseResult ? cardResult!.manaCost?.createManaCostImages() : card!.manaCost?.createManaCostImages())
+            cell.costLabel.text = "Cost"
+//            cell.costLabel.font = UIFont(name: "MPlantin", size: 17.0)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.fieldCell, for: indexPath) as! FieldTableViewCell
             cell.fieldTitle.text = Sections.names[indexPath.section]
+//            cell.fieldTitle.font = UIFont(name: "MPlantin", size: 17.0)
             cell.fieldData.text = tableViewData[indexPath.section]
+            if Sections.names[indexPath.section] == "Flavor" {
+                cell.fieldData.font = UIFont(name: "MPlantin-Italic", size: 17.0)
+            } else {
+                cell.fieldData.font = UIFont(name: "MPlantin", size: 17.0)
+            }
             return cell
         }
     }
@@ -48,7 +56,7 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     struct Sections {
-        static let names = ["Name", "Cost", "Type", "P/T", "Set", "Text"]
+        static let names = ["Name", "Cost", "Type", "P/T", "Set", "Text", "Flavor"]
     }
     
 }

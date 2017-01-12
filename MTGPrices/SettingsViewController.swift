@@ -15,12 +15,13 @@ class SettingsTableViewController: UITableViewController {
     let credits = [
         "Card data from magicthegathering.io",
         "Icons from icons8.com",
-        ""
+        "Mana Symbols by Goblin Hero"
     ]
     
     let links = [
         "https://magicthegathering.io/",
-        "https://icons8.com/"
+        "https://icons8.com/",
+        "http://www.mtgsalvation.com/forums/creativity/artwork/494438-baconcatbugs-set-and-mana-symbol-megapack"
     ]
     
     
@@ -30,6 +31,11 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Credits"
+        
+        for name in UIFont.familyNames {
+            print(name)
+            print(UIFont.fontNames(forFamilyName: name))
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +55,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

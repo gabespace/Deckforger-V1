@@ -11,6 +11,7 @@ import UIKit
 class CostFieldTableViewCell: UITableViewCell {
     
     @IBOutlet weak var costStackView: UIStackView!
+    @IBOutlet weak var costLabel: UILabel!
     
     func configureCost(from imageViews: [UIImageView]?) {
         guard let imageViews = imageViews else {

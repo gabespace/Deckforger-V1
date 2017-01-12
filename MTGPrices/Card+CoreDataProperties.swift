@@ -1,14 +1,13 @@
 //
 //  Card+CoreDataProperties.swift
-//  MTGPrices
+//  MTGDeckBuilder
 //
-//  Created by Gabriele Pregadio on 12/31/16.
-//  Copyright © 2016 Gabriele Pregadio. All rights reserved.
+//  Created by Gabriele Pregadio on 1/12/17.
+//  Copyright © 2017 Gabriele Pregadio. All rights reserved.
 //
 
 import Foundation
 import CoreData
-
 
 extension Card {
 
@@ -22,6 +21,7 @@ extension Card {
     @NSManaged public var id: String
     @NSManaged public var imageData: NSData?
     @NSManaged public var imageUrl: String?
+    @NSManaged public var isCommander: Bool
     @NSManaged public var isDownloadingImage: Bool
     @NSManaged public var isSideboard: Bool
     @NSManaged public var layout: String
@@ -30,11 +30,11 @@ extension Card {
     @NSManaged public var names: String?
     @NSManaged public var power: String?
     @NSManaged public var rarity: String
-    @NSManaged public var set: String
+    @NSManaged public var setName: String
     @NSManaged public var text: String?
     @NSManaged public var toughness: String?
     @NSManaged public var type: String
-    @NSManaged public var isCommander: Bool
-    @NSManaged public var deck: Deck
+    @NSManaged public var flavor: String?
+    @NSManaged public var deck: Deck?
 
 }

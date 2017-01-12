@@ -102,7 +102,6 @@ struct StateReducer: Reducer {
                     // Create new Card, add to deck.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
                     card.imageData = action.sideboardCard.imageData
-                    card.isDownloadingImage = false
                     card.amount = action.amount
                     card.cmc = action.sideboardCard.cmc
                     card.colors = action.sideboardCard.colors
@@ -112,15 +111,17 @@ struct StateReducer: Reducer {
                     card.name = action.sideboardCard.name
                     card.power = action.sideboardCard.power
                     card.rarity = action.sideboardCard.rarity
-                    card.set = action.sideboardCard.set
+                    card.setName = action.sideboardCard.setName
                     card.text = action.sideboardCard.text
+                    card.flavor = action.sideboardCard.flavor
                     card.toughness = action.sideboardCard.toughness
                     card.type = action.sideboardCard.type
                     card.names = action.sideboardCard.names
                     card.layout = action.sideboardCard.layout
+                    card.isDownloadingImage = false
                     card.isSideboard = false
-                    card.deck = action.deck
                     card.isCommander = false
+                    card.deck = action.deck
                 }
             } else {
                 print("core data error fetching")
@@ -167,17 +168,18 @@ struct StateReducer: Reducer {
                     card.name = action.card.name
                     card.power = action.card.power
                     card.rarity = action.card.rarity
-                    card.set = action.card.set
+                    card.setName = action.card.setName
                     card.toughness = action.card.toughness
                     card.type = action.card.type
                     card.text = action.card.text
+                    card.flavor = action.card.flavor
                     card.colors = action.card.colors?.joined(separator: ", ") ?? "Colorless"
                     card.names = action.card.names?.joined(separator: "|")
-                    card.deck = action.deck
                     card.layout = action.card.layout
-                    card.isSideboard = false
                     card.amount = action.amount
+                    card.isSideboard = false
                     card.isCommander = false
+                    card.deck = action.deck
                 }
             } else {
                 print("core data error fetching")
@@ -195,7 +197,6 @@ struct StateReducer: Reducer {
                     // Create new Card, add to deck.
                     let card = Card(context: appDelegate.persistentContainer.viewContext)
                     card.imageData = action.mainboardCard.imageData
-                    card.isDownloadingImage = false
                     card.amount = action.amount
                     card.cmc = action.mainboardCard.cmc
                     card.colors = action.mainboardCard.colors
@@ -205,15 +206,17 @@ struct StateReducer: Reducer {
                     card.name = action.mainboardCard.name
                     card.power = action.mainboardCard.power
                     card.rarity = action.mainboardCard.rarity
-                    card.set = action.mainboardCard.set
+                    card.setName = action.mainboardCard.setName
                     card.text = action.mainboardCard.text
+                    card.flavor = action.mainboardCard.flavor
                     card.toughness = action.mainboardCard.toughness
                     card.type = action.mainboardCard.type
                     card.names = action.mainboardCard.names
                     card.layout = action.mainboardCard.layout
+                    card.isDownloadingImage = false
                     card.isSideboard = true
-                    card.deck = action.deck
                     card.isCommander = false
+                    card.deck = action.deck
                 }
             } else {
                 print("core data error fetching")
@@ -260,17 +263,18 @@ struct StateReducer: Reducer {
                     card.name = action.card.name
                     card.power = action.card.power
                     card.rarity = action.card.rarity
-                    card.set = action.card.set
+                    card.setName = action.card.setName
                     card.toughness = action.card.toughness
                     card.type = action.card.type
                     card.text = action.card.text
+                    card.flavor = action.card.flavor
                     card.colors = action.card.colors?.joined(separator: ", ") ?? "Colorless"
                     card.names = action.card.names?.joined(separator: "|")
-                    card.deck = action.deck
                     card.layout = action.card.layout
-                    card.isSideboard = true
                     card.amount = action.amount
+                    card.isSideboard = true
                     card.isCommander = false
+                    card.deck = action.deck
                 }
             } else {
                 print("core data error fetching")
@@ -373,6 +377,7 @@ struct StateReducer: Reducer {
                         } else {
                             card.isDownloadingImage = false
                         }
+                        card.amount = 1
                         card.cmc = cardResult.cmc
                         card.id = cardResult.id
                         card.imageUrl = cardResult.imageUrl
@@ -380,25 +385,25 @@ struct StateReducer: Reducer {
                         card.name = cardResult.name
                         card.power = cardResult.power
                         card.rarity = cardResult.rarity
-                        card.set = cardResult.set
+                        card.setName = cardResult.setName
                         card.toughness = cardResult.toughness
                         card.type = cardResult.type
                         card.text = cardResult.text
+                        card.flavor = cardResult.flavor
                         card.colors = cardResult.colors?.joined(separator: ", ") ?? "Colorless"
                         card.names = cardResult.names?.joined(separator: "|")
-                        card.deck = action.deck
                         card.layout = cardResult.layout
                         card.isSideboard = false
-                        card.amount = 1
                         card.isCommander = true
+                        card.deck = action.deck
                         appDelegate.saveContext()
                     }
                 } else {
                     print("core data error fetching")
                 }
             } else if let card = action.card {
-                card.isCommander = true
                 card.amount = 1
+                card.isCommander = true
                 appDelegate.saveContext()
             }
             
@@ -436,7 +441,6 @@ struct StateReducer: Reducer {
             
         case is ImagesDownloadComplete:
             state.isDownloadingImages = false
-            
             
         default:
             break

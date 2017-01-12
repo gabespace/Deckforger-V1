@@ -16,7 +16,7 @@ struct CardResult: Mappable {
     var manaCost: String?
     var cmc: String = "None"
     var rarity: String!
-    var set: String!
+    var setName: String!
     var text: String?
     var power: String?
     var toughness: String?
@@ -28,6 +28,7 @@ struct CardResult: Mappable {
     var types: [String]!
     var supertypes: [String]?
     var layout: String!
+    var flavor: String?
     
     init?(map: Map) { }
     
@@ -55,7 +56,7 @@ struct CardResult: Mappable {
         manaCost    <- map["manaCost"]
         cmc         <- (map["cmc"], intToString)
         rarity      <- map["rarity"]
-        set         <- map["set"]
+        setName     <- map["setName"]
         text        <- map["text"]
         power       <- map["power"]
         toughness   <- map["toughness"]
@@ -67,6 +68,7 @@ struct CardResult: Mappable {
         types       <- map["types"]
         supertypes  <- map["supertypes"]
         layout      <- map["layout"]
+        flavor      <- map["flavor"]
         
     }
     

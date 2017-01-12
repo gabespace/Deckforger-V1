@@ -11,6 +11,14 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MPlantin Italic.otf">
+            <string>MPlantin-Italic</string>
+        </array>
+        <array key="MPlantin.ttf">
+            <string>MPlantin</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Settings Table View Controller-->
         <scene sceneID="aJ5-W4-Q0W">
@@ -84,20 +92,20 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-gb-EvQ">
-                                                    <rect key="frame" x="42" y="4" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="42" y="8" width="36" height="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9On-vF-n7g">
-                                                    <rect key="frame" x="42" y="25" width="33" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <rect key="frame" x="42" y="25" width="32.5" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ibz-gb-EvQ" firstAttribute="top" secondItem="rs1-hb-azl" secondAttribute="topMargin" constant="-4" id="NBO-7G-nRl"/>
+                                                <constraint firstItem="ibz-gb-EvQ" firstAttribute="top" secondItem="rs1-hb-azl" secondAttribute="topMargin" id="NBO-7G-nRl"/>
                                                 <constraint firstItem="ibz-gb-EvQ" firstAttribute="leading" secondItem="9On-vF-n7g" secondAttribute="leading" id="ZlT-Ji-EiZ"/>
                                                 <constraint firstItem="ibz-gb-EvQ" firstAttribute="leading" secondItem="NZ3-sz-O7A" secondAttribute="trailing" id="buf-uk-bmE"/>
                                                 <constraint firstItem="9On-vF-n7g" firstAttribute="top" secondItem="ibz-gb-EvQ" secondAttribute="bottom" id="ftD-vV-SfQ"/>
@@ -284,16 +292,16 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Rk-Y0-tpT">
                                                     <rect key="frame" x="89" y="26" width="278" height="16"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDK-ki-wcp">
-                                                    <rect key="frame" x="89" y="5" width="11" height="21"/>
+                                                    <rect key="frame" x="89" y="5" width="11.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="bEc-JF-Ava"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -301,11 +309,11 @@
                                                     <rect key="frame" x="312" y="5" width="55" height="21"/>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Creature Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="3RL-2p-qzc">
-                                                    <rect key="frame" x="108" y="5" width="116" height="21"/>
+                                                    <rect key="frame" x="108.5" y="5" width="115.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="TVF-E3-WOS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -360,17 +368,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PqJ-kr-bfG">
-                                                    <rect key="frame" x="89" y="26" width="278" height="16"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <rect key="frame" x="89" y="26" width="278" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1v-A7-IuI">
-                                                    <rect key="frame" x="89" y="5" width="11" height="21"/>
+                                                    <rect key="frame" x="89" y="5" width="11.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="3kt-am-ObJ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -378,11 +386,11 @@
                                                     <rect key="frame" x="312" y="5" width="55" height="21"/>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Spell Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-P2-pgX">
-                                                    <rect key="frame" x="108" y="5" width="87" height="21"/>
+                                                    <rect key="frame" x="108.5" y="5" width="87" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="NpQ-Nu-3hy"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -438,16 +446,16 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-5j-00l">
                                                     <rect key="frame" x="89" y="26" width="278" height="16"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYe-lk-BPy">
-                                                    <rect key="frame" x="89" y="5" width="11" height="21"/>
+                                                    <rect key="frame" x="89" y="5" width="11.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="niw-ei-W0S"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -455,11 +463,11 @@
                                                     <rect key="frame" x="312" y="5" width="55" height="21"/>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Land Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-RA-kF1">
-                                                    <rect key="frame" x="108" y="5" width="88" height="21"/>
+                                                    <rect key="frame" x="108.5" y="5" width="89.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="DR8-E2-WOD"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -515,16 +523,16 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-pe-OfH">
                                                     <rect key="frame" x="89" y="26" width="278" height="16"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ9-Ci-lvK">
-                                                    <rect key="frame" x="89" y="5" width="11" height="21"/>
+                                                    <rect key="frame" x="89" y="5" width="11.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="hNq-ve-AqS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -532,11 +540,11 @@
                                                     <rect key="frame" x="312" y="5" width="55" height="21"/>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Sideboard Card Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="Kjn-Bx-IEq">
-                                                    <rect key="frame" x="108" y="5" width="169" height="21"/>
+                                                    <rect key="frame" x="108.5" y="5" width="168" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="dOE-ZS-Nq3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -637,9 +645,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type, Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-Td-XnP">
-                                                    <rect key="frame" x="15" y="26" width="352" height="16"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-Td-XnP">
+                                                    <rect key="frame" x="15" y="26" width="26.5" height="16"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -654,7 +662,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Ti4-xu-UXB"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Set, Rarity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Pk-vO-aIH">
+                                                    <rect key="frame" x="308" y="26.5" width="59" height="16"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin-Italic" family="Plantin" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -663,17 +677,20 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="sXG-iw-Dlh" secondAttribute="trailing" id="B3G-Fj-aVd"/>
                                                 <constraint firstItem="gHf-Td-XnP" firstAttribute="top" secondItem="l4s-ws-roq" secondAttribute="bottom" id="IT1-Yi-cIU"/>
                                                 <constraint firstItem="gHf-Td-XnP" firstAttribute="leading" secondItem="l4s-ws-roq" secondAttribute="leading" id="LYw-CU-91O"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gHf-Td-XnP" secondAttribute="trailing" id="QlI-cc-MMf"/>
                                                 <constraint firstItem="l4s-ws-roq" firstAttribute="leading" secondItem="MD2-b4-JON" secondAttribute="leadingMargin" constant="7" id="SMI-jR-10t"/>
                                                 <constraint firstItem="sXG-iw-Dlh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l4s-ws-roq" secondAttribute="trailing" constant="8" symbolic="YES" id="UKG-WB-dZ1"/>
                                                 <constraint firstItem="sXG-iw-Dlh" firstAttribute="height" secondItem="l4s-ws-roq" secondAttribute="height" id="gjV-F4-ka6"/>
+                                                <constraint firstItem="1Pk-vO-aIH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gHf-Td-XnP" secondAttribute="trailing" constant="8" symbolic="YES" id="hQI-SS-3Jq"/>
                                                 <constraint firstItem="l4s-ws-roq" firstAttribute="top" secondItem="MD2-b4-JON" secondAttribute="topMargin" constant="-3" id="nQ9-KE-cOX"/>
+                                                <constraint firstItem="1Pk-vO-aIH" firstAttribute="centerY" secondItem="gHf-Td-XnP" secondAttribute="centerY" id="vda-ho-5oI"/>
+                                                <constraint firstItem="1Pk-vO-aIH" firstAttribute="trailing" secondItem="sXG-iw-Dlh" secondAttribute="trailing" id="wgS-DR-RGr"/>
                                                 <constraint firstItem="sXG-iw-Dlh" firstAttribute="centerY" secondItem="l4s-ws-roq" secondAttribute="centerY" id="yoF-4c-meE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="costStackView" destination="sXG-iw-Dlh" id="dsu-mv-zIa"/>
                                             <outlet property="nameLabel" destination="l4s-ws-roq" id="Bl8-kf-ZBB"/>
+                                            <outlet property="setRarityLabel" destination="1Pk-vO-aIH" id="XYS-Ml-kuR"/>
                                             <outlet property="subtitleLabel" destination="gHf-Td-XnP" id="Jm0-ZG-YmH"/>
                                         </connections>
                                     </tableViewCell>
@@ -1018,28 +1035,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cM-DN-DK9">
-                                                    <rect key="frame" x="15" y="8" width="72" height="21"/>
+                                                    <rect key="frame" x="15" y="13.5" width="72" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="72" id="f7I-BG-ezo"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ri-tg-AuP">
-                                                    <rect key="frame" x="95" y="8" width="265" height="27"/>
+                                                    <rect key="frame" x="95" y="8" width="265" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4ri-tg-AuP" firstAttribute="top" secondItem="3Fc-JX-edt" secondAttribute="topMargin" id="8s7-Vq-vuJ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4ri-tg-AuP" secondAttribute="trailing" constant="7" id="B4i-bm-ddG"/>
+                                                <constraint firstItem="4ri-tg-AuP" firstAttribute="top" secondItem="3Fc-JX-edt" secondAttribute="topMargin" id="BId-oL-BRQ"/>
+                                                <constraint firstItem="4cM-DN-DK9" firstAttribute="centerY" secondItem="3Fc-JX-edt" secondAttribute="centerY" id="D0h-gA-dUS"/>
                                                 <constraint firstItem="4cM-DN-DK9" firstAttribute="leading" secondItem="3Fc-JX-edt" secondAttribute="leadingMargin" constant="7" id="Fsq-XM-gAR"/>
-                                                <constraint firstItem="4cM-DN-DK9" firstAttribute="top" secondItem="3Fc-JX-edt" secondAttribute="topMargin" id="QGt-vm-WFa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4ri-tg-AuP" secondAttribute="bottom" id="NVz-pc-hJO"/>
                                                 <constraint firstItem="4ri-tg-AuP" firstAttribute="leading" secondItem="4cM-DN-DK9" secondAttribute="trailing" constant="8" symbolic="YES" id="Qj0-Av-IUp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4ri-tg-AuP" secondAttribute="bottom" id="Tik-dT-9rg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1055,11 +1072,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-HE-hjk">
-                                                    <rect key="frame" x="15" y="11" width="72" height="21"/>
+                                                    <rect key="frame" x="15" y="13" width="72" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="72" id="qZj-Dz-voK"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MPlantin" family="MPlantin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1075,6 +1092,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="costLabel" destination="jbw-HE-hjk" id="qAc-As-Os5"/>
                                             <outlet property="costStackView" destination="wOI-Iu-7Ju" id="vru-qZ-Sc0"/>
                                         </connections>
                                     </tableViewCell>
@@ -1177,7 +1195,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q7p-OG-oEu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zuJ-qg-yE5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zuJ-qg-yE5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

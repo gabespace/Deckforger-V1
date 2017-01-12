@@ -84,7 +84,15 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.resultCell, for: indexPath) as! CardResultTableViewCell
                 let result = cardResults[indexPath.row]
                 cell.nameLabel.text = result.name
-                cell.subtitleLabel.text = "\(result.type!), Set: \(result.set!)"
+                cell.subtitleLabel.text = "\(result.type!)"
+                cell.setRarityLabel.text = "\(result.setName!)"
+                switch result.rarity {
+                case "Mythic Rare": cell.setRarityLabel.textColor = UIColor.red
+                case "Rare": cell.setRarityLabel.textColor = UIColor(red: 1.0, green: 0.75, blue: 0, alpha: 1.0)
+                case "Uncommon": cell.setRarityLabel.textColor = UIColor.gray
+                case "Special": cell.setRarityLabel.textColor = UIColor.blue
+                default: cell.setRarityLabel.textColor = UIColor.black
+                }
                 cell.configureCost(from: result.manaCost?.createManaCostImages())
                 return cell
             }

@@ -13,6 +13,7 @@ class CardResultTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var costStackView: UIStackView!
+    @IBOutlet weak var setRarityLabel: UILabel!
     
     func configureCost(from imageViews: [UIImageView]?) {
         guard let imageViews = imageViews else {
