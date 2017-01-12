@@ -107,7 +107,12 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            store.dispatch(DeleteDeck(deck: displayedDecks[indexPath.section][indexPath.row]))
+            let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { [unowned self] action in
+                store.dispatch(DeleteDeck(deck: self.displayedDecks[indexPath.section][indexPath.row]))
+            })
+            present(ac, animated: true)
         }
     }
     
