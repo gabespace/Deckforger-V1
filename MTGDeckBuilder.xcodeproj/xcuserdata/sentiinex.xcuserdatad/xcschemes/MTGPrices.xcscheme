@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-               BuildableName = "MTGPrices.app"
-               BlueprintName = "MTGPrices"
-               ReferencedContainer = "container:MTGPrices.xcodeproj">
+               BuildableName = "MTGDeckBuilder.app"
+               BlueprintName = "MTGDeckBuilder"
+               ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-            BuildableName = "MTGPrices.app"
-            BlueprintName = "MTGPrices"
-            ReferencedContainer = "container:MTGPrices.xcodeproj">
+            BuildableName = "MTGDeckBuilder.app"
+            BlueprintName = "MTGDeckBuilder"
+            ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -77,16 +77,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-            BuildableName = "MTGPrices.app"
-            BlueprintName = "MTGPrices"
-            ReferencedContainer = "container:MTGPrices.xcodeproj">
+            BuildableName = "MTGDeckBuilder.app"
+            BlueprintName = "MTGDeckBuilder"
+            ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

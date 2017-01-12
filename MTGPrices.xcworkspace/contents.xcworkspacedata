@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MTGPrices.xcodeproj">
+      location = "group:/Users/sentiinex/Developer/MTGPrices/MTGDeckBuilder.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

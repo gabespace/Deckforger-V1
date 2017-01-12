@@ -72,6 +72,11 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         _ = navigationController!.popViewController(animated: true)
     }
     
+    func deleteDeck() {
+        store.dispatch(DeleteDeck(deck: deck!))
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     func switchDidToggle(to value: Bool, tag: Int) {
         hasSideboard = value
     }
@@ -89,7 +94,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return isCreatingNewDeck ? 3 : 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,6 +102,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         case 0: return 1
         case 1: return formats.count
         case 2: return 1
+        case 3: return 1
         default: return 0
         }
     }
@@ -112,24 +118,39 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)
             cell.textLabel?.text = formats[indexPath.row]
+            cell.textLabel?.textColor = UIColor.black
             cell.accessoryType = indexPath.row == currentFormatIndex ? .checkmark : .none
             return cell
-        default:
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckSideboard, for: indexPath) as! SideboardSwitchTableViewCell
             cell.switchDelegate = self
             cell.selectionSwitch.isOn = hasSideboard
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)
+            cell.textLabel?.text = "Delete"
+            cell.textLabel?.textColor = UIColor.red
+            cell.accessoryType = .none
             return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section == 1 else { return }
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.cellForRow(at: IndexPath(row: currentFormatIndex, section: 1))!.accessoryType = .none
-        currentFormatIndex = indexPath.row
-        tableView.cellForRow(at: indexPath)!.accessoryType = .checkmark
-        
+        switch indexPath.section {
+        case 1:
+            tableView.cellForRow(at: IndexPath(row: currentFormatIndex, section: 1))!.accessoryType = .none
+            currentFormatIndex = indexPath.row
+            tableView.cellForRow(at: indexPath)!.accessoryType = .checkmark
+        case 3:
+            let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { [unowned self] action in
+                self.deleteDeck()
+            })
+            present(ac, animated: true)
+        default: return
+        }
     }
     
     func newState(state: State) { }

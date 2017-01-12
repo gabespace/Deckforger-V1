@@ -15,21 +15,21 @@
         <!--Settings Table View Controller-->
         <scene sceneID="aJ5-W4-Q0W">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsTableViewController" id="0qL-Nj-zYI" customClass="SettingsTableViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsTableViewController" id="0qL-Nj-zYI" customClass="SettingsTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="kLg-Ek-QUM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Credits Cell" textLabel="Wew-RZ-dHx" style="IBUITableViewCellStyleDefault" id="PFg-SY-qgl">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PFg-SY-qgl" id="K1B-aL-275">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wew-RZ-dHx">
-                                            <rect key="frame" x="15" y="0.0" width="313" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="313" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -52,7 +52,7 @@
         <!--Deck List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DeckListViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="DeckListViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckListViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="DeckListViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -65,7 +65,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show Deck" id="iBc-Qz-RIX" customClass="DeckListTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show Deck" id="iBc-Qz-RIX" customClass="DeckListTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iBc-Qz-RIX" id="rs1-hb-azl">
@@ -140,13 +140,13 @@
         <!--Edit Deck Table View Controller-->
         <scene sceneID="Aih-B7-jz7">
             <objects>
-                <tableViewController storyboardIdentifier="EditDeckTableViewController" id="zIN-nC-sPJ" customClass="EditDeckTableViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditDeckTableViewController" id="zIN-nC-sPJ" customClass="EditDeckTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pHJ-m2-Map">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Name" id="Evf-H3-Y1k" customClass="DeckNameTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Name" id="Evf-H3-Y1k" customClass="DeckNameTableViewCell" customModule="MTGDeckBuilder">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Evf-H3-Y1k" id="Ed6-7J-P7g">
@@ -202,7 +202,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Sideboard" id="cJX-h3-LTb" customClass="SideboardSwitchTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Sideboard" id="cJX-h3-LTb" customClass="SideboardSwitchTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cJX-h3-LTb" id="9sg-RE-Zer">
@@ -249,7 +249,7 @@
         <!--Cards-->
         <scene sceneID="bej-yj-KVJ">
             <objects>
-                <viewController storyboardIdentifier="DeckViewController" id="rYc-3R-dhI" customClass="DeckViewController" customModule="MTGPrices" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckViewController" id="rYc-3R-dhI" customClass="DeckViewController" customModule="MTGDeckBuilder" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lu0-IR-hpE"/>
                         <viewControllerLayoutGuide type="bottom" id="Lo9-Pe-slq"/>
@@ -262,7 +262,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Creature" id="Ym6-Yg-zUx" customClass="CardTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Creature" id="Ym6-Yg-zUx" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ym6-Yg-zUx" id="sSt-5H-Xa7">
@@ -339,7 +339,7 @@
                                             <outlet property="title" destination="3RL-2p-qzc" id="UlZ-V2-B3R"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Spell" id="htz-mp-53Y" customClass="CardTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Spell" id="htz-mp-53Y" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htz-mp-53Y" id="bxJ-dp-FRl">
@@ -416,7 +416,7 @@
                                             <outlet property="title" destination="y6G-P2-pgX" id="2ca-i4-Ry8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Land" id="Rhz-MA-3OO" customClass="CardTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Land" id="Rhz-MA-3OO" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rhz-MA-3OO" id="BGm-y5-ZII">
@@ -493,7 +493,7 @@
                                             <outlet property="title" destination="tnX-RA-kF1" id="smZ-zp-laO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sideboard" id="DNM-vS-ydx" customClass="CardTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sideboard" id="DNM-vS-ydx" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DNM-vS-ydx" id="y5l-hy-uuA">
@@ -617,7 +617,7 @@
         <!--Add Card View Controller-->
         <scene sceneID="juy-yZ-3Zc">
             <objects>
-                <viewController storyboardIdentifier="AddCardViewController" automaticallyAdjustsScrollViewInsets="NO" id="OeI-Ib-RsF" customClass="AddCardViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCardViewController" automaticallyAdjustsScrollViewInsets="NO" id="OeI-Ib-RsF" customClass="AddCardViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSX-wc-mfL"/>
                         <viewControllerLayoutGuide type="bottom" id="obH-Ep-cKf"/>
@@ -630,7 +630,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Card Result" id="eWs-ON-5MW" customClass="CardResultTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Card Result" id="eWs-ON-5MW" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWs-ON-5MW" id="MD2-b4-JON">
@@ -677,7 +677,7 @@
                                             <outlet property="subtitleLabel" destination="gHf-Td-XnP" id="Jm0-ZG-YmH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Loading" textLabel="BPW-4u-xaH" style="IBUITableViewCellStyleDefault" id="NOX-Gf-WvI" customClass="CardResultTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Loading" textLabel="BPW-4u-xaH" style="IBUITableViewCellStyleDefault" id="NOX-Gf-WvI" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NOX-Gf-WvI" id="35f-RP-KMZ">
@@ -694,7 +694,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show More Results" textLabel="7Ey-4s-WL8" style="IBUITableViewCellStyleDefault" id="xUJ-mQ-OMO" customClass="CardResultTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show More Results" textLabel="7Ey-4s-WL8" style="IBUITableViewCellStyleDefault" id="xUJ-mQ-OMO" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUJ-mQ-OMO" id="bAt-ck-TBy">
@@ -756,13 +756,13 @@
         <!--Advanced Search Table View Controller-->
         <scene sceneID="8Le-RX-EZf">
             <objects>
-                <tableViewController storyboardIdentifier="AdvancedSearchTableViewController" id="wBZ-JW-eZW" customClass="AdvancedSearchTableViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AdvancedSearchTableViewController" id="wBZ-JW-eZW" customClass="AdvancedSearchTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="QA4-TY-KGQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Text Cell" id="xfP-W4-Psl" customClass="TextTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Text Cell" id="xfP-W4-Psl" customClass="TextTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xfP-W4-Psl" id="EBh-1R-eWf">
@@ -803,7 +803,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Constraint Cell" id="oI6-zr-667" customClass="ConstraintTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Constraint Cell" id="oI6-zr-667" customClass="ConstraintTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oI6-zr-667" id="btI-rS-3k5">
@@ -837,7 +837,7 @@
                                     <outlet property="selectionSwitch" destination="z3Q-mR-qvu" id="Tsu-gk-nif"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Range Cell" id="mmU-Ub-EXM" customClass="RangeTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Range Cell" id="mmU-Ub-EXM" customClass="RangeTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmU-Ub-EXM" id="VQ9-4J-V8x">
@@ -875,7 +875,7 @@
                                     <outlet property="filterText" destination="fVk-5k-V3S" id="6Rw-BH-VnK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Picker Cell" rowHeight="219" id="EId-cg-ANu" customClass="PickerTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Picker Cell" rowHeight="219" id="EId-cg-ANu" customClass="PickerTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="231.5" width="375" height="219"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EId-cg-ANu" id="jre-SA-Qn4">
@@ -911,7 +911,7 @@
         <!--Card Detail View Controller-->
         <scene sceneID="hn5-N4-jz9">
             <objects>
-                <viewController storyboardIdentifier="CardDetailViewController" id="tiZ-FC-y0c" customClass="CardDetailViewController" customModule="MTGPrices" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" id="tiZ-FC-y0c" customClass="CardDetailViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Og2-Yp-xQ7"/>
                         <viewControllerLayoutGuide type="bottom" id="4Bm-5N-f3F"/>
@@ -920,25 +920,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-0i-NHp" customClass="CorneredImageView" customModule="MTGPrices" customModuleProvider="target">
-                                <rect key="frame" x="82.5" y="28" width="209" height="291"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-0i-NHp" customClass="CorneredImageView" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                <rect key="frame" x="86" y="28" width="203" height="281"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="310" id="Vk1-8p-oWn"/>
                                     <constraint firstAttribute="width" secondItem="aVr-0i-NHp" secondAttribute="height" multiplier="223:310" id="VmK-TQ-7A7"/>
-                                    <constraint firstAttribute="width" constant="223" id="ufd-vg-GwG"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VmK-TQ-7A7"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="Vk1-8p-oWn"/>
-                                        <include reference="VmK-TQ-7A7"/>
-                                        <exclude reference="ufd-vg-GwG"/>
-                                    </mask>
-                                </variation>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftn-xW-P0r">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -1010,11 +996,21 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jan-hz-wUE">
+                                <rect key="frame" x="177.5" y="158.5" width="20" height="20"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7l-U7-Y9q">
+                                <rect key="frame" x="118" y="158.5" width="139.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cmw-LM-voL">
                                 <rect key="frame" x="0.0" y="355" width="375" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Field Cell" id="3Ue-7U-Apf" customClass="FieldTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Field Cell" id="3Ue-7U-Apf" customClass="FieldTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Ue-7U-Apf" id="3Fc-JX-edt">
@@ -1051,7 +1047,7 @@
                                             <outlet property="fieldTitle" destination="4cM-DN-DK9" id="wTU-rj-wyb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cost Field Cell" id="chG-Kn-v8f" customClass="CostFieldTableViewCell" customModule="MTGPrices" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cost Field Cell" id="chG-Kn-v8f" customClass="CostFieldTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="chG-Kn-v8f" id="bdo-iZ-rD2">
@@ -1088,23 +1084,13 @@
                                     <outlet property="delegate" destination="tiZ-FC-y0c" id="xMy-aZ-D4r"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jan-hz-wUE">
-                                <rect key="frame" x="177" y="164" width="20" height="20"/>
-                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7l-U7-Y9q">
-                                <rect key="frame" x="117.5" y="164" width="139.5" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ib2-xM-HNV">
-                                <rect key="frame" x="105.5" y="327" width="163" height="20"/>
+                                <rect key="frame" x="106" y="317" width="163" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he6-mx-RTF">
-                                        <rect key="frame" x="0.0" y="0.0" width="163" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="Sxm-sa-EBM"/>
+                                            <constraint firstAttribute="height" constant="30" id="xWG-ei-uJG"/>
                                             <constraint firstAttribute="width" constant="163" id="yHm-aM-BVV"/>
                                         </constraints>
                                         <state key="normal" title="Remove as Commander">
@@ -1119,121 +1105,53 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="2dx-PS-ePa"/>
-                            <constraint firstItem="Ib2-xM-HNV" firstAttribute="top" secondItem="aVr-0i-NHp" secondAttribute="bottom" constant="8" id="6yw-bb-1IS"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="width" secondItem="Gw3-vi-C0J" secondAttribute="width" id="76b-0D-4b8"/>
-                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="bottom" secondItem="4Bm-5N-f3F" secondAttribute="top" id="7q5-jc-mR2"/>
-                            <constraint firstItem="aVr-0i-NHp" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" multiplier="0.5" id="B8S-Qf-IZ3"/>
-                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="top" secondItem="cmw-LM-voL" secondAttribute="bottom" constant="1" id="BIG-xh-BLb"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="Bdv-Yg-cpv"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="width" secondItem="Gw3-vi-C0J" secondAttribute="width" id="GDQ-K7-j0U"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="HlS-c1-7aL"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="I2D-t4-U8Z"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="IIe-Li-kg0"/>
-                            <constraint firstItem="aVr-0i-NHp" firstAttribute="top" secondItem="Og2-Yp-xQ7" secondAttribute="bottom" constant="8" symbolic="YES" id="JS2-YK-LfS"/>
-                            <constraint firstItem="aVr-0i-NHp" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="NXn-uM-HZp"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="Nnl-ds-Fk1"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="height" secondItem="Gw3-vi-C0J" secondAttribute="height" multiplier="0.4" id="SPr-5Y-rgg"/>
-                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="top" secondItem="Ib2-xM-HNV" secondAttribute="bottom" constant="8" id="UdV-cL-TeH"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="bottom" secondItem="Ftn-xW-P0r" secondAttribute="top" constant="-1" id="YF1-OH-1Hy"/>
-                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="leading" secondItem="Gw3-vi-C0J" secondAttribute="leading" id="Yil-hv-aba"/>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="Ywz-1I-vlt"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="aFG-BT-ZgO"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="b6S-IY-qxS"/>
-                            <constraint firstItem="aVr-0i-NHp" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="dbB-Da-fAw"/>
-                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="dli-yJ-5bh"/>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="gxP-Tb-JUU"/>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="heQ-Ou-qER"/>
-                            <constraint firstItem="Ib2-xM-HNV" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="iBP-JL-brL"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="top" secondItem="Og2-Yp-xQ7" secondAttribute="bottom" constant="-20" id="iYB-4b-tAX">
-                                <variation key="widthClass=compact" constant="0.0"/>
+                            <constraint firstItem="aVr-0i-NHp" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" multiplier="0.5" id="29G-P5-Nmf"/>
+                            <constraint firstItem="cmw-LM-voL" firstAttribute="width" secondItem="Gw3-vi-C0J" secondAttribute="width" multiplier="0.5" id="8BB-wE-JBt"/>
+                            <constraint firstItem="cmw-LM-voL" firstAttribute="height" secondItem="Gw3-vi-C0J" secondAttribute="height" multiplier="0.4" id="BcA-8A-Je2"/>
+                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="HSM-3B-7HR"/>
+                            <constraint firstItem="Ib2-xM-HNV" firstAttribute="top" secondItem="aVr-0i-NHp" secondAttribute="bottom" constant="8" id="Lqn-P2-vBz"/>
+                            <constraint firstAttribute="trailing" secondItem="Ftn-xW-P0r" secondAttribute="trailing" id="NbH-XJ-KQ2"/>
+                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="top" secondItem="cmw-LM-voL" secondAttribute="bottom" constant="1" id="U72-vL-yMi"/>
+                            <constraint firstItem="Jan-hz-wUE" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="abm-3R-cGo"/>
+                            <constraint firstItem="aVr-0i-NHp" firstAttribute="top" secondItem="Og2-Yp-xQ7" secondAttribute="bottom" constant="8" symbolic="YES" id="aoq-U2-b8k"/>
+                            <constraint firstItem="cmw-LM-voL" firstAttribute="top" secondItem="Og2-Yp-xQ7" secondAttribute="bottom" id="dD2-Fg-Q3x"/>
+                            <constraint firstItem="cmw-LM-voL" firstAttribute="leading" secondItem="Gw3-vi-C0J" secondAttribute="leading" id="gcB-iL-ijo"/>
+                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="leading" secondItem="Gw3-vi-C0J" secondAttribute="leading" id="hNj-kk-zpm"/>
+                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="iKy-Mw-LnE"/>
+                            <constraint firstItem="Ftn-xW-P0r" firstAttribute="top" secondItem="Ib2-xM-HNV" secondAttribute="bottom" constant="17" id="kou-rg-0Wp">
+                                <variation key="heightClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="ij9-A6-j28"/>
-                            <constraint firstAttribute="trailing" secondItem="Ftn-xW-P0r" secondAttribute="trailing" id="jlK-qj-Gcg"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="width" secondItem="Gw3-vi-C0J" secondAttribute="width" multiplier="0.5" id="k8e-Js-dlV"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="centerY" secondItem="Gw3-vi-C0J" secondAttribute="centerY" id="lq4-TA-iKB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cmw-LM-voL" secondAttribute="trailing" constant="-19.5" id="nR1-Qt-KCi"/>
-                            <constraint firstItem="aVr-0i-NHp" firstAttribute="top" secondItem="Og2-Yp-xQ7" secondAttribute="bottom" constant="8" symbolic="YES" id="vGd-8h-om2"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="vfY-Ck-PLK"/>
-                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerY" secondItem="aVr-0i-NHp" secondAttribute="centerY" id="yb6-AW-eij"/>
-                            <constraint firstItem="cmw-LM-voL" firstAttribute="top" secondItem="Ib2-xM-HNV" secondAttribute="bottom" constant="79" id="zdq-Fx-kuq">
-                                <variation key="heightClass=regular" constant="8" symbolic="YES"/>
+                            <constraint firstItem="Ib2-xM-HNV" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="l50-d0-UBH"/>
+                            <constraint firstItem="cmw-LM-voL" firstAttribute="top" secondItem="Ib2-xM-HNV" secondAttribute="bottom" constant="8" id="lvp-hM-fwY"/>
+                            <constraint firstItem="f7l-U7-Y9q" firstAttribute="centerX" secondItem="aVr-0i-NHp" secondAttribute="centerX" id="oub-qy-v6E"/>
+                            <constraint firstItem="aVr-0i-NHp" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" id="rlg-Jx-cTd"/>
+                            <constraint firstItem="4Bm-5N-f3F" firstAttribute="top" secondItem="Ftn-xW-P0r" secondAttribute="bottom" id="tit-EK-QSg"/>
+                            <constraint firstAttribute="trailing" secondItem="cmw-LM-voL" secondAttribute="trailing" id="wsl-ZA-Zbz"/>
+                            <constraint firstItem="Ib2-xM-HNV" firstAttribute="centerX" secondItem="Gw3-vi-C0J" secondAttribute="centerX" multiplier="0.5" id="yWM-Os-FuV">
+                                <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="B8S-Qf-IZ3"/>
-                                <exclude reference="JS2-YK-LfS"/>
-                                <exclude reference="NXn-uM-HZp"/>
-                                <exclude reference="Ywz-1I-vlt"/>
-                                <exclude reference="gxP-Tb-JUU"/>
-                                <exclude reference="heQ-Ou-qER"/>
-                                <exclude reference="ij9-A6-j28"/>
-                                <exclude reference="Bdv-Yg-cpv"/>
-                                <exclude reference="IIe-Li-kg0"/>
-                                <exclude reference="aFG-BT-ZgO"/>
-                                <exclude reference="dli-yJ-5bh"/>
-                                <exclude reference="GDQ-K7-j0U"/>
-                                <exclude reference="SPr-5Y-rgg"/>
-                                <exclude reference="b6S-IY-qxS"/>
-                                <exclude reference="iYB-4b-tAX"/>
-                                <exclude reference="k8e-Js-dlV"/>
-                                <exclude reference="lq4-TA-iKB"/>
-                                <exclude reference="nR1-Qt-KCi"/>
-                                <exclude reference="vfY-Ck-PLK"/>
-                                <exclude reference="zdq-Fx-kuq"/>
-                                <exclude reference="BIG-xh-BLb"/>
+                                <exclude reference="29G-P5-Nmf"/>
+                                <exclude reference="yWM-Os-FuV"/>
+                                <exclude reference="8BB-wE-JBt"/>
+                                <exclude reference="dD2-Fg-Q3x"/>
+                                <exclude reference="kou-rg-0Wp"/>
                             </mask>
                         </variation>
-                        <variation key="heightClass=regular">
+                        <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="NXn-uM-HZp"/>
-                                <include reference="Ywz-1I-vlt"/>
-                                <include reference="gxP-Tb-JUU"/>
-                                <include reference="Bdv-Yg-cpv"/>
-                                <include reference="IIe-Li-kg0"/>
-                                <include reference="GDQ-K7-j0U"/>
-                                <include reference="SPr-5Y-rgg"/>
-                                <include reference="b6S-IY-qxS"/>
-                                <include reference="zdq-Fx-kuq"/>
-                                <exclude reference="UdV-cL-TeH"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="B8S-Qf-IZ3"/>
-                                <include reference="JS2-YK-LfS"/>
-                                <exclude reference="dbB-Da-fAw"/>
-                                <exclude reference="vGd-8h-om2"/>
-                                <exclude reference="2dx-PS-ePa"/>
-                                <include reference="heQ-Ou-qER"/>
-                                <include reference="ij9-A6-j28"/>
-                                <exclude reference="yb6-AW-eij"/>
-                                <exclude reference="HlS-c1-7aL"/>
-                                <exclude reference="Nnl-ds-Fk1"/>
-                                <include reference="aFG-BT-ZgO"/>
-                                <include reference="dli-yJ-5bh"/>
-                                <exclude reference="76b-0D-4b8"/>
-                                <exclude reference="I2D-t4-U8Z"/>
-                                <exclude reference="YF1-OH-1Hy"/>
-                                <include reference="iYB-4b-tAX"/>
-                                <include reference="k8e-Js-dlV"/>
-                                <exclude reference="lq4-TA-iKB"/>
-                                <include reference="nR1-Qt-KCi"/>
-                                <exclude reference="vfY-Ck-PLK"/>
-                                <include reference="BIG-xh-BLb"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <exclude reference="B8S-Qf-IZ3"/>
-                                <exclude reference="heQ-Ou-qER"/>
-                                <exclude reference="ij9-A6-j28"/>
-                                <exclude reference="aFG-BT-ZgO"/>
-                                <exclude reference="dli-yJ-5bh"/>
-                                <exclude reference="iYB-4b-tAX"/>
-                                <exclude reference="k8e-Js-dlV"/>
-                                <exclude reference="nR1-Qt-KCi"/>
+                                <include reference="29G-P5-Nmf"/>
+                                <exclude reference="rlg-Jx-cTd"/>
+                                <exclude reference="l50-d0-UBH"/>
+                                <include reference="yWM-Os-FuV"/>
+                                <include reference="8BB-wE-JBt"/>
+                                <exclude reference="BcA-8A-Je2"/>
+                                <include reference="dD2-Fg-Q3x"/>
+                                <exclude reference="gcB-iL-ijo"/>
+                                <exclude reference="lvp-hM-fwY"/>
+                                <include reference="kou-rg-0Wp"/>
                             </mask>
                         </variation>
                     </view>
@@ -1252,7 +1170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdW-Ch-clf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.1999999999998" y="1097.9010494752624"/>
+            <point key="canvasLocation" x="2649" y="1099"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h7x-Zv-fE9">

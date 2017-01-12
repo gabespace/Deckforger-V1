@@ -62,7 +62,7 @@
 		CB046DAC1E11D4BF006E059A /* DeckListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckListTableViewCell.swift; sourceTree = "<group>"; };
 		CB046DAE1E11DE17006E059A /* EditDeckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDeckTableViewController.swift; sourceTree = "<group>"; };
 		CB046DB11E11E13D006E059A /* DeckNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckNameTableViewCell.swift; sourceTree = "<group>"; };
-		CB0F99911DECE5F70085C721 /* MTGPrices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTGPrices.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0F99911DECE5F70085C721 /* MTGDeckBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTGDeckBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0F99941DECE5F70085C721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB0F99961DECE5F70085C721 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
 		CB0F99991DECE5F70085C721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		CB0F99921DECE5F70085C721 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB0F99911DECE5F70085C721 /* MTGPrices.app */,
+				CB0F99911DECE5F70085C721 /* MTGDeckBuilder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,9 +315,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB0F99901DECE5F70085C721 /* MTGPrices */ = {
+		CB0F99901DECE5F70085C721 /* MTGDeckBuilder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB0F99A31DECE5F70085C721 /* Build configuration list for PBXNativeTarget "MTGPrices" */;
+			buildConfigurationList = CB0F99A31DECE5F70085C721 /* Build configuration list for PBXNativeTarget "MTGDeckBuilder" */;
 			buildPhases = (
 				BB5F4DF54001BC0FC01E1C7A /* [CP] Check Pods Manifest.lock */,
 				CB0F998D1DECE5F70085C721 /* Sources */,
@@ -330,9 +330,9 @@
 			);
 			dependencies = (
 			);
-			name = MTGPrices;
+			name = MTGDeckBuilder;
 			productName = MTGPrices;
-			productReference = CB0F99911DECE5F70085C721 /* MTGPrices.app */;
+			productReference = CB0F99911DECE5F70085C721 /* MTGDeckBuilder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -352,7 +352,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CB0F998C1DECE5F70085C721 /* Build configuration list for PBXProject "MTGPrices" */;
+			buildConfigurationList = CB0F998C1DECE5F70085C721 /* Build configuration list for PBXProject "MTGDeckBuilder" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -365,7 +365,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB0F99901DECE5F70085C721 /* MTGPrices */,
+				CB0F99901DECE5F70085C721 /* MTGDeckBuilder */,
 			);
 		};
 /* End PBXProject section */
@@ -607,8 +607,8 @@
 				DEVELOPMENT_TEAM = BGXZUJFS4J;
 				INFOPLIST_FILE = MTGPrices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sentiinex.MTGPrices;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = sentiinex.MTGDeckBuilder;
+				PRODUCT_NAME = MTGDeckBuilder;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -622,8 +622,8 @@
 				DEVELOPMENT_TEAM = BGXZUJFS4J;
 				INFOPLIST_FILE = MTGPrices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sentiinex.MTGPrices;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = sentiinex.MTGDeckBuilder;
+				PRODUCT_NAME = MTGDeckBuilder;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -631,7 +631,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CB0F998C1DECE5F70085C721 /* Build configuration list for PBXProject "MTGPrices" */ = {
+		CB0F998C1DECE5F70085C721 /* Build configuration list for PBXProject "MTGDeckBuilder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB0F99A11DECE5F70085C721 /* Debug */,
@@ -640,7 +640,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB0F99A31DECE5F70085C721 /* Build configuration list for PBXNativeTarget "MTGPrices" */ = {
+		CB0F99A31DECE5F70085C721 /* Build configuration list for PBXNativeTarget "MTGDeckBuilder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB0F99A41DECE5F70085C721 /* Debug */,
