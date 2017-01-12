@@ -93,19 +93,21 @@ class AddCardViewController: UIViewController, StoreSubscriber {
             cardResults.removeAll()
             tableView.reloadData()
             searchBar.selectedScopeButtonIndex = 0
-            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
         } else {
+            currentPage = state.currentRequestPage
             if let result = state.cardResults {
                 isDownloadingInitialResults = false
                 isDirty = false
                 if result.isSuccess {
                     if isDownloadingAdditionalPages {
                         isDownloadingAdditionalPages = false
-                        cardResults.append(contentsOf: result.value!.cards)
+//                        cardResults.append(contentsOf: result.value!.cards)
                         rowIsSelected = false
-                    } else {
-                        cardResults = result.value!.cards
                     }
+//                    else {
+                        cardResults = result.value!.cards
+//                    }
                     headers = result.value!.headers
                     tableView.reloadData()
                 } else {

@@ -18,7 +18,8 @@ class CardTableViewCell: UITableViewCell {
     private var originalContentsRect: CGRect!
     private var frameHeight: CGFloat?
     
-    static let cornerRadius: CGFloat = 8.6
+    let cornerRadius: CGFloat = 8.6
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +32,7 @@ class CardTableViewCell: UITableViewCell {
         cardImageView.layer.contentsRect = originalContentsRect
         cardImageView.clipsToBounds = true
         cardImageView.contentMode = .scaleAspectFill
-        cardImageView.layer.cornerRadius = CardTableViewCell.cornerRadius
+        cardImageView.layer.cornerRadius = cornerRadius
         cardImageView.layer.contentsRect = cardImageView.layer.contentsRect.offsetBy(dx: 0, dy: -0.2).insetBy(dx: 0.12, dy: 0.1)
     }
     

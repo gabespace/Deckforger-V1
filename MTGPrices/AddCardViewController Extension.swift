@@ -36,7 +36,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         parameters["name"] = cardName
         parameters["orderBy"] = sortFields[searchBar.selectedScopeButtonIndex]
         isDirty = true
-        store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+        store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -49,7 +49,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
             cardResults.removeAll()
             tableView.reloadData()
             isDirty = true
-            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
         }
     }
     
@@ -105,7 +105,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
             currentPage += 1
             isDownloadingAdditionalPages = true
             isDirty = true
-            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: cardResults, currentPage: currentPage))
         } else {
             rowIsSelected = false
             let card = cardResults[indexPath.row]

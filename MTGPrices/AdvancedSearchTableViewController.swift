@@ -31,6 +31,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     var matchColorsExactly = false
     var andColors = false
     var andTypes = false
+    var mustHaveImage = false
     
     var sectionBeingEdited: Int?
     var isPickingCmc = false
@@ -134,9 +135,16 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             let restriction = restrictionTerms[pickerViewRestrictions.index(of: powerRestriction)!]
             parameters["power"] = restriction + "\(p)"
         }
+        
         if let t = Int(toughness) {
             let restriction = restrictionTerms[pickerViewRestrictions.index(of: toughnessRestriction)!]
             parameters["toughness"] = restriction + "\(t)"
+        }
+        
+        if mustHaveImage {
+            parameters["contains"] = "imageUrl"
+        } else {
+            parameters.removeValue(forKey: "contains")
         }
         
         return parameters
@@ -213,6 +221,10 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
                 toughnessRestriction = pickerViewRestrictions[restrictionTerms.index(of: components[0])!]
                 toughness = components[1]
             }
+        }
+        
+        if parameters["contains"] as? String == "imageUrl" {
+            mustHaveImage = true
         }
     }
     

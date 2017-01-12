@@ -11,7 +11,7 @@ import UIKit
 extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableViewData[indexPath.section] == "" {
+        if tableViewData[indexPath.section] == "" || tableViewData[indexPath.section] == "/" {
             return 0
         } else {
             return UITableViewAutomaticDimension
@@ -48,7 +48,7 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     struct Sections {
-        static let names = ["Name", "Cost", "Type", "Set", "Text"]
+        static let names = ["Name", "Cost", "Type", "P/T", "Set", "Text"]
     }
     
 }

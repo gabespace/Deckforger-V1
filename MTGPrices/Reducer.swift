@@ -25,7 +25,7 @@ func getInitialState() -> State {
         print("core data decks fetch failed")
     }
     
-    return State(decks: decks, cardResults: nil, parameters: nil, shouldSearch: false, isLoading: false, additionalCardResults: nil, isDownloadingImages: false)
+    return State(decks: decks, cardResults: nil, parameters: nil, shouldSearch: false, isLoading: false, additionalCardResults: nil, isDownloadingImages: false, currentRequestPage: 1)
 }
 
 struct StateReducer: Reducer {
@@ -414,6 +414,7 @@ struct StateReducer: Reducer {
             state.parameters = action.parameters
             state.shouldSearch = false
             state.isLoading = action.isLoading
+            state.currentRequestPage = action.currentPage
             
         case let action as SearchForAdditionalCards:
             state.additionalCardResults = action.result

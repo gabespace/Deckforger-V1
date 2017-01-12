@@ -13,8 +13,7 @@ class CorneredImageView: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.cornerRadius = 30
-        print("set corner radius to \(layer.cornerRadius)")
+        layer.cornerRadius = 10
         layer.masksToBounds = true
     }
     

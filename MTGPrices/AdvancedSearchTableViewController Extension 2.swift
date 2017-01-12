@@ -88,6 +88,7 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, UIPickerViewDe
         case SwitchTags.matchColorsExactly: matchColorsExactly = value
         case SwitchTags.andColors: andColors = value
         case SwitchTags.andTypes: andTypes = value
+        case SwitchTags.hasImage: mustHaveImage = value
         default: return
         }
     }

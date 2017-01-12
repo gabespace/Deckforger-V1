@@ -29,7 +29,11 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, Switc
         
         title = isCreatingNewDeck ? "New Deck" : "Edit Deck"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdits))
+        if isCreatingNewDeck {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(saveEdits))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdits))
+        }
         
         currentFormatIndex = isCreatingNewDeck ? 0 : formats.index(of: deck!.format)!
         hasSideboard = deck?.hasSideboard ?? true

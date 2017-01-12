@@ -8,21 +8,28 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController, SwitchDelegate {
+class SettingsTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    let defaults = UserDefaults.standard
-    var isColorblindModeOn: Bool {
-        return defaults.bool(forKey: "Colorblind Mode")
-    }
+    let credits = [
+        "Card data from magicthegathering.io",
+        "Icons from icons8.com",
+        ""
+    ]
+    
+    let links = [
+        "https://magicthegathering.io/",
+        "https://icons8.com/"
+    ]
+    
     
     // MARK: - View Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Settings"
+        title = "Credits"
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,35 +38,36 @@ class SettingsTableViewController: UITableViewController, SwitchDelegate {
     }
     
     
-    // MARK: - SwitchDelegate Methods
-    
-    func switchDidToggle(to value: Bool, tag: Int) {
-        defaults.set(value, forKey: "Colorblind Mode")
-    }
-    
-    
     // MARK: - TableView Data Source
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Magic: the Gathering™ is TM and copyright Wizard of the Coast, Inc, a subsidiary of Hasbro, Inc. All rights reserved. This app is unaffiliated."
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.colorblindModeCell, for: indexPath) as! SideboardSwitchTableViewCell
-        cell.switchDelegate = self
-        cell.selectionSwitch.isOn = isColorblindModeOn
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creditsCell, for: indexPath)
+        cell.textLabel?.text = credits[indexPath.row]
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if let url = URL(string: links[indexPath.row]) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
     
     // MARK: - Supporting Functionality
     
     struct Cell {
-        static let colorblindModeCell = "Colorblind Mode Cell"
+        static let creditsCell = "Credits Cell"
     }
     
 }

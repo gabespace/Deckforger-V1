@@ -111,6 +111,7 @@ struct SearchForCards: Action {
     let result: Result<ApiResult>?
     let parameters: [String: Any]
     let isLoading: Bool
+    let currentPage: Int
 }
 
 struct SearchForAdditionalCards: Action {

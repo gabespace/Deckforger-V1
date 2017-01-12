@@ -54,7 +54,15 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     lazy var set: String = {
         return self.cardResult?.set ?? self.card!.set
     }()
+    
+    lazy var power: String? = {
+        return self.shouldUseResult ? self.cardResult!.power : self.card!.power
+    }()
 
+    lazy var toughness: String? = {
+        return self.shouldUseResult ? self.cardResult!.toughness : self.card!.toughness
+    }()
+    
     var tableViewData = Array<String>(repeatElement("", count: Sections.names.count))
     
     var mainImage: UIImage?
@@ -246,8 +254,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         tableViewData[0] = flippedCard!.name
         tableViewData[1] = ""
         tableViewData[2] = flippedCard!.type!
-        tableViewData[3] = "SET"
-        tableViewData[4] = flippedCard!.text ?? ""
+        tableViewData[3] = (flippedCard!.power ?? "") + "/" + (flippedCard!.toughness ?? "")
+        tableViewData[4] = flippedCard!.set
+        tableViewData[5] = flippedCard!.text ?? ""
         image = flippedImage
     }
     
@@ -255,8 +264,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         tableViewData[0] = name
         tableViewData[1] = manaCost?.withoutBraces ?? ""
         tableViewData[2] = type
-        tableViewData[3] = set
-        tableViewData[4] = text ?? ""
+        tableViewData[3] = (power ?? "") + "/" + (toughness ?? "")
+        tableViewData[4] = set
+        tableViewData[5] = text ?? ""
         image = mainImage
     }
     

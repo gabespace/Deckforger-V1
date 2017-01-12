@@ -18,4 +18,5 @@ struct State: StateType {
     var isLoading: Bool
     var additionalCardResults: Result<ApiResult>?
     var isDownloadingImages: Bool
+    var currentRequestPage: Int
 }

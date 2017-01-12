@@ -42,6 +42,7 @@ extension AdvancedSearchTableViewController {
         case Sections.pt: return 4
         case Sections.rarity: return Filters.rarities.count
         case Sections.format: return Filters.formats.count
+        case Sections.hasImage: return 1
         default: return 0
         }
     }
@@ -93,7 +94,7 @@ extension AdvancedSearchTableViewController {
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.constraintCell, for: indexPath) as! ConstraintTableViewCell
-                cell.label.text = "AND Colors"
+                cell.label.text = "AND instead of OR"
                 cell.selectionSwitch.tag = SwitchTags.andColors
                 cell.switchDelegate = self
                 cell.selectionSwitch.isOn = andColors
@@ -108,7 +109,7 @@ extension AdvancedSearchTableViewController {
         case Sections.type:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.constraintCell, for: indexPath) as! ConstraintTableViewCell
-                cell.label.text = "AND Types"
+                cell.label.text = "AND instead of OR"
                 cell.selectionSwitch.tag = SwitchTags.andTypes
                 cell.switchDelegate = self
                 cell.selectionSwitch.isOn = andTypes
@@ -172,11 +173,18 @@ extension AdvancedSearchTableViewController {
             cell.textLabel?.text = rarity
             cell.accessoryType = rarities.contains(rarity) ? .checkmark : .none
             return cell
-        default:
+        case Sections.format:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.filterCell, for: indexPath)
             let format = Filters.formats[indexPath.row]
             cell.textLabel?.text = format
             cell.accessoryType = formats.contains(format) ? .checkmark : .none
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.constraintCell, for: indexPath) as! ConstraintTableViewCell
+            cell.label.text = "Must Have Image"
+            cell.selectionSwitch.tag = SwitchTags.hasImage
+            cell.switchDelegate = self
+            cell.selectionSwitch.isOn = mustHaveImage
             return cell
         }
     }
@@ -296,10 +304,11 @@ extension AdvancedSearchTableViewController {
         static let matchColorsExactly = 0
         static let andColors = 1
         static let andTypes = 2
+        static let hasImage = 3
     }
     
     struct Filters {
-        static let names = ["Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format"]
+        static let names = ["Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format", nil]
         static let colors = ["White", "Blue", "Red", "Black", "Green"]
         static let types = ["Artifact", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery", "Tribal"]
         static let supertypes = ["Legendary", "Snow"]
@@ -318,6 +327,7 @@ extension AdvancedSearchTableViewController {
         static let pt = 7
         static let rarity = 8
         static let format = 9
+        static let hasImage = 10
     }
     
 }
