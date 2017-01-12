@@ -51,6 +51,16 @@ struct StateReducer: Reducer {
             
         case let action as EditDeck:
             action.deck.name = action.name ?? action.deck.name
+            if action.deck.format == "Commander" {
+                // Delete commander cards.
+                let request = Card.createFetchRequest()
+                request.predicate = NSPredicate(format: "deck.id == %@ AND isCommander == true", action.deck.id)
+                if let cards = try? appDelegate.persistentContainer.viewContext.fetch(request) {
+                    for card in cards {
+                        appDelegate.persistentContainer.viewContext.delete(card)
+                    }
+                }
+            }
             action.deck.format = action.format ?? action.deck.format
             action.deck.hasSideboard = action.hasSideboard
             if !action.hasSideboard {
