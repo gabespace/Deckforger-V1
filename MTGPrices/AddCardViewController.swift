@@ -102,12 +102,9 @@ class AddCardViewController: UIViewController, StoreSubscriber {
                 if result.isSuccess {
                     if isDownloadingAdditionalPages {
                         isDownloadingAdditionalPages = false
-//                        cardResults.append(contentsOf: result.value!.cards)
                         rowIsSelected = false
                     }
-//                    else {
-                        cardResults = result.value!.cards
-//                    }
+                    cardResults = result.value!.cards
                     headers = result.value!.headers
                     tableView.reloadData()
                 } else {

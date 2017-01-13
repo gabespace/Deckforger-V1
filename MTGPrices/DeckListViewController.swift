@@ -66,14 +66,7 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: State) {
         self.decks = state.decks
-//        for deck in decks {
-//            if deck.format == "EDH" {
-//                deck.format = "Commander"
-//            }
-//        }
-//        appDelegate.saveContext()
         tableView.reloadData()
     }
     
 }
-

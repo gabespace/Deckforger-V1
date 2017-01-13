@@ -29,6 +29,8 @@ struct DeleteDeck: Action {
     let deck: Deck
 }
 
+struct DeleteEverything: Action { }
+
 
 // MARK: - Card Actions
 

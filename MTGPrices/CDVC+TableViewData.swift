@@ -1,5 +1,5 @@
 //
-//  CardDetailViewController Extension.swift
+//  CDVC+TableViewData.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 1/10/17.
@@ -31,13 +31,11 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.costFieldCell, for: indexPath) as! CostFieldTableViewCell
             cell.configureCost(from: shouldUseResult ? cardResult!.manaCost?.createManaCostImages() : card!.manaCost?.createManaCostImages())
             cell.costLabel.text = "Cost"
-//            cell.costLabel.font = UIFont(name: "MPlantin", size: 17.0)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.fieldCell, for: indexPath) as! FieldTableViewCell
             cell.fieldTitle.text = Sections.names[indexPath.section]
-//            cell.fieldTitle.font = UIFont(name: "MPlantin", size: 17.0)
-            cell.fieldData.text = tableViewData[indexPath.section]
+            cell.fieldData.text = tableViewData[indexPath.section].replacingOccurrences(of: "−", with: "-")
             if Sections.names[indexPath.section] == "Flavor" {
                 cell.fieldData.font = UIFont(name: "MPlantin-Italic", size: 17.0)
             } else {

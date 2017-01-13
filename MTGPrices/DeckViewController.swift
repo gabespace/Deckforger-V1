@@ -112,7 +112,8 @@ class DeckViewController: UIViewController, StoreSubscriber {
             self.cards = cards
             tableView.reloadData()
         } else {
-            print("core data error fetching")
+            present(appDelegate.errorAlert(description: "Unable to access stored cards for this deck. Please try again."), animated: true)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     
@@ -121,12 +122,9 @@ class DeckViewController: UIViewController, StoreSubscriber {
     
     func newState(state: State) {
         fetchCards()
-        if state.isDownloadingImages {
-            
-        } else {
+        if !state.isDownloadingImages {
             tableView.reloadData()
         }
-        
     }
     
 }

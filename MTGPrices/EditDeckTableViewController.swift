@@ -60,6 +60,8 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     // MARK: - Methods
     
+    func newState(state: State) { }
+    
     @objc private func saveEdits() {
         if isNameBeingEdited {
             let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DeckNameTableViewCell
@@ -102,10 +104,8 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
+        case 0, 2, 3: return 1
         case 1: return formats.count
-        case 2: return 1
-        case 3: return 1
         default: return 0
         }
     }
@@ -168,10 +168,6 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
         isNameBeingEdited = false
         newName = textField.text!.isEmpty ? "Untitled" : textField.text!
     }
-    
-    
-    
-    func newState(state: State) { }
     
     
     // MARK: - Supporting Functionality

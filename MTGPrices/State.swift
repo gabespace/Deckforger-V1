@@ -19,4 +19,5 @@ struct State: StateType {
     var additionalCardResults: Result<ApiResult>?
     var isDownloadingImages: Bool
     var currentRequestPage: Int
+    var error: CoreDataError?
 }

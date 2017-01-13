@@ -1,5 +1,5 @@
 //
-//  AddCardViewController Extension.swift
+//  ADVC+Delegate.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/30/16.
@@ -88,7 +88,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
                 cell.setRarityLabel.text = "\(result.setName!)"
                 switch result.rarity {
                 case "Mythic Rare": cell.setRarityLabel.textColor = UIColor.red
-                case "Rare": cell.setRarityLabel.textColor = UIColor(red: 1.0, green: 0.75, blue: 0, alpha: 1.0)
+                case "Rare": cell.setRarityLabel.textColor = UIColor(red: 0.98, green: 0.7, blue: 0.1, alpha: 1.0)
                 case "Uncommon": cell.setRarityLabel.textColor = UIColor.gray
                 case "Special": cell.setRarityLabel.textColor = UIColor.blue
                 default: cell.setRarityLabel.textColor = UIColor.black

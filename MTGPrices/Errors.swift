@@ -1,5 +1,5 @@
 //
-//  ErrorCode.swift
+//  Errors.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/29/16.
@@ -14,4 +14,10 @@ enum ErrorCode: Int {
     case notFound = 404
     case internalServerError = 500
     case serviceUnavailable = 503
+}
+
+enum CoreDataError: Error {
+    case loadingError(String)
+    case savingError(String)
+    case otherError(String)
 }

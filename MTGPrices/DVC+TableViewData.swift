@@ -1,5 +1,5 @@
 //
-//  DeckViewController Extension.swift
+//  DVC+TableViewData.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/30/16.
@@ -98,11 +98,11 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isEDH {
-            return deck.hasSideboard ? 5 : 4
-        }
-        else {
-            return deck.hasSideboard ? 4 : 3
+        switch (isEDH, deck.hasSideboard) {
+        case (true, true): return 5
+        case (true, false): return 4
+        case (false, true): return 4
+        case (false, false): return 3
         }
     }
     

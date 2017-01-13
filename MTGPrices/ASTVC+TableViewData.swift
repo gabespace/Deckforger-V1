@@ -1,5 +1,5 @@
 //
-//  AdvancedSearchTableViewController Extension.swift
+//  ASTVC+TableViewData.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 12/2/16.

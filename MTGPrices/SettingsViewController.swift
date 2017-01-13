@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import ReSwift
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, StoreSubscriber {
     
     // MARK: - Properties
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let credits = [
         "Card data from magicthegathering.io",
         "Icons from icons8.com",
-        "Mana Symbols by Goblin Hero"
+        "Mana symbols by Goblin Hero"
     ]
     
     let links = [
@@ -30,12 +33,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Credits"
-        
-        for name in UIFont.familyNames {
-            print(name)
-            print(UIFont.fontNames(forFamilyName: name))
-        }
+        title = "Settings"
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,36 +41,77 @@ class SettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.subscribe(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        store.unsubscribe(self)
+    }
     
     // MARK: - TableView Data Source
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard section == 1 else { return nil }
+        
         return "Magic: the Gathering™ is TM and copyright Wizard of the Coast, Inc, a subsidiary of Hasbro, Inc. All rights reserved. This app is unaffiliated."
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if section == 0 {
+            return 1
+        } else {
+            return 3
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creditsCell, for: indexPath)
-        cell.textLabel?.text = credits[indexPath.row]
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsCell, for: indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creditsCell, for: indexPath)
+            cell.textLabel?.text = credits[indexPath.row]
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 0 else { return }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let ac = UIAlertController(title: "Delete All Data", message: "Are you sure? This action cannot be undone.", preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
+            store.dispatch(DeleteEverything())
+        })
+        present(ac, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
+        
         if let url = URL(string: links[indexPath.row]) {
             UIApplication.shared.open(url, options: [:])
         }
     }
     
+    
+    // MARK: - StoreSubscriber Delegate Methods
+    
+    func newState(state: State) { }
+    
+    
     // MARK: - Supporting Functionality
     
     struct Cell {
+        static let settingsCell = "Settings Cell"
         static let creditsCell = "Credits Cell"
     }
     

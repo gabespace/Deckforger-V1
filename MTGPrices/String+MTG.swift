@@ -1,5 +1,5 @@
 //
-//  String Extension.swift
+//  String+MTG.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 12/1/16.

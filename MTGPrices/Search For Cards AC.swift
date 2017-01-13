@@ -1,5 +1,5 @@
 //
-//  searchForCardsActionCreator.swift
+//  Search For Cards AC.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/29/16.

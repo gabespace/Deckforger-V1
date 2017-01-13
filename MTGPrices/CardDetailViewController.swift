@@ -255,13 +255,13 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
     
     private func displayFlipSideInfo() {
-        tableViewData[0] = flippedCard!.name
+        tableViewData[0] = flippedCard?.name ?? ""
         tableViewData[1] = ""
-        tableViewData[2] = flippedCard!.type!
-        tableViewData[3] = (flippedCard!.power ?? "") + "/" + (flippedCard!.toughness ?? "")
-        tableViewData[4] = flippedCard!.setName
-        tableViewData[5] = flippedCard!.text ?? ""
-        tableViewData[6] = flippedCard!.flavor ?? ""
+        tableViewData[2] = flippedCard?.type ?? ""
+        tableViewData[3] = (flippedCard?.power ?? "") + "/" + (flippedCard?.toughness ?? "")
+        tableViewData[4] = flippedCard?.setName ?? ""
+        tableViewData[5] = flippedCard?.text ?? ""
+        tableViewData[6] = flippedCard?.flavor ?? ""
         image = flippedImage
     }
     
@@ -320,7 +320,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 deckCountButton.setTitle("Main: 0", for: .normal)
             }
         } else {
-            print("error fetching card count in deck")
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please try again."), animated: true) { [unowned self] in
+                _ = self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -336,7 +338,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 sideCountButton.setTitle("Side: 0", for: .normal)
             }
         } else {
-            print("error fetching card count in deck")
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please try again."), animated: true) { [unowned self] in
+                _ = self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -377,7 +381,8 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                     fetchFlipImage(from: imageUrl)
                 }
             } else {
-                print("error retrieving card - deal with this")
+                flippedCard = nil
+                present(appDelegate.errorAlert(description: "Unable to retrieve flipped card data."), animated: true)
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  Stats Extension.swift
+//  DVC+Charts.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 12/12/16.

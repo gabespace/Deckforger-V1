@@ -1,5 +1,5 @@
 //
-//  DeckListViewController Extension.swift
+//  DLVC+Delegate.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/28/16.
