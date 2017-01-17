@@ -43,7 +43,7 @@
 		CB7B65761E2816820055C390 /* MPlantin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B65741E2816820055C390 /* MPlantin.ttf */; };
 		CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA2741DEE673000C95B83 /* DeckViewController.swift */; };
 		CB81523E1E18693400D74D8A /* SideboardSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */; };
-		CB857ABD1E25841B000C2B5F /* CDVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */; };
+		CB857ABD1E25841B000C2B5F /* CDVC+TableViewData+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */; };
 		CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */; };
 		CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */; };
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
@@ -98,7 +98,7 @@
 		CB7B65741E2816820055C390 /* MPlantin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MPlantin.ttf; sourceTree = "<group>"; };
 		CB7CA2741DEE673000C95B83 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideboardSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDVC+TableViewData.swift"; sourceTree = "<group>"; };
+		CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDVC+TableViewData+String.swift"; sourceTree = "<group>"; };
 		CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */,
-				CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */,
+				CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */,
 				CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */,
 				CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */,
 				CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */,
@@ -470,7 +470,7 @@
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* Errors.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String+MTG.swift in Sources */,
-				CB857ABD1E25841B000C2B5F /* CDVC+TableViewData.swift in Sources */,
+				CB857ABD1E25841B000C2B5F /* CDVC+TableViewData+String.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,
 				CB7883531DED00F500E45F7D /* Actions.swift in Sources */,

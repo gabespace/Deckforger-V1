@@ -37,7 +37,10 @@ class DeckViewController: UIViewController, StoreSubscriber {
         
         title = deck.name
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Deck", style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForCards))
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForCards)),
+            UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareDeck))
+        ]
         
         NotificationCenter.default.addObserver(self, selector: #selector(redraw), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -96,6 +99,39 @@ class DeckViewController: UIViewController, StoreSubscriber {
             costBarChartView.frame = CGRect(x: 0, y: typePieChartView.frame.maxY, width: statsScrollView.frame.width, height: statsScrollView.frame.height * 0.34)
         }
         statsScrollView.contentSize = statsScrollView.frame.size
+    }
+    
+    @objc private func shareDeck() {
+        var deckString = "\(deck.name) (Main: \(deck.mainboardCount)"
+        if deck.hasSideboard {
+            deckString += ", Side: \(deck.sideboardCount))\n"
+        } else {
+            deckString += ")\n"
+        }
+        if deck.format == "Commander" {
+            for commander in commanders {
+                deckString += "\(commander.amount) \(commander.name)\n"
+            }
+        }
+        for creature in creatures {
+            deckString += "\(creature.amount) \(creature.name)\n"
+        }
+        for spell in spells {
+            deckString += "\(spell.amount) \(spell.name)\n"
+        }
+        for land in lands {
+            deckString += "\(land.amount) \(land.name)\n"
+        }
+        if deck.hasSideboard {
+            deckString += "Sideboard\n"
+            for card in sideboard {
+                deckString += "\(card.amount) \(card.name)\n"
+            }
+        }
+        
+        let vc = UIActivityViewController(activityItems: [deckString], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?[1]
+        present(vc, animated: true)
     }
     
     @objc private func searchForCards() {

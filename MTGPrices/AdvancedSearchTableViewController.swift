@@ -48,7 +48,10 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         super.viewDidLoad()
         
         title = "Filters"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped)),
+            UIBarButtonItem(title: "Clear All", style: .plain, target: self, action: #selector(resetFilters))
+        ]
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +80,29 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         }
         store.dispatch(PrepareForSearch(parameters: createParameters()))
         _ = navigationController!.popViewController(animated: true)
+    }
+    
+    @objc private func resetFilters() {
+        cardName = nil
+        cmcRestriction = "equal to "
+        cmc = "any"
+        rulesText = nil
+        subtype = nil
+        colors = [String]()
+        supertypes = [String]()
+        types = [String]()
+        powerRestriction = "equal to "
+        power = "any"
+        toughnessRestriction = "equal to "
+        toughness = "any"
+        rarities = [String]()
+        formats = [String]()
+        matchColorsExactly = false
+        andColors = false
+        andTypes = false
+        mustHaveImage = false
+        
+        tableView.reloadData()
     }
     
     private func createParameters() -> [String: Any] {

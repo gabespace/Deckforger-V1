@@ -59,6 +59,10 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         return self.cardResult?.setName ?? self.card!.setName
     }()
     
+    lazy var rarity: String = {
+        return self.cardResult?.rarity ?? self.card!.rarity
+    }()
+    
     lazy var power: String? = {
         return self.shouldUseResult ? self.cardResult!.power : self.card!.power
     }()
@@ -199,6 +203,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
             var parameters: [String: Any] = [:]
             parameters["name"] = getFlippedName()
             waitingForFlippedResult = true
+            let flipSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            flipSpinner.startAnimating()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: flipSpinner)
             store.dispatch(searchForAdditionalCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
         }
         
@@ -237,7 +244,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     // MARK: - Methods
     
     func displayFlipButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "flip"), style: .plain, target: self, action: #selector(flipButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain, target: self, action: #selector(flipButtonPressed))
     }
     
     func flipButtonPressed() {
@@ -260,8 +267,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         tableViewData[2] = flippedCard?.type ?? ""
         tableViewData[3] = (flippedCard?.power ?? "") + "/" + (flippedCard?.toughness ?? "")
         tableViewData[4] = flippedCard?.setName ?? ""
-        tableViewData[5] = flippedCard?.text ?? ""
-        tableViewData[6] = flippedCard?.flavor ?? ""
+        tableViewData[5] = flippedCard?.rarity ?? ""
+        tableViewData[6] = flippedCard?.text ?? ""
+        tableViewData[7] = flippedCard?.flavor ?? ""
         image = flippedImage
     }
     
@@ -271,8 +279,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         tableViewData[2] = type
         tableViewData[3] = (power ?? "") + "/" + (toughness ?? "")
         tableViewData[4] = set
-        tableViewData[5] = text ?? ""
-        tableViewData[6] = flavor ?? ""
+        tableViewData[5] = rarity
+        tableViewData[6] = text ?? ""
+        tableViewData[7] = flavor ?? ""
         image = mainImage
     }
     
@@ -382,6 +391,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 }
             } else {
                 flippedCard = nil
+                navigationItem.rightBarButtonItems?.removeAll()
                 present(appDelegate.errorAlert(description: "Unable to retrieve flipped card data."), animated: true)
             }
         }

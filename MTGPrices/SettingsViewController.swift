@@ -51,6 +51,7 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
         store.unsubscribe(self)
     }
     
+    
     // MARK: - TableView Data Source
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

@@ -287,11 +287,11 @@ extension AdvancedSearchTableViewController {
     }
     
     struct ButtonTags {
-        static let name = 0
-        static let cmcRestriction = 10
-        static let cmcAmount = 11
-        static let text = 2
-        static let subtype = 6
+        static let name = 1
+        static let cmcRestriction = 11
+        static let cmcAmount = 12
+        static let text = 3
+        static let subtype = 7
     }
     
     struct PickerViewTags {
@@ -308,7 +308,7 @@ extension AdvancedSearchTableViewController {
     }
     
     struct Filters {
-        static let names = ["Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format", nil]
+        static let names = [nil, "Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format"]
         static let colors = ["White", "Blue", "Red", "Black", "Green"]
         static let types = ["Artifact", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery", "Tribal"]
         static let supertypes = ["Legendary", "Snow"]
@@ -317,17 +317,17 @@ extension AdvancedSearchTableViewController {
     }
     
     struct Sections {
-        static let name = 0
-        static let cmc = 1
-        static let rulesText = 2
-        static let color = 3
-        static let type = 4
-        static let supertype = 5
-        static let subtype = 6
-        static let pt = 7
-        static let rarity = 8
-        static let format = 9
-        static let hasImage = 10
+        static let hasImage = 0
+        static let name = 1
+        static let cmc = 2
+        static let rulesText = 3
+        static let color = 4
+        static let type = 5
+        static let supertype = 6
+        static let subtype = 7
+        static let pt = 8
+        static let rarity = 9
+        static let format = 10
     }
     
 }

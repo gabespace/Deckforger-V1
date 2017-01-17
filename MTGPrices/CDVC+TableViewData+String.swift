@@ -1,5 +1,5 @@
 //
-//  CDVC+TableViewData.swift
+//  CDVC+TableViewData+String.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 1/10/17.
@@ -35,7 +35,11 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.fieldCell, for: indexPath) as! FieldTableViewCell
             cell.fieldTitle.text = Sections.names[indexPath.section]
-            cell.fieldData.text = tableViewData[indexPath.section].replacingOccurrences(of: "−", with: "-")
+            if Sections.names[indexPath.section] == "Text" {
+                cell.fieldData.attributedText = tableViewData[indexPath.section].attributedStringWithManaSymbols
+            } else {
+                cell.fieldData.text = tableViewData[indexPath.section]
+            }
             if Sections.names[indexPath.section] == "Flavor" {
                 cell.fieldData.font = UIFont(name: "MPlantin-Italic", size: 17.0)
             } else {
@@ -54,7 +58,37 @@ extension CardDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     struct Sections {
-        static let names = ["Name", "Cost", "Type", "P/T", "Set", "Text", "Flavor"]
+        static let names = ["Name", "Cost", "Type", "P/T", "Set", "Rarity", "Text", "Flavor"]
+    }
+    
+}
+
+extension String {
+    
+    var attributedStringWithManaSymbols: NSAttributedString {
+        let attributedString = NSMutableAttributedString()
+        for component in self.replacingOccurrences(of: "−", with: "-").components(separatedBy: CharacterSet(charactersIn: "{}")) {
+            if let image = UIImage(named: component.replacingOccurrences(of: "/", with: ":")) {
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = image
+                imageAttachment.setImageHeight(height: 15.0)
+                attributedString.append(NSAttributedString(attachment: imageAttachment))
+            } else {
+                attributedString.append(NSAttributedString(string: component))
+            }
+        }
+        return attributedString
+    }
+    
+}
+
+extension NSTextAttachment {
+    
+    func setImageHeight(height: CGFloat) {
+        guard let image = image else { return }
+        let ratio = image.size.width / image.size.height
+        
+        bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: ratio * height, height: height)
     }
     
 }
