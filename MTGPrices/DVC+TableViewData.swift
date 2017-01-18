@@ -176,7 +176,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.imageLabel.text = "No Image"
                 cell.cardImageView.isHidden = true
             }
-            cell.configureCost(from: creature.manaCost!.createManaCostImages())
+            cell.configureCost(from: creature.manaCost?.createManaCostImages())
             return cell
         case 1:
             // Spell
@@ -185,7 +185,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.amountLabel.text = "\(spell.amount)"
             cell.title.text = spell.name
             cell.subtitle.text = spell.type
-            if !spell.isDownloadingImage && spell.imageUrl != nil {
+            if !spell.isDownloadingImage && spell.imageData != nil {
                 cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
                 cell.cardImageView.image = UIImage(data: spell.imageData! as Data)
@@ -207,7 +207,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.amountLabel.text = "\(land.amount)"
             cell.title.text = land.name
             cell.subtitle.text = land.type
-            if !land.isDownloadingImage && land.imageUrl != nil && land.imageData != nil {
+            if !land.isDownloadingImage && land.imageData != nil {
                 cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
                 cell.cardImageView.image = UIImage(data: land.imageData! as Data)
@@ -228,7 +228,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.amountLabel.text = "\(sideboardCard.amount)"
             cell.title.text = sideboardCard.name
             cell.subtitle.text = sideboardCard.type
-            if !sideboardCard.isDownloadingImage && sideboardCard.imageUrl != nil {
+            if !sideboardCard.isDownloadingImage && sideboardCard.imageData != nil {
                 cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
                 cell.cardImageView.image = UIImage(data: sideboardCard.imageData! as Data)

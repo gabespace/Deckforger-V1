@@ -452,6 +452,28 @@ struct StateReducer: Reducer {
                 appDelegate.saveContext()
             }
             
+        case let action as ReDownloadImageForCard:
+            guard let urlString = action.card.imageUrl else { break }
+            
+            action.card.isDownloadingImage = true
+            state.isDownloadingImages = true
+            if let url = URL(string: urlString) {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            action.card.imageData = data as NSData
+                            action.card.isDownloadingImage = false
+                            store.dispatch(ImagesDownloadComplete())
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            action.card.isDownloadingImage = false
+                            store.dispatch(ImagesDownloadComplete())
+                        }
+                    }
+                }
+            }
+            
         // MARK: - Search Actions
             
         case let action as SearchForCards:

@@ -63,8 +63,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     func newState(state: State) { }
     
     @objc private func saveEdits() {
-        if isNameBeingEdited {
-            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DeckNameTableViewCell
+        if isNameBeingEdited, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? DeckNameTableViewCell {
             cell.nameTextField.resignFirstResponder()
         }
         
@@ -74,7 +73,7 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
             store.dispatch(EditDeck(deck: deck!, name: newName, format: formats[currentFormatIndex], hasSideboard: hasSideboard))
         }
         
-        _ = navigationController!.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func deleteDeck() {
@@ -143,9 +142,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 1:
-            tableView.cellForRow(at: IndexPath(row: currentFormatIndex, section: 1))!.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row: currentFormatIndex, section: 1))?.accessoryType = .none
             currentFormatIndex = indexPath.row
-            tableView.cellForRow(at: indexPath)!.accessoryType = .checkmark
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         case 3:
             let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))

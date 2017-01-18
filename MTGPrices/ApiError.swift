@@ -15,8 +15,7 @@ struct ApiError: Mappable, Error {
     
     /// English description of `status`. Guaranteed to exist if `status` has a value.
     var type: String?
-    
-    /// This value may be "Rate Limit Exceeded"
+
     var message: String?
     
     init?(map: Map) { }

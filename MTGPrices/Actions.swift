@@ -103,6 +103,10 @@ struct UnmakeCardCommander: Action {
     let cardResult: CardResult?
 }
 
+struct ReDownloadImageForCard: Action {
+    let card: Card
+}
+
 // MARK: - Search Actions
 
 struct PrepareForSearch: Action {

@@ -15,17 +15,15 @@ func searchForCardsActionCreator(url: URLConvertible, parameters: Parameters, pr
     return { state, store in
         
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            // Completion handler
+            // Completion handler.
             
             guard let json = response.result.value else {
-                print("error retrieving cards")
                 let errorCode = ErrorCode(rawValue: response.response?.statusCode ?? 0)
-                let apiError = ApiError(status: errorCode, type: nil, message: "Error retrieving card data")
+                let apiError = ApiError(status: errorCode, type: nil, message: "Unable to connect to online card database. Please check your network connection and try again.")
                 store.dispatch(SearchForCards(result: Result.failure(apiError), parameters: parameters, isLoading: false, currentPage: currentPage))
                 return
             }
             guard response.response?.statusCode == 200 else {
-                print("error - status code isn't 200")
                 let apiError = Mapper<ApiError>().map(JSONObject: json)!
                 store.dispatch(SearchForCards(result: Result.failure(apiError), parameters: parameters, isLoading: false, currentPage: currentPage))
                 return

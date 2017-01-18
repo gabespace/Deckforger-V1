@@ -31,6 +31,10 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         return self.cardResult?.name ?? self.card!.name
     }()
     
+    lazy var names: [String]? = {
+        return self.cardResult?.names ?? self.card?.names?.flippedNames()
+    }()
+    
     lazy var isCommander: Bool = {
         return self.card?.isCommander ?? false
     }()
@@ -162,66 +166,12 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         
         title = card?.name ?? cardResult?.name
         
-        if deck.format != "Commander" {
-            makeCommanderButton.isHidden = true
-        } else if !type.contains("Creature") && !type.contains("Planeswalker") {
-            makeCommanderButton.isHidden = true
-        } else if isCommander {
-            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
-        } else {
-            makeCommanderButton.setTitle("Make Commander", for: .normal)
-        }
-        
-        // Fetch/display main image.
-        spinner.hidesWhenStopped = true
-        imageUnavailableLabel.isHidden = true
-        spinner.startAnimating()
-        if let imageUrl = cardResult?.imageUrl {
-            // Download card result image.
-            fetchMainImage(from: imageUrl)
-        } else if !shouldUseResult && card!.imageData == nil {
-            // No image.
-            spinner.stopAnimating()
-            imageUnavailableLabel.isHidden = false
-            imageView.isHidden = true
-        } else if !shouldUseResult && !card!.isDownloadingImage {
-            // Display existing card image.
-            mainImage = UIImage(data: card!.imageData! as Data)
-            image = mainImage
-            spinner.stopAnimating()
-        } else if !shouldUseResult && card!.isDownloadingImage {
-            // Card image is being downloaded - keep animating spinner.
-        } else {
-            // No image.
-            spinner.stopAnimating()
-            imageUnavailableLabel.isHidden = false
-            imageView.isHidden = true
-        }
-        
-        // Fetch flip card & its image.
-        if layout == "double-faced" {
-            var parameters: [String: Any] = [:]
-            parameters["name"] = getFlippedName()
-            waitingForFlippedResult = true
-            let flipSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            flipSpinner.startAnimating()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: flipSpinner)
-            store.dispatch(searchForAdditionalCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
-        }
-        
+        formatSideboardButtons()
+        formatCommanderButton()
+        formatMainImage()
+        formatFlipCard()
         getDeckCount()
         displayMainSideInfo()
-        
-        if !deck.hasSideboard {
-            sideboardButton.isHidden = true
-            decrementSideboardButton.isHidden = true
-            sideCountButton.isHidden = true
-            toolBar.items!.remove(at: 7)
-            toolBar.items!.remove(at: 6)
-            toolBar.items!.remove(at: 5)
-        } else {
-            toolBar.items!.removeFirst()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -243,11 +193,83 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     // MARK: - Methods
     
+    private func formatCommanderButton() {
+        if deck.format != "Commander" {
+            makeCommanderButton.isHidden = true
+        } else if !type.contains("Creature") && !type.contains("Planeswalker") {
+            makeCommanderButton.isHidden = true
+        } else if isCommander {
+            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+        } else {
+            makeCommanderButton.setTitle("Make Commander", for: .normal)
+        }
+    }
+    
+    private func formatMainImage() {
+        spinner.hidesWhenStopped = true
+        imageUnavailableLabel.isHidden = true
+        spinner.startAnimating()
+        if let imageUrl = cardResult?.imageUrl {
+            print("this is a card result. downloading image.")
+            // Download card result image.
+            fetchMainImage(from: imageUrl)
+        } else if !shouldUseResult && card!.imageData == nil {
+            print("this is a card. its imageData is nil.")
+            // No image.
+            spinner.stopAnimating()
+            imageUnavailableLabel.isHidden = false
+            imageView.isHidden = true
+        } else if !shouldUseResult && !card!.isDownloadingImage {
+            print("this is a card. its imageData is non-nil and it is not downloading its image.")
+            // Display existing card image.
+            mainImage = UIImage(data: card!.imageData! as Data)
+            image = mainImage
+            spinner.stopAnimating()
+        } else if !shouldUseResult && card!.isDownloadingImage {
+            print("this is a card. its imageData is non-nil and it is downloading its image.")
+            // Card image is being downloaded - keep animating spinner.
+        } else {
+            print("final else")
+            // No image.
+            spinner.stopAnimating()
+            imageUnavailableLabel.isHidden = false
+            imageView.isHidden = true
+        }
+    }
+    
+    private func formatFlipCard() {
+        if layout == "double-faced" {
+            waitingForFlippedResult = true
+            var parameters: [String: Any] = [:]
+            parameters["name"] = getFlippedName()
+            if name != names?[0] {
+                parameters["setName"] = set
+            }
+            let flipSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            flipSpinner.startAnimating()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: flipSpinner)
+            store.dispatch(searchForAdditionalCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+        }
+    }
+    
+    private func formatSideboardButtons() {
+        if !deck.hasSideboard {
+            sideboardButton.isHidden = true
+            decrementSideboardButton.isHidden = true
+            sideCountButton.isHidden = true
+            toolBar.items!.remove(at: 7)
+            toolBar.items!.remove(at: 6)
+            toolBar.items!.remove(at: 5)
+        } else {
+            toolBar.items!.removeFirst()
+        }
+    }
+    
     func displayFlipButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain, target: self, action: #selector(flipButtonPressed))
     }
     
-    func flipButtonPressed() {
+    @objc private func flipButtonPressed() {
         isFlipped ? displayMainSideInfo() : displayFlipSideInfo()
         isFlipped = !isFlipped
         tableView.reloadData()
@@ -329,7 +351,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 deckCountButton.setTitle("Main: 0", for: .normal)
             }
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please try again."), animated: true) { [unowned self] in
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again."), animated: true) { [unowned self] in
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }
@@ -347,7 +369,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 sideCountButton.setTitle("Side: 0", for: .normal)
             }
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please try again."), animated: true) { [unowned self] in
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again."), animated: true) { [unowned self] in
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }
@@ -388,6 +410,8 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 flippedCard = state.additionalCardResults!.value!.cards[0]
                 if let imageUrl = flippedCard?.imageUrl {
                     fetchFlipImage(from: imageUrl)
+                } else {
+                    print("flip side has no image")
                 }
             } else {
                 flippedCard = nil

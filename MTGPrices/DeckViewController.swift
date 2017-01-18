@@ -58,6 +58,7 @@ class DeckViewController: UIViewController, StoreSubscriber {
         statsScrollView.addSubview(colorPieChartView)
         statsScrollView.addSubview(typePieChartView)
         statsScrollView.addSubview(costBarChartView)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,9 +147,14 @@ class DeckViewController: UIViewController, StoreSubscriber {
         cardRequest.predicate = NSPredicate(format: "deck.id == %@", deck.id)
         if let cards = try? appDelegate.persistentContainer.viewContext.fetch(cardRequest) {
             self.cards = cards
+            for card in cards {
+                if !card.isDownloadingImage && card.imageUrl != nil && card.imageData == nil {
+                    store.dispatch(ReDownloadImageForCard(card: card))
+                }
+            }
             tableView.reloadData()
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored cards for this deck. Please try again."), animated: true)
+            present(appDelegate.errorAlert(description: "Unable to access stored cards for this deck. Please close the app and try again."), animated: true)
             _ = navigationController?.popViewController(animated: true)
         }
     }

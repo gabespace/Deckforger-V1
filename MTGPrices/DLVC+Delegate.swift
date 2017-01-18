@@ -120,9 +120,10 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     // MARK: - ButtonDelegate Methods
     
     func buttonTapped(deckId id: String) {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "EditDeckTableViewController") as! EditDeckTableViewController
-        vc.deck = decks[(decks.index { $0.id == id })!]
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as? EditDeckTableViewController {
+            vc.deck = decks[(decks.index { $0.id == id })!]
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     

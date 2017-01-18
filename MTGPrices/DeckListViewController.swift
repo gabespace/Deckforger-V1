@@ -52,14 +52,16 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     // MARK: - Methods
     
     @objc private func showSettings() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as? SettingsTableViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc private func addDeck() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as! EditDeckTableViewController
-        vc.isCreatingNewDeck = true
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as? EditDeckTableViewController {
+            vc.isCreatingNewDeck = true
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - StoreSubscriber Delegate Methods
