@@ -29,7 +29,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MTGPrices.xcscheme</key>
+		<key>Pods-MTGDeckBuilder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11A79F79F144DE35CDA6A74A3D8AB491</key>
+		<key>6E008849895F431C6731A42FB90ECF3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89ABC52475B95F2E2F72D7C3D42325D3</key>
+		<key>82E99D042A3F4358F7A2698260A0D861</key>
 		<dict>
 			<key>primary</key>
 			<true/>

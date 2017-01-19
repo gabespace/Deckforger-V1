@@ -1,6 +1,0 @@
-framework module Pods_MTGPrices {
-  umbrella header "Pods-MTGPrices-umbrella.h"
-
-  export *
-  module * { export * }
-}

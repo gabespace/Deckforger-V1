@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-               BuildableName = "MTGDeckBuilder.app"
-               BlueprintName = "MTGDeckBuilder"
-               ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
+               BlueprintIdentifier = "6E008849895F431C6731A42FB90ECF3F"
+               BuildableName = "Pods_MTGDeckBuilder.framework"
+               BlueprintName = "Pods-MTGDeckBuilder"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-            BuildableName = "MTGPrices.app"
-            BlueprintName = "MTGPrices"
-            ReferencedContainer = "container:MTGPrices.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,23 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-            BuildableName = "MTGDeckBuilder.app"
-            BlueprintName = "MTGDeckBuilder"
-            ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
+            BlueprintIdentifier = "6E008849895F431C6731A42FB90ECF3F"
+            BuildableName = "Pods_MTGDeckBuilder.framework"
+            BlueprintName = "Pods-MTGDeckBuilder"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -77,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB0F99901DECE5F70085C721"
-            BuildableName = "MTGDeckBuilder.app"
-            BlueprintName = "MTGDeckBuilder"
-            ReferencedContainer = "container:MTGDeckBuilder.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
