@@ -10,6 +10,13 @@ import Foundation
 import ReSwift
 import Alamofire
 
+// MARK: - Misc Actions
+
+struct ReceivedMemoryWarning: Action {
+    let restorationIdentifier: String
+}
+
+
 // MARK: - Deck Actions
 
 struct AddNewDeck: Action {

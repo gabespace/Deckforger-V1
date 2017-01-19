@@ -99,7 +99,7 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DeckViewController") as? DeckViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.deckView) as? DeckViewController {
             vc.deck = displayedDecks[indexPath.section][indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -120,7 +120,7 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     // MARK: - ButtonDelegate Methods
     
     func buttonTapped(deckId id: String) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as? EditDeckTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck) as? EditDeckTableViewController {
             vc.deck = decks[(decks.index { $0.id == id })!]
             navigationController?.pushViewController(vc, animated: true)
         }

@@ -36,11 +36,6 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
         title = "Settings"
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self)
@@ -49,6 +44,11 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         store.unsubscribe(self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        store.dispatch(ReceivedMemoryWarning(restorationIdentifier: restorationIdentifier!))
     }
     
     

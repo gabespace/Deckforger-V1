@@ -42,6 +42,21 @@ struct StateReducer: Reducer {
         
         switch action {
             
+        // MARK: - Misc Actions
+            
+        case let action as ReceivedMemoryWarning:
+            switch action.restorationIdentifier {
+            case StoryboardIdentifiers.addCard, StoryboardIdentifiers.filters:
+                state.additionalCardResults = nil
+            case StoryboardIdentifiers.cardDetail:
+                state.parameters = nil
+                state.cardResults = nil
+            default:
+                state.parameters = nil
+                state.cardResults = nil
+                state.additionalCardResults = nil
+            }
+            
         // MARK: - Deck Actions
             
         case let action as AddNewDeck:

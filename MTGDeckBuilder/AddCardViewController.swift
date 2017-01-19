@@ -62,7 +62,9 @@ class AddCardViewController: UIViewController, StoreSubscriber {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        store.dispatch(ReceivedMemoryWarning(restorationIdentifier: restorationIdentifier!))
+        cardResults.removeSubrange(0...cardResults.count / 2)
+        tableView.reloadData()
     }
     
     
@@ -71,7 +73,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     @objc private func advancedSearchButtonTapped() {
         isDirty = true
         self.searchBar.resignFirstResponder()
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "AdvancedSearchTableViewController") as? AdvancedSearchTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.filters) as? AdvancedSearchTableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -117,10 +119,10 @@ class AddCardViewController: UIViewController, StoreSubscriber {
                     headers = result.value!.headers
                     tableView.reloadData()
                 } else {
+                    tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
                     if let error = result.error as? ApiError {
                         present(appDelegate.errorAlert(description: error.message, title: "Connection Error"), animated: true)
                     }
-                    tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
                 }
             }
         }

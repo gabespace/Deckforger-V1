@@ -45,20 +45,20 @@ class DeckListViewController: UIViewController, StoreSubscriber {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        store.dispatch(ReceivedMemoryWarning(restorationIdentifier: restorationIdentifier!))
     }
     
     
     // MARK: - Methods
     
     @objc private func showSettings() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as? SettingsTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settings) as? SettingsTableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @objc private func addDeck() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "EditDeckTableViewController") as? EditDeckTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck) as? EditDeckTableViewController {
             vc.isCreatingNewDeck = true
             navigationController?.pushViewController(vc, animated: true)
         }

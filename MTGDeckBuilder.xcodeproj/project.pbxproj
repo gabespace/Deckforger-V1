@@ -22,6 +22,7 @@
 		CB16D3631DF2079200893C3E /* ASTVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */; };
 		CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212251DEF8AE500C51044 /* AddCardViewController.swift */; };
 		CB2212291DEF930400C51044 /* ACVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212281DEF930400C51044 /* ACVC+Delegate.swift */; };
+		CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */; };
 		CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB51DEE275A00AD44FD /* Search For Cards AC.swift */; };
 		CB271AB81DEE293500AD44FD /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB71DEE293500AD44FD /* ApiError.swift */; };
 		CB271ABA1DEE2A8800AD44FD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB91DEE2A8800AD44FD /* Errors.swift */; };
@@ -78,6 +79,7 @@
 		CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB2212251DEF8AE500C51044 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		CB2212281DEF930400C51044 /* ACVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACVC+Delegate.swift"; sourceTree = "<group>"; };
+		CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiers.swift; sourceTree = "<group>"; };
 		CB271AB51DEE275A00AD44FD /* Search For Cards AC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search For Cards AC.swift"; sourceTree = "<group>"; };
 		CB271AB71DEE293500AD44FD /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		CB271AB91DEE2A8800AD44FD /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0F99981DECE5F70085C721 /* Main.storyboard */,
+				CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */,
 				CB7CA2731DEE66FB00C95B83 /* View Controllers */,
 				CB89B7C71DECF923009FCAA9 /* Model */,
 				CB89B7C41DECF3FF009FCAA9 /* Core Data */,
@@ -456,6 +459,7 @@
 				CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */,
 				CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */,
+				CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */,
 				CB89B7AA1DECF36F009FCAA9 /* DLVC+Delegate.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */,
 				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,

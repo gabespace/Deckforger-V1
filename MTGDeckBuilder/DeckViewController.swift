@@ -79,13 +79,13 @@ class DeckViewController: UIViewController, StoreSubscriber {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        store.unsubscribe(self)
         NotificationCenter.default.removeObserver(self)
+        store.unsubscribe(self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        store.dispatch(ReceivedMemoryWarning(restorationIdentifier: restorationIdentifier!))
     }
     
     
@@ -138,7 +138,7 @@ class DeckViewController: UIViewController, StoreSubscriber {
     }
     
     @objc private func searchForCards() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "AddCardViewController") as? AddCardViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.addCard) as? AddCardViewController {
             vc.deck = deck
             navigationController?.pushViewController(vc, animated: true)
         }

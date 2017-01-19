@@ -204,7 +204,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "CardDetailViewController") as? CardDetailViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail) as? CardDetailViewController {
             vc.deck = deck
             let section = isCommander ? indexPath.section - 1 : indexPath.section
             switch section {

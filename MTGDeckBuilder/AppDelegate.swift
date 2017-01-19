@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return ac
     }
 
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -79,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
     
     // MARK: - Core Data Saving support
     

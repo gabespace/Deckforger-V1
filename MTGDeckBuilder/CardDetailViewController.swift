@@ -175,11 +175,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         displayMainSideInfo()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self)
@@ -189,6 +184,11 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         super.viewWillDisappear(animated)
         store.dispatch(UpdateCardReference(deck: deck, cardId: id))
         store.unsubscribe(self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        store.dispatch(ReceivedMemoryWarning(restorationIdentifier: restorationIdentifier!))
     }
     
     

@@ -117,7 +117,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         } else {
             rowIsSelected = false
             let card = cardResults[indexPath.row]
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "CardDetailViewController") as? CardDetailViewController {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail) as? CardDetailViewController {
                 vc.cardResult = card
                 vc.deck = deck
                 vc.shouldUseResult = true
