@@ -45,8 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
-    func errorAlert(description: String?) -> UIAlertController {
-        let ac = UIAlertController(title: "Error", message: description, preferredStyle: .alert)
+    func errorAlert(description: String?, title: String?) -> UIAlertController {
+        let ac = UIAlertController(title: title ?? "Error", message: description, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         return ac
     }

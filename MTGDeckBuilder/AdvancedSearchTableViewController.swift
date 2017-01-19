@@ -13,6 +13,8 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     
     // MARK: - Stored Properties
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var cardName: String?
     var cmcRestriction = "equal to "
     var cmc = "any"
@@ -257,6 +259,14 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     // MARK: - StoreSubscriber Delegate Methods
     
     func newState(state: State) {
+        if let error = state.error {
+            switch error {
+            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            }
+            return
+        }
         configureInitialSelections(state.parameters)
     }
     

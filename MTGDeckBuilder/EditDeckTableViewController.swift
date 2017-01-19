@@ -13,6 +13,8 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     // MARK: - Properties
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var isCreatingNewDeck = false
     
     var deck: Deck?
@@ -60,7 +62,16 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     // MARK: - Methods
     
-    func newState(state: State) { }
+    func newState(state: State) {
+        if let error = state.error {
+            switch error {
+            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            }
+            return
+        }
+    }
     
     @objc private func saveEdits() {
         if isNameBeingEdited, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? DeckNameTableViewCell {

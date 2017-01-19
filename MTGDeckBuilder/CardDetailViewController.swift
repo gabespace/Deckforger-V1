@@ -347,7 +347,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 deckCountButton.setTitle("Main: 0", for: .normal)
             }
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again."), animated: true) { [unowned self] in
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again.", title: "Loading Error"), animated: true) { [unowned self] in
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }
@@ -365,7 +365,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 sideCountButton.setTitle("Side: 0", for: .normal)
             }
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again."), animated: true) { [unowned self] in
+            present(appDelegate.errorAlert(description: "Unable to access stored card count. Please close the app and try again.", title: "Loading Error"), animated: true) { [unowned self] in
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }
@@ -393,6 +393,14 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     // MARK: - StoreSubscriber Delegate Methods
     
     func newState(state: State) {
+        if let error = state.error {
+            switch error {
+            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            }
+            return
+        }
         getDeckCount()
         getSideboardCount()
         
@@ -410,7 +418,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
             } else {
                 flippedCard = nil
                 navigationItem.rightBarButtonItems?.removeAll()
-                present(appDelegate.errorAlert(description: "Unable to retrieve flipped card data."), animated: true)
+                present(appDelegate.errorAlert(description: "Unable to retrieve flipped card data.", title: "Connection Error"), animated: true)
             }
         }
     }

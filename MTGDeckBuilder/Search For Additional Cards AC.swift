@@ -20,14 +20,11 @@ func searchForAdditionalCardsActionCreator(url: URLConvertible, parameters: Para
             guard let json = response.result.value else {
                 print("error retrieving cards")
                 let errorCode = ErrorCode(rawValue: response.response?.statusCode ?? 0)
-                let apiError = ApiError(status: errorCode, type: nil, message: "Error retrieving card data")
+                let apiError = ApiError(status: errorCode, type: nil, message: "Unable to connect to online card database. Please check your network connection and try again.")
                 store.dispatch(SearchForAdditionalCards(result: Result.failure(apiError), isLoading: false))
                 return
             }
             guard response.response?.statusCode == 200 else {
-                print("error - status code isn't 200")
-                // Assuming statusCode is guaranteed to have a non-optional value.
-                // TODO: - Check that ^
                 let apiError = Mapper<ApiError>().map(JSONObject: json)!
                 store.dispatch(SearchForAdditionalCards(result: Result.failure(apiError), isLoading: false))
                 return

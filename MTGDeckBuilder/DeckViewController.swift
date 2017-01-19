@@ -156,7 +156,7 @@ class DeckViewController: UIViewController, StoreSubscriber {
             }
             tableView.reloadData()
         } else {
-            present(appDelegate.errorAlert(description: "Unable to access stored cards for this deck. Please close the app and try again."), animated: true)
+            present(appDelegate.errorAlert(description: "Unable to access stored cards for this deck. Please close the app and try again.", title: "Loading Error"), animated: true)
             _ = navigationController?.popViewController(animated: true)
         }
     }
@@ -165,6 +165,15 @@ class DeckViewController: UIViewController, StoreSubscriber {
     // MARK: - StoreSubscriber Delegate Methods
     
     func newState(state: State) {
+        if let error = state.error {
+            switch error {
+            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            }
+            return
+        }
+        
         fetchCards()
         if !state.isDownloadingImages {
             tableView.reloadData()

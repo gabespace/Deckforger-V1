@@ -378,7 +378,7 @@ struct StateReducer: Reducer {
             if let cardResult = action.cardResult {
                 // Add new commander card to deck from a CardResult.
                 let request = Card.createFetchRequest()
-                request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false AND isCommander == true", action.deck.id, cardResult.id)
+                request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isCommander == true", action.deck.id, cardResult.id)
                 if let existingCards = try? context.fetch(request) {
                     if existingCards.isEmpty {
                         let card = Card(context: context)
@@ -438,7 +438,7 @@ struct StateReducer: Reducer {
         case let action as UnmakeCardCommander:
             if let cardResult = action.cardResult {
                 let request = Card.createFetchRequest()
-                request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isSideboard == false AND isCommander == true", action.deck.id, cardResult.id)
+                request.predicate = NSPredicate(format: "deck.id == %@ AND id == %@ AND isCommander == true", action.deck.id, cardResult.id)
                 if let existingCards = try? context.fetch(request) {
                     if !existingCards.isEmpty {
                         existingCards[0].isCommander = false

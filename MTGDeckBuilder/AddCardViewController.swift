@@ -80,6 +80,14 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     // MARK: - StoreSubscriber Delegate Methods
     
     func newState(state: State) {
+        if let error = state.error {
+            switch error {
+            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            }
+            return
+        }
         guard isDirty else { return }
         
         if let newParameters = state.parameters {
@@ -110,7 +118,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
                     tableView.reloadData()
                 } else {
                     if let error = result.error as? ApiError {
-                        present(appDelegate.errorAlert(description: error.message), animated: true)
+                        present(appDelegate.errorAlert(description: error.message, title: "Connection Error"), animated: true)
                     }
                     tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
                 }
