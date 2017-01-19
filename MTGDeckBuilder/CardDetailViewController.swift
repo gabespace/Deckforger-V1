@@ -90,6 +90,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         }
     }
     
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -109,29 +110,13 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     @IBAction func makeCommanderButtonPressed(_ sender: UIButton) {
         guard !sender.isHidden else { return }
         
-        if sender.titleLabel!.text == "Make Commander" {
+        if sender.titleLabel!.text == ButtonLabels.makeCommander {
             store.dispatch(MakeCardCommander(deck: deck, card: card, cardResult: cardResult))
-            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+            makeCommanderButton.setTitle(ButtonLabels.unmakeCommander, for: .normal)
         } else {
             store.dispatch(UnmakeCardCommander(deck: deck, card: card, cardResult: cardResult))
-            makeCommanderButton.setTitle("Make Commander", for: .normal)
+            makeCommanderButton.setTitle(ButtonLabels.makeCommander, for: .normal)
         }
-    }
-    
-    @IBAction func addToSideboardButtonPressed(_ sender: UIButton) {
-        if shouldUseResult {
-            store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!, amount: 1))
-        } else {
-            if !card!.isSideboard {
-                store.dispatch(AddMainboardCardToSideboard(deck: deck, mainboardCard: card!, amount: 1))
-            } else {
-                store.dispatch(IncrementSideboardCardAmount(deck: deck, card: card!, amount: 1))
-            }
-        }
-    }
-
-    @IBAction func removeFromSideboardButtonPressed(_ sender: UIButton) {
-        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: id, amount: 1))
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
@@ -146,8 +131,24 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         }
     }
     
+    @IBAction func addToSideboardButtonPressed(_ sender: UIButton) {
+        if shouldUseResult {
+            store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!, amount: 1))
+        } else {
+            if card!.isSideboard {
+                store.dispatch(IncrementSideboardCardAmount(deck: deck, card: card!, amount: 1))
+            } else {
+                store.dispatch(AddMainboardCardToSideboard(deck: deck, mainboardCard: card!, amount: 1))
+            }
+        }
+    }
+    
     @IBAction func removeButtonPressed(_ sender: UIButton) {
         store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: id, amount: 1))
+    }
+    
+    @IBAction func removeFromSideboardButtonPressed(_ sender: UIButton) {
+        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: id, amount: 1))
     }
     
     
@@ -164,7 +165,7 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         deckCountButton.isUserInteractionEnabled = false
         sideCountButton.isUserInteractionEnabled = false
         
-        title = card?.name ?? cardResult?.name
+        title = name
         
         formatSideboardButtons()
         formatCommanderButton()
@@ -199,9 +200,9 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         } else if !type.contains("Creature") && !type.contains("Planeswalker") {
             makeCommanderButton.isHidden = true
         } else if isCommander {
-            makeCommanderButton.setTitle("Remove as Commander", for: .normal)
+            makeCommanderButton.setTitle(ButtonLabels.unmakeCommander, for: .normal)
         } else {
-            makeCommanderButton.setTitle("Make Commander", for: .normal)
+            makeCommanderButton.setTitle(ButtonLabels.makeCommander, for: .normal)
         }
     }
     
@@ -405,8 +406,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 flippedCard = state.additionalCardResults!.value!.cards[0]
                 if let imageUrl = flippedCard?.imageUrl {
                     fetchFlipImage(from: imageUrl)
-                } else {
-                    print("flip side has no image")
                 }
             } else {
                 flippedCard = nil
@@ -414,6 +413,14 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
                 present(appDelegate.errorAlert(description: "Unable to retrieve flipped card data."), animated: true)
             }
         }
+    }
+    
+    
+    // MARK: Supporting Functionality
+    
+    struct ButtonLabels {
+        static let makeCommander = "Make Commander"
+        static let unmakeCommander = "Remove as Commander"
     }
     
 }

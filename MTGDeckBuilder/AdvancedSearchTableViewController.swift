@@ -74,12 +74,11 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     
     @objc private func searchButtonTapped() {
         if let section = sectionBeingEdited {
-            // User is editing a text field.
             let cell = tableView.cellForRow(at: IndexPath(row: 0, section: section)) as! TextTableViewCell
             cell.textField.resignFirstResponder()
         }
         store.dispatch(PrepareForSearch(parameters: createParameters()))
-        _ = navigationController!.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @objc private func resetFilters() {
@@ -157,14 +156,14 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["cmc"] = restriction + "\(cost)"
         }
         
-        if let p = Int(power) {
+        if let power = Int(power) {
             let restriction = restrictionTerms[pickerViewRestrictions.index(of: powerRestriction)!]
-            parameters["power"] = restriction + "\(p)"
+            parameters["power"] = restriction + "\(power)"
         }
         
-        if let t = Int(toughness) {
+        if let toughness = Int(toughness) {
             let restriction = restrictionTerms[pickerViewRestrictions.index(of: toughnessRestriction)!]
-            parameters["toughness"] = restriction + "\(t)"
+            parameters["toughness"] = restriction + "\(toughness)"
         }
         
         if mustHaveImage {
@@ -264,6 +263,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
 }
 
 extension String {
+    
     var isANumber: Bool {
         return Int(self) != nil
     }
@@ -276,4 +276,5 @@ extension String {
         }
         return []
     }
+    
 }

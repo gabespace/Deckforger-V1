@@ -1,5 +1,5 @@
 //
-//  CDVC+TableViewData+String.swift
+//  CDVC+TableViewData.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 1/10/17.

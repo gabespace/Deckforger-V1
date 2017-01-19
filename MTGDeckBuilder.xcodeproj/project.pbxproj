@@ -29,6 +29,7 @@
 		CB32FAAB1DF8A9A500B7F3FD /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32FAAA1DF8A9A500B7F3FD /* CardTableViewCell.swift */; };
 		CB48D3741DEFB53A00004F4D /* DVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48D3731DEFB53A00004F4D /* DVC+TableViewData.swift */; };
 		CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48F3731E20375C007BF8F8 /* SettingsViewController.swift */; };
+		CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F1A481E3050F9000ECDC0 /* DVC+TabBarDelegate.swift */; };
 		CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */; };
 		CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */; };
 		CB735B931DFB380200263E39 /* Search For Additional Cards AC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB735B921DFB380200263E39 /* Search For Additional Cards AC.swift */; };
@@ -43,7 +44,7 @@
 		CB7B65761E2816820055C390 /* MPlantin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B65741E2816820055C390 /* MPlantin.ttf */; };
 		CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA2741DEE673000C95B83 /* DeckViewController.swift */; };
 		CB81523E1E18693400D74D8A /* SideboardSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */; };
-		CB857ABD1E25841B000C2B5F /* CDVC+TableViewData+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */; };
+		CB857ABD1E25841B000C2B5F /* CDVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */; };
 		CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */; };
 		CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */; };
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
@@ -84,6 +85,7 @@
 		CB32FAAA1DF8A9A500B7F3FD /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		CB48D3731DEFB53A00004F4D /* DVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB48F3731E20375C007BF8F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CB4F1A481E3050F9000ECDC0 /* DVC+TabBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DVC+TabBarDelegate.swift"; sourceTree = "<group>"; };
 		CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchTableViewController.swift; sourceTree = "<group>"; };
 		CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		CB735B921DFB380200263E39 /* Search For Additional Cards AC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search For Additional Cards AC.swift"; sourceTree = "<group>"; };
@@ -98,7 +100,7 @@
 		CB7B65741E2816820055C390 /* MPlantin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MPlantin.ttf; sourceTree = "<group>"; };
 		CB7CA2741DEE673000C95B83 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		CB81523D1E18693400D74D8A /* SideboardSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideboardSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDVC+TableViewData+String.swift"; sourceTree = "<group>"; };
+		CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				CB7CA2741DEE673000C95B83 /* DeckViewController.swift */,
+				CB4F1A481E3050F9000ECDC0 /* DVC+TabBarDelegate.swift */,
 				CB48D3731DEFB53A00004F4D /* DVC+TableViewData.swift */,
 				CBB2F7301DFF5EB200A5BDB6 /* DVC+Charts.swift */,
 				CBDF2D801DF100A400579430 /* String+MTG.swift */,
@@ -310,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */,
-				CB857ABC1E25841B000C2B5F /* CDVC+TableViewData+String.swift */,
+				CB857ABC1E25841B000C2B5F /* CDVC+TableViewData.swift */,
 				CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */,
 				CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */,
 				CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */,
@@ -452,6 +455,7 @@
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
 				CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */,
+				CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */,
 				CB89B7AA1DECF36F009FCAA9 /* DLVC+Delegate.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */,
 				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,
@@ -470,7 +474,7 @@
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* Errors.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String+MTG.swift in Sources */,
-				CB857ABD1E25841B000C2B5F /* CDVC+TableViewData+String.swift in Sources */,
+				CB857ABD1E25841B000C2B5F /* CDVC+TableViewData.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,
 				CB7883531DED00F500E45F7D /* Actions.swift in Sources */,

@@ -76,29 +76,19 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDelegate, UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if isEDH {
-            switch section {
-            case 0: return commanders.count > 1 ? "Commanders" : "Commander"
-            case 1: return "Creatures (\(creaturesCount))"
-            case 2: return "Noncreature Spells (\(spellsCount))"
-            case 3: return "Lands (\(landsCount))"
-            case 4: return "Sideboard (\(sideboardCount))"
-            default: return nil
-            }
-        } else {
-            switch section {
-            case 0: return "Creatures (\(creaturesCount))"
-            case 1: return "Noncreature Spells (\(spellsCount))"
-            case 2: return "Lands (\(landsCount))"
-            case 3: return "Sideboard (\(sideboardCount))"
-            default: return nil
-            }
+        let section = isCommander ? section - 1 : section
+        switch section {
+        case -1: return commanders.count > 1 ? "Commanders" : "Commander"
+        case 0: return "Creatures (\(creaturesCount))"
+        case 1: return "Noncreature Spells (\(spellsCount))"
+        case 2: return "Lands (\(landsCount))"
+        case 3: return "Sideboard (\(sideboardCount))"
+        default: return nil
         }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch (isEDH, deck.hasSideboard) {
+        switch (isCommander, deck.hasSideboard) {
         case (true, true): return 5
         case (true, false): return 4
         case (false, true): return 4
@@ -107,55 +97,38 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isEDH {
-            switch section {
-            case 0: return commanders.count
-            case 1: return creatures.count
-            case 2: return spells.count
-            case 3: return lands.count
-            case 4: return sideboard.count
-            default: return 0
-            }
-        } else {
-            switch section {
-            case 0: return creatures.count
-            case 1: return spells.count
-            case 2: return lands.count
-            case 3: return sideboard.count
-            default: return 0
-            }
+        let section = isCommander ? section - 1 : section
+        switch section {
+        case -1: return commanders.count
+        case 0: return creatures.count
+        case 1: return spells.count
+        case 2: return lands.count
+        case 3: return sideboard.count
+        default: return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var section = indexPath.section
-        if isEDH {
-            if section == 0 {
-                // Commander
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creatureCell, for: indexPath) as! CardTableViewCell
-                let creature = commanders[indexPath.row]
-                cell.amountLabel.text = "\(creature.amount)"
-                cell.title.text = creature.name
-                cell.subtitle.text = creature.type
-                if !creature.isDownloadingImage && creature.imageData != nil {
-                    cell.cardImageView.isHidden = false
-                    cell.imageLabel.isHidden = true
-                    cell.cardImageView.image = UIImage(data: creature.imageData! as Data)
-                } else if creature.isDownloadingImage {
-                    cell.imageLabel.isHidden = false
-                    cell.imageLabel.text = "Loading Image"
-                    cell.cardImageView.isHidden = true
-                } else {
-                    cell.imageLabel.isHidden = false
-                    cell.imageLabel.text = "No Image"
-                    cell.cardImageView.isHidden = true
-                }
-                cell.configureCost(from: creature.manaCost!.createManaCostImages())
-                return cell
-            }
-            section -= 1
-        }
+        let section = isCommander ? indexPath.section - 1 : indexPath.section
         switch section {
+        case -1:
+            // Commander
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creatureCell, for: indexPath) as! CardTableViewCell
+            let creature = commanders[indexPath.row]
+            cell.amountLabel.text = "\(creature.amount)"
+            cell.title.text = creature.name
+            cell.subtitle.text = creature.type
+            if !creature.isDownloadingImage && creature.imageData != nil {
+                cell.imageLabel.isHidden = true
+                cell.cardImageView.isHidden = false
+                cell.cardImageView.image = UIImage(data: creature.imageData! as Data)
+            } else {
+                cell.imageLabel.isHidden = false
+                cell.imageLabel.text = creature.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.cardImageView.isHidden = true
+            }
+            cell.configureCost(from: creature.manaCost?.createManaCostImages())
+            return cell
         case 0:
             // Creature
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creatureCell, for: indexPath) as! CardTableViewCell
@@ -164,16 +137,12 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = creature.name
             cell.subtitle.text = creature.type
             if !creature.isDownloadingImage && creature.imageData != nil {
-                cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
+                cell.cardImageView.isHidden = false
                 cell.cardImageView.image = UIImage(data: creature.imageData! as Data)
-            } else if creature.isDownloadingImage {
-                cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "Loading Image"
-                cell.cardImageView.isHidden = true
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "No Image"
+                cell.imageLabel.text = creature.isDownloadingImage ? "Loading Image" : "No Image"
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: creature.manaCost?.createManaCostImages())
@@ -186,16 +155,12 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = spell.name
             cell.subtitle.text = spell.type
             if !spell.isDownloadingImage && spell.imageData != nil {
-                cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
+                cell.cardImageView.isHidden = false
                 cell.cardImageView.image = UIImage(data: spell.imageData! as Data)
-            } else if spell.isDownloadingImage {
-                cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "Loading Image"
-                cell.cardImageView.isHidden = true
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "No Image"
+                cell.imageLabel.text = spell.isDownloadingImage ? "Loading Image" : "No Image"
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: spell.manaCost?.createManaCostImages())
@@ -208,16 +173,12 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = land.name
             cell.subtitle.text = land.type
             if !land.isDownloadingImage && land.imageData != nil {
-                cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
+                cell.cardImageView.isHidden = false
                 cell.cardImageView.image = UIImage(data: land.imageData! as Data)
-            } else if land.isDownloadingImage {
-                cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "Loading Image"
-                cell.cardImageView.isHidden = true
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "No Image"
+                cell.imageLabel.text = land.isDownloadingImage ? "Loading Image" : "No Image"
                 cell.cardImageView.isHidden = true
             }
             return cell
@@ -229,16 +190,12 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = sideboardCard.name
             cell.subtitle.text = sideboardCard.type
             if !sideboardCard.isDownloadingImage && sideboardCard.imageData != nil {
-                cell.cardImageView.isHidden = false
                 cell.imageLabel.isHidden = true
+                cell.cardImageView.isHidden = false
                 cell.cardImageView.image = UIImage(data: sideboardCard.imageData! as Data)
-            } else if sideboardCard.isDownloadingImage {
-                cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "Loading Image"
-                cell.cardImageView.isHidden = true
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = "No Image"
+                cell.imageLabel.text = sideboardCard.isDownloadingImage ? "Loading Image" : "No Image"
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: sideboardCard.manaCost?.createManaCostImages())
@@ -249,21 +206,13 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "CardDetailViewController") as? CardDetailViewController {
             vc.deck = deck
-            if isEDH {
-                switch indexPath.section {
-                case 0: vc.card = commanders[indexPath.row]
-                case 1: vc.card = creatures[indexPath.row]
-                case 2: vc.card = spells[indexPath.row]
-                case 3: vc.card = lands[indexPath.row]
-                default: vc.card = sideboard[indexPath.row]
-                }
-            } else {
-                switch indexPath.section {
-                case 0: vc.card = creatures[indexPath.row]
-                case 1: vc.card = spells[indexPath.row]
-                case 2: vc.card = lands[indexPath.row]
-                default: vc.card = sideboard[indexPath.row]
-                }
+            let section = isCommander ? indexPath.section - 1 : indexPath.section
+            switch section {
+            case -1: vc.card = commanders[indexPath.row]
+            case 0: vc.card = creatures[indexPath.row]
+            case 1: vc.card = spells[indexPath.row]
+            case 2: vc.card = lands[indexPath.row]
+            default: vc.card = sideboard[indexPath.row]
             }
             vc.shouldUseResult = false
             navigationController?.pushViewController(vc, animated: true)
@@ -287,21 +236,13 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func getCardAtIndexPath(_ indexPath: IndexPath) -> Card {
-        if isEDH {
-            switch indexPath.section {
-            case 0: return commanders[indexPath.row]
-            case 1: return creatures[indexPath.row]
-            case 2: return spells[indexPath.row]
-            case 3: return lands[indexPath.row]
-            default: return sideboard[indexPath.row]
-            }
-        } else {
-            switch indexPath.section {
-            case 0: return creatures[indexPath.row]
-            case 1: return spells[indexPath.row]
-            case 2: return lands[indexPath.row]
-            default: return sideboard[indexPath.row]
-            }
+        let section = isCommander ? indexPath.section - 1 : indexPath.section
+        switch section {
+        case -1: return commanders[indexPath.row]
+        case 0: return creatures[indexPath.row]
+        case 1: return spells[indexPath.row]
+        case 2: return lands[indexPath.row]
+        default: return sideboard[indexPath.row]
         }
     }
     

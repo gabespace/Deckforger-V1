@@ -69,16 +69,16 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isDownloadingInitialResults {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.loadingCell, for: indexPath)
-            cell.textLabel?.text = "Retrieving Cards..."
+            cell.textLabel?.text = CellLabels.retrievingCards
             return cell
         } else if cardResults.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.loadingCell, for: indexPath)
-            cell.textLabel?.text = "No Results"
+            cell.textLabel?.text = CellLabels.noResults
             return cell
         } else {
             if indexPath.row == cardResults.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.showMoreResultsCell, for: indexPath)
-                cell.textLabel?.text = "Show More Results"
+                cell.textLabel?.text = CellLabels.showMoreResults
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.resultCell, for: indexPath) as! CardResultTableViewCell
@@ -107,8 +107,8 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         rowIsSelected = true
         self.searchBar.resignFirstResponder()
         
-        if indexPath.row == cardResults.count{
-            tableView.cellForRow(at: indexPath)!.textLabel?.text = "Retrieving Cards..."
+        if indexPath.row == cardResults.count {
+            tableView.cellForRow(at: indexPath)!.textLabel?.text = CellLabels.retrievingCards
             tableView.deselectRow(at: indexPath, animated: true)
             currentPage += 1
             isDownloadingAdditionalPages = true
@@ -133,5 +133,11 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         static let resultCell = "Card Result"
         static let loadingCell = "Loading"
         static let showMoreResultsCell = "Show More Results"
+    }
+    
+    struct CellLabels {
+        static let retrievingCards = "Retrieving Cards..."
+        static let noResults = "No Results"
+        static let showMoreResults = "Show More Results"
     }
 }
