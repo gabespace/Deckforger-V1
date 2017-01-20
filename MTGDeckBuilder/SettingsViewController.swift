@@ -92,6 +92,9 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
         ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
             store.dispatch(DeleteEverything())
         })
+        let popover = ac.popoverPresentationController
+        popover?.sourceView = view
+        popover?.sourceRect = tableView.cellForRow(at: indexPath)!.frame
         present(ac, animated: true)
     }
     
@@ -109,9 +112,9 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
     func newState(state: State) {
         if let error = state.error {
             switch error {
-            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
-            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
-            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(errorAlert(description: description, title: nil), animated: true)
             }
             return
         }

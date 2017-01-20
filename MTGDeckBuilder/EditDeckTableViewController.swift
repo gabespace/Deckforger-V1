@@ -65,9 +65,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     func newState(state: State) {
         if let error = state.error {
             switch error {
-            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
-            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
-            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(errorAlert(description: description, title: nil), animated: true)
             }
             return
         }
@@ -162,6 +162,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
             ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { [unowned self] action in
                 self.deleteDeck()
             })
+            let popover = ac.popoverPresentationController
+            popover?.sourceView = view
+            popover?.sourceRect = tableView.cellForRow(at: indexPath)!.frame
             present(ac, animated: true)
         default: return
         }

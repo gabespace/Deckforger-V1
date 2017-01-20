@@ -84,9 +84,9 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     func newState(state: State) {
         if let error = state.error {
             switch error {
-            case .loadingError(let description): present(appDelegate.errorAlert(description: description, title: "Loading Error"), animated: true)
-            case .savingError(let description): present(appDelegate.errorAlert(description: description, title: "Saving Error"), animated: true)
-            case .otherError(let description): present(appDelegate.errorAlert(description: description, title: nil), animated: true)
+            case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
+            case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
+            case .otherError(let description): present(errorAlert(description: description, title: nil), animated: true)
             }
             return
         }
@@ -121,7 +121,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
                 } else {
                     tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
                     if let error = result.error as? ApiError {
-                        present(appDelegate.errorAlert(description: error.message, title: "Connection Error"), animated: true)
+                        present(errorAlert(description: error.message, title: "Connection Error"), animated: true)
                     }
                 }
             }

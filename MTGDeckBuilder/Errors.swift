@@ -6,7 +6,7 @@
 //  Copyright © 2016 Gabriele Pregadio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum ErrorCode: Int {
     case badRequest = 400
@@ -20,4 +20,10 @@ enum CoreDataError: Error {
     case loadingError(String)
     case savingError(String)
     case otherError(String)
+}
+
+func errorAlert(description: String?, title: String?) -> UIAlertController {
+    let ac = UIAlertController(title: title ?? "Error", message: description, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    return ac
 }
