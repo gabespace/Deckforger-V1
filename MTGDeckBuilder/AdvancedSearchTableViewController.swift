@@ -27,6 +27,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     var power = "any"
     var toughnessRestriction = "equal to "
     var toughness = "any"
+    var set = "any"
     var rarities = [String]()
     var formats = [String]()
     
@@ -39,6 +40,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     var isPickingCmc = false
     var isPickingPower = false
     var isPickingToughness = false
+    var isPickingSet = false
     
     let pickerViewRestrictions = ["less than ", "less than or equal to ", "equal to ", "greater than or equal to ", "greater than "]
     let restrictionTerms = ["lt", "lte", "", "gte", "gt"]
@@ -96,6 +98,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         power = "any"
         toughnessRestriction = "equal to "
         toughness = "any"
+        set = "any"
         rarities = [String]()
         formats = [String]()
         matchColorsExactly = false
@@ -147,6 +150,10 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         
         if !rarities.isEmpty {
             parameters["rarity"] = rarities.joined(separator: "|")
+        }
+        
+        if set != "any" {
+            parameters["setName"] = set
         }
         
         if !formats.isEmpty {
@@ -212,6 +219,8 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         if let initialRarities = parameters["rarity"] as? String {
             rarities = initialRarities.components(separatedBy: "|")
         }
+        
+        set = parameters["setName"] as? String ?? "any"
         
         if let initialFormats = parameters["gameFormat"] as? String {
             formats = initialFormats.components(separatedBy: "|")

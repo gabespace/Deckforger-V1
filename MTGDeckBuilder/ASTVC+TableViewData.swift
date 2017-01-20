@@ -22,6 +22,7 @@ extension AdvancedSearchTableViewController {
         case (Sections.cmc, 1): return isPickingCmc ? CellHeights.pickerCell : 0
         case (Sections.pt, 1): return isPickingPower ? CellHeights.pickerCell : 0
         case (Sections.pt, 3): return isPickingToughness ? CellHeights.pickerCell : 0
+        case (Sections.set, 1): return isPickingSet ? CellHeights.pickerCell : 0
         default: return CellHeights.normalCell
         }
     }
@@ -40,6 +41,7 @@ extension AdvancedSearchTableViewController {
         case Sections.supertype: return Filters.supertypes.count
         case Sections.subtype: return 1
         case Sections.pt: return 4
+        case Sections.set: return 2
         case Sections.rarity: return Filters.rarities.count
         case Sections.format: return Filters.formats.count
         case Sections.hasImage: return 1
@@ -167,6 +169,21 @@ extension AdvancedSearchTableViewController {
                 cell.pickerView.selectRow((Int(toughness) ?? -1) + 1, inComponent: 1, animated: false)
                 return cell
             }
+        case Sections.set:
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.rangeCell, for: indexPath) as! RangeTableViewCell
+                cell.filterText.text = "Set is"
+                cell.amountText.text = set
+                cell.amountText.textColor = isPickingSet ? UIColor.red : UIColor.black
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.pickerCell, for: indexPath) as! PickerTableViewCell
+                cell.pickerView.tag = PickerViewTags.set
+                cell.pickerView.delegate = self
+                cell.pickerView.dataSource = self
+                cell.pickerView.selectRow(Filters.sets.index(of: set)!, inComponent: 0, animated: false)
+                return cell
+            }
         case Sections.rarity:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.filterCell, for: indexPath)
             let rarity = Filters.rarities[indexPath.row]
@@ -245,6 +262,12 @@ extension AdvancedSearchTableViewController {
             } else {
                 return
             }
+        case Sections.set:
+            if indexPath.row == 1 { return }
+            isPickingSet = !isPickingSet
+            UIView.animate(withDuration: 0.3) { [unowned self] in
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.set), IndexPath(row: 1, section: Sections.set)], with: .automatic)
+            }
         case Sections.rarity:
             if let cell = tableView.cellForRow(at: indexPath) {
                 if cell.accessoryType == .checkmark {
@@ -298,6 +321,7 @@ extension AdvancedSearchTableViewController {
         static let cmc = 0
         static let power = 1
         static let toughness = 2
+        static let set = 3
     }
     
     struct SwitchTags {
@@ -305,15 +329,6 @@ extension AdvancedSearchTableViewController {
         static let andColors = 1
         static let andTypes = 2
         static let hasImage = 3
-    }
-    
-    struct Filters {
-        static let names = [nil, "Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Rarity", "Format"]
-        static let colors = ["White", "Blue", "Red", "Black", "Green"]
-        static let types = ["Artifact", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery", "Tribal"]
-        static let supertypes = ["Legendary", "Snow"]
-        static let rarities = ["Mythic Rare", "Rare", "Uncommon", "Common", "Basic Land"]
-        static let formats = ["Standard", "Modern", "Legacy", "Vintage", "Commander"]
     }
     
     struct Sections {
@@ -326,8 +341,223 @@ extension AdvancedSearchTableViewController {
         static let supertype = 6
         static let subtype = 7
         static let pt = 8
-        static let rarity = 9
-        static let format = 10
+        static let set = 9
+        static let rarity = 10
+        static let format = 11
+    }
+    
+    struct Filters {
+        static let names = [nil, "Name", "Converted Mana Cost", "Rules Text", "Color", "Type", "Supertype", "Subtype", "Power & Toughness", "Set", "Rarity", "Format"]
+        static let colors = ["White", "Blue", "Red", "Black", "Green"]
+        static let types = ["Artifact", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery", "Tribal"]
+        static let supertypes = ["Legendary", "Snow"]
+        static let rarities = ["Mythic Rare", "Rare", "Uncommon", "Common", "Basic Land"]
+        static let formats = ["Standard", "Modern", "Legacy", "Vintage", "Commander"]
+        static let sets = [
+            "any",
+            "Limited Edition Alpha",
+            "Limited Edition Beta",
+            "Arabian Nights",
+            "Unlimited Edition",
+            "Collector's Edition",
+            "International Collector's Edition",
+            "Dragon Con",
+            "Antiquities",
+            "Revised Edition",
+            "Legends",
+            "The Dark",
+            "Media Inserts",
+            "Fallen Empires",
+            "Legend Membership",
+            "Fourth Edition",
+            "Ice Age",
+            "Chronicles",
+            "Homelands",
+            "Alliances",
+            "Rivals Quick Start Set",
+            "Arena League",
+            "Celebration",
+            "Mirage",
+            "Multiverse Gift Box",
+            "Introductory Two-Player Set",
+            "Visions",
+            "Fifth Edition",
+            "Portal Demo Game",
+            "Portal",
+            "Vanguard",
+            "Weatherlight",
+            "Prerelease Events",
+            "Tempest",
+            "Stronghold",
+            "Portal Second Age",
+            "Judge Gift Program",
+            "Exodus",
+            "Unglued",
+            "Asia Pacific Land Program",
+            "Urza's Saga",
+            "Anthologies",
+            "Urza's Legacy",
+            "Classic Sixth Edition",
+            "Portal Three Kingdoms",
+            "Urza's Destiny",
+            "Starter 1999",
+            "Guru",
+            "Worlds",
+            "Wizards of the Coast Online Store",
+            "Mercadian Masques",
+            "Battle Royale Box Set",
+            "Super Series",
+            "Friday Night Magic",
+            "European Land Program",
+            "Nemesis",
+            "Starter 2000",
+            "Prophecy",
+            "Beatdown Box Set",
+            "Invasion",
+            "Planeshift",
+            "Seventh Edition",
+            "Magic Player Rewards",
+            "Apocalypse",
+            "Odyssey",
+            "Deckmasters",
+            "Torment",
+            "Judgment",
+            "Onslaught",
+            "Legions",
+            "Scourge",
+            "Release Events",
+            "Eighth Edition",
+            "Mirrodin",
+            "Darksteel",
+            "Fifth Dawn",
+            "Champions of Kamigawa",
+            "Unhinged",
+            "Betrayers of Kamigawa",
+            "Saviors of Kamigawa",
+            "Ninth Edition",
+            "Ravnica: City of Guilds",
+            "Two-Headed Giant Tournament",
+            "Gateway",
+            "Guildpact",
+            "Champs and States",
+            "Dissension",
+            "Coldsnap",
+            "Coldsnap Theme Decks",
+            "From the Vault: Legends",
+            "Time Spiral",
+            "Time Spiral \"Timeshifted\"",
+            "Happy Holidays",
+            "Planar Chaos",
+            "Pro Tour",
+            "Grand Prix",
+            "Future Sight",
+            "Tenth Edition",
+            "Magic Game Day",
+            "Masters Edition",
+            "Lorwyn",
+            "Duel Decks: Elves vs. Goblins",
+            "Launch Parties",
+            "Morningtide",
+            "15th Anniversary",
+            "Duel Decks: Ajani vs. Nicol Bolas",
+            "Shadowmoor",
+            "Summer of Magic",
+            "Eventide",
+            "From the Vault: Dragons",
+            "Masters Edition II",
+            "Wizards Play Network",
+            "Shards of Alara",
+            "Duel Decks: Jace vs. Chandra",
+            "Conflux",
+            "Duel Decks: Divine vs. Demonic",
+            "Alara Reborn",
+            "Magic 2010",
+            "From the Vault: Exiled",
+            "Planechase",
+            "Masters Edition III",
+            "Zendikar",
+            "Duel Decks: Garruk vs. Liliana",
+            "Premium Deck Series: Slivers",
+            "Worldwake",
+            "Duel Decks: Phyrexia vs. the Coalition",
+            "Rise of the Eldrazi",
+            "Duels of the Planeswalkers",
+            "Archenemy",
+            "Magic 2011",
+            "From the Vault: Relics",
+            "Duel Decks: Elspeth vs. Tezzeret",
+            "Scars of Mirrodin",
+            "Premium Deck Series: Fire and Lightning",
+            "Masters Edition IV",
+            "Mirrodin Besieged",
+            "Duel Decks: Knights vs. Dragons",
+            "New Phyrexia",
+            "Magic: The Gathering-Commander",
+            "Magic 2012",
+            "Innistrad",
+            "Premium Deck Series: Graveborn",
+            "Dark Ascension",
+            "Duel Decks: Venser vs. Koth",
+            "Avacyn Restored",
+            "Planechase 2012 Edition",
+            "Magic 2013",
+            "From the Vault: Realms",
+            "Duel Decks: Izzet vs. Golgari",
+            "Return to Ravnica",
+            "Commander's Arsenal",
+            "Gatecrash",
+            "Duel Decks: Sorin vs. Tibalt",
+            "World Magic Cup Qualifiers",
+            "Dragon's Maze",
+            "Modern Masters",
+            "Magic 2014 Core Set",
+            "From the Vault: Twenty",
+            "Duel Decks: Heroes vs. Monsters",
+            "Theros",
+            "Commander 2013 Edition",
+            "Born of the Gods",
+            "Duel Decks: Jace vs. Vraska",
+            "Journey into Nyx",
+            "Modern Event Deck 2014",
+            "Magic: The Gathering—Conspiracy",
+            "Vintage Masters",
+            "Magic 2015 Core Set",
+            "Clash Pack",
+            "From the Vault: Annihilation (2014)",
+            "Duel Decks: Speed vs. Cunning",
+            "Commander 2015",
+            "Khans of Tarkir",
+            "Commander 2014",
+            "Duel Decks Anthology, Divine vs. Demonic",
+            "Duel Decks Anthology, Elves vs. Goblins",
+            "Duel Decks Anthology, Garruk vs. Liliana",
+            "Duel Decks Anthology, Jace vs. Chandra",
+            "Ugin's Fate promos",
+            "Fate Reforged",
+            "Duel Decks: Elspeth vs. Kiora",
+            "Dragons of Tarkir",
+            "Tempest Remastered",
+            "Modern Masters 2015 Edition",
+            "Magic Origins",
+            "From the Vault: Angels",
+            "Duel Decks: Zendikar vs. Eldrazi",
+            "Battle for Zendikar",
+            "Zendikar Expeditions",
+            "Oath of the Gatewatch",
+            "Duel Decks: Blessed vs. Cursed",
+            "Welcome Deck 2016",
+            "Shadows over Innistrad",
+            "Eternal Masters",
+            "Eldritch Moon",
+            "From the Vault: Lore",
+            "Conspiracy: Take the Crown",
+            "Duel Decks: Nissa vs. Ob Nixilis",
+            "Kaladesh",
+            "Masterpiece Series: Kaladesh Inventions",
+            "Commander 2016",
+            "Planechase Anthology",
+            "Aether Revolt"
+        ]
     }
     
 }

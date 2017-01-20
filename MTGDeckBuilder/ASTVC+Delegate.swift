@@ -30,28 +30,40 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, UIPickerViewDe
     // MARK: - UIPickerView Delegate & Data Source
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        if pickerView.tag == PickerViewTags.set {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        switch (component, row) {
-        case (0, _): label.text = pickerViewRestrictions[row]
-        case (1, 0): label.text = "any"
-        default: label.text = "\(row - 1)"
+        if pickerView.tag == PickerViewTags.set {
+            label.text = Filters.sets[row]
+        } else {
+            switch (component, row) {
+            case (0, _): label.text = pickerViewRestrictions[row]
+            case (1, 0): label.text = "any"
+            default: label.text = "\(row - 1)"
+            }
         }
         return label
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch (pickerView.tag, component) {
-        case (_, 0): return 5
-        case (PickerViewTags.cmc, 1): return 17
-        case (PickerViewTags.power, 1): return 17
-        case (PickerViewTags.toughness, 1): return 17
-        default: return 0
+        if pickerView.tag == PickerViewTags.set {
+            return Filters.sets.count
+        } else {
+            switch (pickerView.tag, component) {
+            case (_, 0): return 5
+            case (PickerViewTags.cmc, 1): return 17
+            case (PickerViewTags.power, 1): return 17
+            case (PickerViewTags.toughness, 1): return 17
+            default: return 0
+            }
         }
     }
     
@@ -75,6 +87,8 @@ extension AdvancedSearchTableViewController: UITextFieldDelegate, UIPickerViewDe
             case (1, 0): toughness = "any"
             default: toughness = "\(row - 1)"
             }
+        case PickerViewTags.set:
+            set = Filters.sets[row]
         default: return
         }
         tableView.reloadData()

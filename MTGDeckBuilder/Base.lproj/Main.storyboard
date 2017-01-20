@@ -23,7 +23,7 @@
         <!--Settings Table View Controller-->
         <scene sceneID="aJ5-W4-Q0W">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qL-Nj-zYI" customClass="SettingsTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qL-Nj-zYI" customClass="SettingsTableViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="kLg-Ek-QUM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
         <!--Deck List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DeckListViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="DeckListViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckListViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="DeckListViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -90,7 +90,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show Deck" id="iBc-Qz-RIX" customClass="DeckListTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show Deck" id="iBc-Qz-RIX" customClass="DeckListTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iBc-Qz-RIX" id="rs1-hb-azl">
@@ -165,13 +165,13 @@
         <!--Edit Deck Table View Controller-->
         <scene sceneID="Aih-B7-jz7">
             <objects>
-                <tableViewController storyboardIdentifier="EditDeckTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zIN-nC-sPJ" customClass="EditDeckTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditDeckTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zIN-nC-sPJ" customClass="EditDeckTableViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pHJ-m2-Map">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Name" id="Evf-H3-Y1k" customClass="DeckNameTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Name" id="Evf-H3-Y1k" customClass="DeckNameTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="Evf-H3-Y1k" id="Ed6-7J-P7g">
@@ -227,7 +227,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Sideboard" id="cJX-h3-LTb" customClass="SideboardSwitchTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deck Sideboard" id="cJX-h3-LTb" customClass="SideboardSwitchTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="cJX-h3-LTb" id="9sg-RE-Zer">
@@ -274,7 +274,7 @@
         <!--Cards-->
         <scene sceneID="bej-yj-KVJ">
             <objects>
-                <viewController storyboardIdentifier="DeckViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rYc-3R-dhI" customClass="DeckViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rYc-3R-dhI" customClass="DeckViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lu0-IR-hpE"/>
                         <viewControllerLayoutGuide type="bottom" id="Lo9-Pe-slq"/>
@@ -287,7 +287,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Creature" id="Ym6-Yg-zUx" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Creature" id="Ym6-Yg-zUx" customClass="CardTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ym6-Yg-zUx" id="sSt-5H-Xa7">
@@ -364,7 +364,7 @@
                                             <outlet property="title" destination="3RL-2p-qzc" id="UlZ-V2-B3R"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Spell" id="htz-mp-53Y" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Spell" id="htz-mp-53Y" customClass="CardTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htz-mp-53Y" id="bxJ-dp-FRl">
@@ -441,7 +441,7 @@
                                             <outlet property="title" destination="y6G-P2-pgX" id="2ca-i4-Ry8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Land" id="Rhz-MA-3OO" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Land" id="Rhz-MA-3OO" customClass="CardTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rhz-MA-3OO" id="BGm-y5-ZII">
@@ -518,7 +518,7 @@
                                             <outlet property="title" destination="tnX-RA-kF1" id="smZ-zp-laO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sideboard" id="DNM-vS-ydx" customClass="CardTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sideboard" id="DNM-vS-ydx" customClass="CardTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DNM-vS-ydx" id="y5l-hy-uuA">
@@ -642,7 +642,7 @@
         <!--Add Card View Controller-->
         <scene sceneID="juy-yZ-3Zc">
             <objects>
-                <viewController storyboardIdentifier="AddCardViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OeI-Ib-RsF" customClass="AddCardViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCardViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OeI-Ib-RsF" customClass="AddCardViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSX-wc-mfL"/>
                         <viewControllerLayoutGuide type="bottom" id="obH-Ep-cKf"/>
@@ -655,7 +655,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Card Result" id="eWs-ON-5MW" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Card Result" id="eWs-ON-5MW" customClass="CardResultTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWs-ON-5MW" id="MD2-b4-JON">
@@ -711,7 +711,7 @@
                                             <outlet property="subtitleLabel" destination="gHf-Td-XnP" id="Jm0-ZG-YmH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Loading" textLabel="BPW-4u-xaH" style="IBUITableViewCellStyleDefault" id="NOX-Gf-WvI" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Loading" textLabel="BPW-4u-xaH" style="IBUITableViewCellStyleDefault" id="NOX-Gf-WvI" customClass="CardResultTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NOX-Gf-WvI" id="35f-RP-KMZ">
@@ -728,7 +728,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show More Results" textLabel="7Ey-4s-WL8" style="IBUITableViewCellStyleDefault" id="xUJ-mQ-OMO" customClass="CardResultTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Show More Results" textLabel="7Ey-4s-WL8" style="IBUITableViewCellStyleDefault" id="xUJ-mQ-OMO" customClass="CardResultTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUJ-mQ-OMO" id="bAt-ck-TBy">
@@ -790,13 +790,13 @@
         <!--Advanced Search Table View Controller-->
         <scene sceneID="8Le-RX-EZf">
             <objects>
-                <tableViewController storyboardIdentifier="AdvancedSearchTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wBZ-JW-eZW" customClass="AdvancedSearchTableViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AdvancedSearchTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wBZ-JW-eZW" customClass="AdvancedSearchTableViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="QA4-TY-KGQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Text Cell" id="xfP-W4-Psl" customClass="TextTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Text Cell" id="xfP-W4-Psl" customClass="TextTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xfP-W4-Psl" id="EBh-1R-eWf">
@@ -837,7 +837,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Constraint Cell" id="oI6-zr-667" customClass="ConstraintTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Constraint Cell" id="oI6-zr-667" customClass="ConstraintTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="oI6-zr-667" id="btI-rS-3k5">
@@ -870,14 +870,14 @@
                                     <outlet property="selectionSwitch" destination="z3Q-mR-qvu" id="Tsu-gk-nif"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Range Cell" id="mmU-Ub-EXM" customClass="RangeTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Range Cell" id="mmU-Ub-EXM" customClass="RangeTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="mmU-Ub-EXM" id="VQ9-4J-V8x">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVk-5k-V3S">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Property" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVk-5k-V3S">
                                             <rect key="frame" x="15" y="0.0" width="67" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="43" id="pxR-3c-CaM"/>
@@ -886,7 +886,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-bf-KyJ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-bf-KyJ">
                                             <rect key="frame" x="300" y="0.0" width="60" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="43" id="ASn-o0-5rS"/>
@@ -901,6 +901,7 @@
                                         <constraint firstItem="fVk-5k-V3S" firstAttribute="centerY" secondItem="VQ9-4J-V8x" secondAttribute="centerY" id="O98-YG-vVi"/>
                                         <constraint firstItem="fVk-5k-V3S" firstAttribute="leading" secondItem="VQ9-4J-V8x" secondAttribute="leadingMargin" id="dNh-Gi-IGB"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="eIu-bf-KyJ" secondAttribute="trailing" id="fq2-xn-ZS1"/>
+                                        <constraint firstItem="eIu-bf-KyJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fVk-5k-V3S" secondAttribute="trailing" constant="8" symbolic="YES" id="kpD-zw-CzY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -908,7 +909,7 @@
                                     <outlet property="filterText" destination="fVk-5k-V3S" id="6Rw-BH-VnK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Picker Cell" rowHeight="219" id="EId-cg-ANu" customClass="PickerTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Picker Cell" rowHeight="219" id="EId-cg-ANu" customClass="PickerTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="231.5" width="375" height="219"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EId-cg-ANu" id="jre-SA-Qn4">
@@ -944,7 +945,7 @@
         <!--Card Detail View Controller-->
         <scene sceneID="hn5-N4-jz9">
             <objects>
-                <viewController storyboardIdentifier="CardDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tiZ-FC-y0c" customClass="CardDetailViewController" customModule="MTGDeckBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tiZ-FC-y0c" customClass="CardDetailViewController" customModule="Deckforger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Og2-Yp-xQ7"/>
                         <viewControllerLayoutGuide type="bottom" id="4Bm-5N-f3F"/>
@@ -953,7 +954,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-0i-NHp" customClass="CorneredImageView" customModule="MTGDeckBuilder" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-0i-NHp" customClass="CorneredImageView" customModule="Deckforger" customModuleProvider="target">
                                 <rect key="frame" x="86.5" y="28" width="202" height="281"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aVr-0i-NHp" secondAttribute="height" multiplier="223:310" id="VmK-TQ-7A7"/>
@@ -1043,7 +1044,7 @@
                                 <rect key="frame" x="0.0" y="355" width="375" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Field Cell" id="3Ue-7U-Apf" customClass="FieldTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Field Cell" id="3Ue-7U-Apf" customClass="FieldTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Ue-7U-Apf" id="3Fc-JX-edt">
@@ -1080,7 +1081,7 @@
                                             <outlet property="fieldTitle" destination="4cM-DN-DK9" id="wTU-rj-wyb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cost Field Cell" id="chG-Kn-v8f" customClass="CostFieldTableViewCell" customModule="MTGDeckBuilder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cost Field Cell" id="chG-Kn-v8f" customClass="CostFieldTableViewCell" customModule="Deckforger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="chG-Kn-v8f" id="bdo-iZ-rD2">
@@ -1218,7 +1219,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavCon" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q7p-OG-oEu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zuJ-qg-yE5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zuJ-qg-yE5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

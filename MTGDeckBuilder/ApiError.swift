@@ -33,3 +33,27 @@ struct ApiError: Mappable, Error {
     }
     
 }
+
+//struct Set: Mappable {
+//    var name: String!
+//    
+//    init?(map: Map) {
+//        
+//    }
+//    
+//    mutating func mapping(map: Map) {
+//        name <- map["name"]
+//    }
+//}
+//
+//struct SetResults: Mappable {
+//    var sets: [Set]!
+//    
+//    init?(map: Map) {
+//        
+//    }
+//    
+//    mutating func mapping(map: Map) {
+//        sets <- map["sets"]
+//    }
+//}
