@@ -648,17 +648,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabriele Pregadio (BGXZUJFS4J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireObjectMapper",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/DLRadioButton",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/DZNEmptyDataSet",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/ObjectMapper",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/ReSwift",
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/MTGDeckBuilder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sentiinex.Deckforger;
