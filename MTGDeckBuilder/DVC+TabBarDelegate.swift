@@ -10,19 +10,19 @@ import UIKit
 
 extension DeckViewController: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.tabBar.isUserInteractionEnabled = false
+        tabBar.isUserInteractionEnabled = false
         
         if item == tabBar.items![0] && tableView.isHidden {
             tableView.alpha = 0
             tableView.isHidden = false
             UIView.animate(
                 withDuration: 0.35,
-                animations: { [unowned self] in
-                    self.statsScrollView.alpha = 0
-                    self.tableView.alpha = 1
+                animations: { [weak self] in
+                    self?.statsScrollView.alpha = 0
+                    self?.tableView.alpha = 1
                 },
-                completion: { [unowned self] finished in
-                    self.statsScrollView.isHidden = true
+                completion: { [weak self] finished in
+                    self?.statsScrollView.isHidden = true
             })
         } else if item == tabBar.items![1] && !tableView.isHidden {
             setColorPieChartData()
@@ -32,18 +32,18 @@ extension DeckViewController: UITabBarDelegate {
             statsScrollView.isHidden = false
             UIView.animate(
                 withDuration: 0.35,
-                animations: { [unowned self] in
-                    self.tableView.alpha = 0
-                    self.statsScrollView.alpha = 1
-                    self.colorPieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.5)
-                    self.typePieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.5)
-                    self.costBarChartView.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
+                animations: { [weak self] in
+                    self?.tableView.alpha = 0
+                    self?.statsScrollView.alpha = 1
+                    self?.colorPieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.5)
+                    self?.typePieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.5)
+                    self?.costBarChartView.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
                 },
-                completion: { [unowned self] finished in
-                    self.tableView.isHidden = true
+                completion: { [weak self] finished in
+                    self?.tableView.isHidden = true
             })
         }
         
-        self.tabBar.isUserInteractionEnabled = true
+        tabBar.isUserInteractionEnabled = true
     }
 }

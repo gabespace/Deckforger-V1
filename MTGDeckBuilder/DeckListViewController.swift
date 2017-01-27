@@ -32,16 +32,6 @@ class DeckListViewController: UIViewController, StoreSubscriber {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Decks", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(showSettings))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
-        
-//        Alamofire.request("https://api.magicthegathering.io/v1/sets", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-//            // Completion handler.
-//            let json = response.result.value
-//            if let setResult = Mapper<SetResults>().map(JSONObject: json) {
-//                for set in setResult.sets {
-//                    print("\"\(set.name!)\",")
-//                }
-//            }
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
