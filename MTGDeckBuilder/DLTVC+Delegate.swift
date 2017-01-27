@@ -1,5 +1,5 @@
 //
-//  DLVC+Delegate.swift
+//  DLTVC+Delegate.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/28/16.
@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import DZNEmptyDataSet
 
-extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, ButtonDelegate {
+extension DeckListTableViewController: ButtonDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     // MARK: - Computed Properties
     
@@ -61,19 +62,19 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
     
     // MARK: - TableView Data Source & Delegate Methods
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "\(displayedDecks[section][0].format) (\(displayedDecks[section].count))"
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedDecks[section].count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return displayedDecks.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.showDeckCellIdentifier, for: indexPath) as! DeckListTableViewCell
         let deck = displayedDecks[indexPath.section][indexPath.row]
         cell.buttonDelegate = self
@@ -98,17 +99,40 @@ extension DeckListViewController: UITableViewDataSource, UITableViewDelegate, Bu
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.deckView) as? DeckViewController {
             vc.deck = displayedDecks[indexPath.section][indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             store.dispatch(DeleteDeck(deck: self.displayedDecks[indexPath.section][indexPath.row]))
         }
+    }
+    
+    
+    // DZNEmptyDataSet Source & Delegate Methods
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "openbox")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes: [String: Any] = [
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18),
+            NSForegroundColorAttributeName: UIColor.darkGray
+        ]
+        return NSAttributedString(string: "No Decks", attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes: [String: Any] = [
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14),
+            NSForegroundColorAttributeName: UIColor.lightGray
+        ]
+        return NSAttributedString(string: "Press the plus button to create a new deck!", attributes: attributes)
     }
     
     

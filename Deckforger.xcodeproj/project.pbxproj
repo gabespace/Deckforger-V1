@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF786E06E1786BD7E6D6999F /* Pods_Deckforger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6C7CE683C95CB609CAA7B /* Pods_Deckforger.framework */; };
 		CB046DAD1E11D4BF006E059A /* DeckListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DAC1E11D4BF006E059A /* DeckListTableViewCell.swift */; };
 		CB046DAF1E11DE17006E059A /* EditDeckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DAE1E11DE17006E059A /* EditDeckTableViewController.swift */; };
 		CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DB11E11E13D006E059A /* DeckNameTableViewCell.swift */; };
 		CB0F99951DECE5F70085C721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0F99941DECE5F70085C721 /* AppDelegate.swift */; };
-		CB0F99971DECE5F70085C721 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0F99961DECE5F70085C721 /* DeckListViewController.swift */; };
+		CB0F99971DECE5F70085C721 /* DeckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0F99961DECE5F70085C721 /* DeckListTableViewController.swift */; };
 		CB0F999A1DECE5F70085C721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0F99981DECE5F70085C721 /* Main.storyboard */; };
 		CB0F999C1DECE5F70085C721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0F999B1DECE5F70085C721 /* Assets.xcassets */; };
 		CB0F999F1DECE5F70085C721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0F999D1DECE5F70085C721 /* LaunchScreen.storyboard */; };
@@ -48,7 +49,7 @@
 		CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */; };
 		CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */; };
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
-		CB89B7AA1DECF36F009FCAA9 /* DLVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A91DECF36F009FCAA9 /* DLVC+Delegate.swift */; };
+		CB89B7AA1DECF36F009FCAA9 /* DLTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A91DECF36F009FCAA9 /* DLTVC+Delegate.swift */; };
 		CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7C51DECF91A009FCAA9 /* CardResult.swift */; };
 		CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7CA1DECFFF7009FCAA9 /* State.swift */; };
 		CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */; };
@@ -65,7 +66,7 @@
 		CB046DB11E11E13D006E059A /* DeckNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckNameTableViewCell.swift; sourceTree = "<group>"; };
 		CB0F99911DECE5F70085C721 /* Deckforger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deckforger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0F99941DECE5F70085C721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB0F99961DECE5F70085C721 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
+		CB0F99961DECE5F70085C721 /* DeckListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListTableViewController.swift; sourceTree = "<group>"; };
 		CB0F99991DECE5F70085C721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB0F999B1DECE5F70085C721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB0F999E1DECE5F70085C721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +82,14 @@
 		CB271AB71DEE293500AD44FD /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		CB271AB91DEE2A8800AD44FD /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		CB271ABB1DEE3F6A00AD44FD /* ApiResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
+		CB323E3E1E3C0487004732A4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		CB323E3F1E3C0487004732A4 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/AlamofireObjectMapper/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
+		CB323E401E3C0487004732A4 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts/Charts.framework"; sourceTree = "<group>"; };
+		CB323E411E3C0487004732A4 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLRadioButton.framework; path = "Pods/../build/Debug-iphoneos/DLRadioButton/DLRadioButton.framework"; sourceTree = "<group>"; };
+		CB323E421E3C0487004732A4 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = "Pods/../build/Debug-iphoneos/DZNEmptyDataSet/DZNEmptyDataSet.framework"; sourceTree = "<group>"; };
+		CB323E431E3C0487004732A4 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
+		CB323E441E3C0487004732A4 /* Pods_Deckforger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Deckforger.framework; path = "Pods/../build/Debug-iphoneos/Pods_Deckforger.framework"; sourceTree = "<group>"; };
+		CB323E451E3C0487004732A4 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Pods/../build/Debug-iphoneos/ReSwift/ReSwift.framework"; sourceTree = "<group>"; };
 		CB32FAAA1DF8A9A500B7F3FD /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		CB48D3731DEFB53A00004F4D /* DVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB48F3731E20375C007BF8F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +112,7 @@
 		CB857ABE1E2585CD000C2B5F /* FieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB857AC01E258DD2000C2B5F /* CostFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		CB89B7A91DECF36F009FCAA9 /* DLVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DLVC+Delegate.swift"; sourceTree = "<group>"; };
+		CB89B7A91DECF36F009FCAA9 /* DLTVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DLTVC+Delegate.swift"; sourceTree = "<group>"; };
 		CB89B7C51DECF91A009FCAA9 /* CardResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResult.swift; sourceTree = "<group>"; };
 		CB89B7CA1DECFFF7009FCAA9 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +121,7 @@
 		CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintTableViewCell.swift; sourceTree = "<group>"; };
 		CBDF2D801DF100A400579430 /* String+MTG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MTG.swift"; sourceTree = "<group>"; };
 		CF1028AFF6DDB60F45F98EC6 /* Pods-Deckforger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deckforger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger.release.xcconfig"; sourceTree = "<group>"; };
+		FAA6C7CE683C95CB609CAA7B /* Pods_Deckforger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deckforger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF786E06E1786BD7E6D6999F /* Pods_Deckforger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +139,15 @@
 		579BF7350EE5C9EE80DE377D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB323E3E1E3C0487004732A4 /* Alamofire.framework */,
+				CB323E3F1E3C0487004732A4 /* AlamofireObjectMapper.framework */,
+				CB323E401E3C0487004732A4 /* Charts.framework */,
+				CB323E411E3C0487004732A4 /* DLRadioButton.framework */,
+				CB323E421E3C0487004732A4 /* DZNEmptyDataSet.framework */,
+				CB323E431E3C0487004732A4 /* ObjectMapper.framework */,
+				CB323E441E3C0487004732A4 /* Pods_Deckforger.framework */,
+				CB323E451E3C0487004732A4 /* ReSwift.framework */,
+				FAA6C7CE683C95CB609CAA7B /* Pods_Deckforger.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,8 +219,8 @@
 		CB2212231DEF845C00C51044 /* DeckList Viewer */ = {
 			isa = PBXGroup;
 			children = (
-				CB0F99961DECE5F70085C721 /* DeckListViewController.swift */,
-				CB89B7A91DECF36F009FCAA9 /* DLVC+Delegate.swift */,
+				CB0F99961DECE5F70085C721 /* DeckListTableViewController.swift */,
+				CB89B7A91DECF36F009FCAA9 /* DLTVC+Delegate.swift */,
 				CB046DAC1E11D4BF006E059A /* DeckListTableViewCell.swift */,
 			);
 			name = "DeckList Viewer";
@@ -450,14 +470,14 @@
 				CB32FAAB1DF8A9A500B7F3FD /* CardTableViewCell.swift in Sources */,
 				CB2212291DEF930400C51044 /* ACVC+Delegate.swift in Sources */,
 				CB857ABF1E2585CD000C2B5F /* FieldTableViewCell.swift in Sources */,
-				CB0F99971DECE5F70085C721 /* DeckListViewController.swift in Sources */,
+				CB0F99971DECE5F70085C721 /* DeckListTableViewController.swift in Sources */,
 				CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */,
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
 				CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */,
 				CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */,
 				CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */,
-				CB89B7AA1DECF36F009FCAA9 /* DLVC+Delegate.swift in Sources */,
+				CB89B7AA1DECF36F009FCAA9 /* DLTVC+Delegate.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */,
 				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DVC+TableViewData.swift in Sources */,
@@ -628,6 +648,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabriele Pregadio (BGXZUJFS4J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireObjectMapper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/DLRadioButton",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/DZNEmptyDataSet",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/ObjectMapper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/ReSwift",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MTGDeckBuilder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sentiinex.Deckforger;
@@ -647,6 +678,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabriele Pregadio (BGXZUJFS4J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireObjectMapper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/DLRadioButton",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/DZNEmptyDataSet",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/ObjectMapper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/ReSwift",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MTGDeckBuilder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sentiinex.Deckforger;

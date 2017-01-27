@@ -1,5 +1,5 @@
 //
-//  DeckListViewController
+//  DeckListTableViewController
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/28/16.
@@ -11,22 +11,21 @@ import Alamofire
 import ReSwift
 import ObjectMapper
 
-class DeckListViewController: UIViewController, StoreSubscriber {
-    
-    // MARK: - IBOutlets
-    
-    @IBOutlet weak var tableView: UITableView!
-    
+class DeckListTableViewController: UITableViewController, StoreSubscriber {
     
     // MARK: - Properties
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var decks = [Deck]()
     
+    
     // MARK: - View Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         title = "Decks"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Decks", style: .plain, target: nil, action: nil)

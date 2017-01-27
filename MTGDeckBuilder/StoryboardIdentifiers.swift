@@ -10,7 +10,7 @@ import Foundation
 
 struct StoryboardIdentifiers {
     static let settings = "SettingsTableViewController"
-    static let deckList = "DeckListViewController"
+    static let deckList = "DeckListTableViewController"
     static let editDeck = "EditDeckTableViewController"
     static let deckView = "DeckViewController"
     static let cardDetail = "CardDetailViewController"
