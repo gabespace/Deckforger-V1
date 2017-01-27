@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26517F76BA064BF0FCB2A48A /* Pods_MTGDeckBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091DE7053EA945F0026BF02F /* Pods_MTGDeckBuilder.framework */; };
 		CB046DAD1E11D4BF006E059A /* DeckListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DAC1E11D4BF006E059A /* DeckListTableViewCell.swift */; };
 		CB046DAF1E11DE17006E059A /* EditDeckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DAE1E11DE17006E059A /* EditDeckTableViewController.swift */; };
 		CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB046DB11E11E13D006E059A /* DeckNameTableViewCell.swift */; };
@@ -60,9 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		091DE7053EA945F0026BF02F /* Pods_MTGDeckBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MTGDeckBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79C98E321079DD0AE3C2A22D /* Pods-MTGDeckBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGDeckBuilder.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTGDeckBuilder/Pods-MTGDeckBuilder.release.xcconfig"; sourceTree = "<group>"; };
-		C1189A95AE88B1B2AE138EA6 /* Pods-MTGDeckBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGDeckBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTGDeckBuilder/Pods-MTGDeckBuilder.debug.xcconfig"; sourceTree = "<group>"; };
+		AB07497FB8F428D52B41F91D /* Pods-Deckforger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deckforger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger.debug.xcconfig"; sourceTree = "<group>"; };
 		CB046DAC1E11D4BF006E059A /* DeckListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckListTableViewCell.swift; sourceTree = "<group>"; };
 		CB046DAE1E11DE17006E059A /* EditDeckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDeckTableViewController.swift; sourceTree = "<group>"; };
 		CB046DB11E11E13D006E059A /* DeckNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -114,6 +111,7 @@
 		CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintTableViewCell.swift; sourceTree = "<group>"; };
 		CBDF2D801DF100A400579430 /* String+MTG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MTG.swift"; sourceTree = "<group>"; };
+		CF1028AFF6DDB60F45F98EC6 /* Pods-Deckforger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deckforger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26517F76BA064BF0FCB2A48A /* Pods_MTGDeckBuilder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +128,6 @@
 		579BF7350EE5C9EE80DE377D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				091DE7053EA945F0026BF02F /* Pods_MTGDeckBuilder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,8 +135,8 @@
 		7BE9FA64973B03AF76623791 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C1189A95AE88B1B2AE138EA6 /* Pods-MTGDeckBuilder.debug.xcconfig */,
-				79C98E321079DD0AE3C2A22D /* Pods-MTGDeckBuilder.release.xcconfig */,
+				AB07497FB8F428D52B41F91D /* Pods-Deckforger.debug.xcconfig */,
+				CF1028AFF6DDB60F45F98EC6 /* Pods-Deckforger.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -411,7 +407,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MTGDeckBuilder/Pods-MTGDeckBuilder-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BB5F4DF54001BC0FC01E1C7A /* [CP] Check Pods Manifest.lock */ = {
@@ -441,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MTGDeckBuilder/Pods-MTGDeckBuilder-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -625,7 +621,7 @@
 		};
 		CB0F99A41DECE5F70085C721 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1189A95AE88B1B2AE138EA6 /* Pods-MTGDeckBuilder.debug.xcconfig */;
+			baseConfigurationReference = AB07497FB8F428D52B41F91D /* Pods-Deckforger.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -644,7 +640,7 @@
 		};
 		CB0F99A51DECE5F70085C721 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79C98E321079DD0AE3C2A22D /* Pods-MTGDeckBuilder.release.xcconfig */;
+			baseConfigurationReference = CF1028AFF6DDB60F45F98EC6 /* Pods-Deckforger.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

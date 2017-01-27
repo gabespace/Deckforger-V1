@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E008849895F431C6731A42FB90ECF3F"
-               BuildableName = "Pods_MTGDeckBuilder.framework"
-               BlueprintName = "Pods-MTGDeckBuilder"
+               BlueprintIdentifier = "040DFFCA2808D7362546440950013E5B"
+               BuildableName = "Pods_Deckforger.framework"
+               BlueprintName = "Pods-Deckforger"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E008849895F431C6731A42FB90ECF3F"
-            BuildableName = "Pods_MTGDeckBuilder.framework"
-            BlueprintName = "Pods-MTGDeckBuilder"
+            BlueprintIdentifier = "040DFFCA2808D7362546440950013E5B"
+            BuildableName = "Pods_Deckforger.framework"
+            BlueprintName = "Pods-Deckforger"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -24,12 +24,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MTGDeckBuilder.xcscheme</key>
+		<key>Pods-Deckforger.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,17 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6E008849895F431C6731A42FB90ECF3F</key>
+		<key>040DFFCA2808D7362546440950013E5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1AAD0B378730EB5783182182FD2FACD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>82E99D042A3F4358F7A2698260A0D861</key>
 		<dict>
 			<key>primary</key>
 			<true/>

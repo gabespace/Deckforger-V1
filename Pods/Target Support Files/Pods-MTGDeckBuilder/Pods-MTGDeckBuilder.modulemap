@@ -1,6 +1,0 @@
-framework module Pods_MTGDeckBuilder {
-  umbrella header "Pods-MTGDeckBuilder-umbrella.h"
-
-  export *
-  module * { export * }
-}

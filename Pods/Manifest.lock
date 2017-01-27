@@ -7,6 +7,7 @@ PODS:
     - Charts/Core (= 3.0.0)
   - Charts/Core (3.0.0)
   - DLRadioButton (1.4.9)
+  - DZNEmptyDataSet (1.8.1)
   - ObjectMapper (2.2.0)
   - ReSwift (2.1.0)
 
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 4.0)
   - Charts
   - DLRadioButton (~> 1.4)
+  - DZNEmptyDataSet
   - ReSwift
 
 SPEC CHECKSUMS:
@@ -22,9 +24,10 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ObjectMapper: 4060d739febae11ab0c6af8d786f98667c82e1bd
   ReSwift: c13b76cb963c5ab2a137c9c6e74823cef4b81588
 
-PODFILE CHECKSUM: 5774ca63c59620c696bea8b0bd38a22aed2c9eaa
+PODFILE CHECKSUM: d71cad8cf6a74b1e71770530d6ae51fdab80146e
 
 COCOAPODS: 1.1.1
