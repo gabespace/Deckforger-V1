@@ -73,7 +73,7 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     @objc private func advancedSearchButtonTapped() {
         isDirty = true
         self.searchBar.resignFirstResponder()
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.filters) as? AdvancedSearchTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.filters.rawValue) as? AdvancedSearchTableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

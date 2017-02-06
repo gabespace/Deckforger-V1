@@ -101,9 +101,9 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "Name"
-        case 1: return "Format"
-        case 2: return "Sideboard"
+        case 0: return Titles.name.rawValue
+        case 1: return Titles.format.rawValue
+        case 2: return Titles.sideboard.rawValue
         default: return nil
         }
     }
@@ -123,25 +123,25 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckName, for: indexPath) as! DeckNameTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.deckName.rawValue, for: indexPath) as! DeckNameTableViewCell
             cell.nameTextField.delegate = self
             cell.selectionStyle = .none
             cell.nameTextField.text = newName
             cell.nameTextField.autocapitalizationType = .words
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.deckFormat.rawValue, for: indexPath)
             cell.textLabel?.text = formats[indexPath.row]
             cell.textLabel?.textColor = UIColor.black
             cell.accessoryType = indexPath.row == currentFormatIndex ? .checkmark : .none
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckSideboard, for: indexPath) as! SideboardSwitchTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.deckSideboard.rawValue, for: indexPath) as! SideboardSwitchTableViewCell
             cell.switchDelegate = self
             cell.selectionSwitch.isOn = hasSideboard
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.deckFormat, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.deckFormat.rawValue, for: indexPath)
             cell.textLabel?.text = "Delete"
             cell.textLabel?.textColor = UIColor.red
             cell.accessoryType = .none
@@ -185,10 +185,16 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     // MARK: - Supporting Functionality
     
-    struct Cell {
-        static let deckName = "Deck Name"
-        static let deckFormat = "Deck Format"
-        static let deckSideboard = "Deck Sideboard"
+    enum Cells: String {
+        case deckName = "Deck Name"
+        case deckFormat = "Deck Format"
+        case deckSideboard = "Deck Sideboard"
+    }
+    
+    enum Titles: String {
+        case name = "Name"
+        case format = "Format"
+        case sideboard = "Sideboard"
     }
 
 }

@@ -16,18 +16,18 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var cardName: String?
-    var cmcRestriction = "equal to "
-    var cmc = "any"
+    var cmcRestriction = FilterTerms.equalTo
+    var cmc = FilterTerms.any
     var rulesText: String?
     var subtype: String?
     var colors = [String]()
     var supertypes = [String]()
     var types = [String]()
-    var powerRestriction = "equal to "
-    var power = "any"
-    var toughnessRestriction = "equal to "
-    var toughness = "any"
-    var set = "any"
+    var powerRestriction = FilterTerms.equalTo
+    var power = FilterTerms.any
+    var toughnessRestriction = FilterTerms.equalTo
+    var toughness = FilterTerms.any
+    var set = FilterTerms.any
     var rarities = [String]()
     var formats = [String]()
     
@@ -87,18 +87,18 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
     
     @objc private func resetFilters() {
         cardName = nil
-        cmcRestriction = "equal to "
-        cmc = "any"
+        cmcRestriction = FilterTerms.equalTo
+        cmc = FilterTerms.any
         rulesText = nil
         subtype = nil
         colors = [String]()
         supertypes = [String]()
         types = [String]()
-        powerRestriction = "equal to "
-        power = "any"
-        toughnessRestriction = "equal to "
-        toughness = "any"
-        set = "any"
+        powerRestriction = FilterTerms.equalTo
+        power = FilterTerms.any
+        toughnessRestriction = FilterTerms.equalTo
+        toughness = FilterTerms.any
+        set = FilterTerms.any
         rarities = [String]()
         formats = [String]()
         matchColorsExactly = false
@@ -152,7 +152,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             parameters["rarity"] = rarities.joined(separator: "|")
         }
         
-        if set != "any" {
+        if set != FilterTerms.any {
             parameters["setName"] = set
         }
         
@@ -220,7 +220,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             rarities = initialRarities.components(separatedBy: "|")
         }
         
-        set = parameters["setName"] as? String ?? "any"
+        set = parameters["setName"] as? String ?? FilterTerms.any
         
         if let initialFormats = parameters["gameFormat"] as? String {
             formats = initialFormats.components(separatedBy: "|")
@@ -228,7 +228,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         
         if let initialCmc = parameters["cmc"] as? String {
             if initialCmc.isANumber {
-                cmcRestriction = "equal to "
+                cmcRestriction = FilterTerms.equalTo
                 cmc = initialCmc
             } else {
                 let components = initialCmc.restrictionComponents
@@ -239,7 +239,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         
         if let initialPower = parameters["power"] as? String {
             if initialPower.isANumber {
-                powerRestriction = "equal to "
+                powerRestriction = FilterTerms.equalTo
                 power = initialPower
             } else {
                 let components = initialPower.restrictionComponents
@@ -250,7 +250,7 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
         
         if let initialToughness = parameters["toughness"] as? String {
             if initialToughness.isANumber {
-                toughnessRestriction = "equal to "
+                toughnessRestriction = FilterTerms.equalTo
                 toughness = initialToughness
             } else {
                 let components = initialToughness.restrictionComponents
@@ -277,6 +277,14 @@ class AdvancedSearchTableViewController: UITableViewController, StoreSubscriber 
             return
         }
         configureInitialSelections(state.parameters)
+    }
+    
+    
+    // MARK: - Supporting Functionality
+    
+    struct FilterTerms {
+        static let equalTo = "equal to "
+        static let any = "any"
     }
     
 }

@@ -26,31 +26,33 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let cardName = searchBar.text else { return }
-        
-        currentPage = 1
-        isDownloadingInitialResults = true
-        cardResults.removeAll()
-        tableView.reloadData()
-        parameters.removeAll()
         searchBar.resignFirstResponder()
+        
+        setUpForNewSearch()
+        parameters.removeAll()
         parameters["name"] = cardName
         parameters["orderBy"] = sortFields[searchBar.selectedScopeButtonIndex]
-        isDirty = true
-        store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
+        store.dispatch(
+            searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage)
+        )
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         parameters["orderBy"] = sortFields[searchBar.selectedScopeButtonIndex]
+        guard !cardResults.isEmpty else { return }
         
-        if !cardResults.isEmpty {
-            tableView.setContentOffset(CGPoint.zero, animated: false)
-            currentPage = 1
-            isDownloadingInitialResults = true
-            cardResults.removeAll()
-            tableView.reloadData()
-            isDirty = true
-            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
-        }
+        setUpForNewSearch()
+        store.dispatch(
+            searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage)
+        )
+    }
+    
+    func setUpForNewSearch() {
+        currentPage = 1
+        isDownloadingInitialResults = true
+        cardResults.removeAll()
+        tableView.reloadData()
+        isDirty = true
     }
     
     
@@ -117,7 +119,7 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         } else {
             rowIsSelected = false
             let card = cardResults[indexPath.row]
-            if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail) as? CardDetailViewController {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail.rawValue) as? CardDetailViewController {
                 vc.cardResult = card
                 vc.deck = deck
                 vc.shouldUseResult = true

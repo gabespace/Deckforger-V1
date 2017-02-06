@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct StoryboardIdentifiers {
-    static let settings = "SettingsTableViewController"
-    static let deckList = "DeckListTableViewController"
-    static let editDeck = "EditDeckTableViewController"
-    static let deckView = "DeckViewController"
-    static let cardDetail = "CardDetailViewController"
-    static let addCard = "AddCardViewController"
-    static let filters = "AdvancedSearchTableViewController"
+enum StoryboardIdentifiers: String {
+    case settings = "SettingsTableViewController"
+    case deckList = "DeckListTableViewController"
+    case editDeck = "EditDeckTableViewController"
+    case deckView = "DeckViewController"
+    case cardDetail = "CardDetailViewController"
+    case addCard = "AddCardViewController"
+    case filters = "AdvancedSearchTableViewController"
 }

@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  States.swift
 //  MTGPrices
 //
 //  Created by Gabriele Pregadio on 11/28/16.
@@ -21,3 +21,17 @@ struct State: StateType {
     var currentRequestPage: Int
     var error: CoreDataError?
 }
+
+//struct SearchState: StateType {
+//    var parameters: [String: Any]?
+//    var shouldSearch: Bool
+//    var isLoading: Bool
+//    var isDownloadingImages: Bool
+//    var currentRequestPage: Int
+//}
+//
+//struct DataState: StateType {
+//    var decks: [Deck]!
+//    var cardResults: Result<ApiResult>?
+//    var additionalCardResults: Result<ApiResult>?
+//}

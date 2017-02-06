@@ -100,7 +100,7 @@ extension DeckListTableViewController: ButtonDelegate, DZNEmptyDataSetSource, DZ
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.deckView) as? DeckViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.deckView.rawValue) as? DeckViewController {
             vc.deck = displayedDecks[indexPath.section][indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -139,7 +139,7 @@ extension DeckListTableViewController: ButtonDelegate, DZNEmptyDataSetSource, DZ
     // MARK: - ButtonDelegate Methods
     
     func buttonTapped(deckId id: String) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck) as? EditDeckTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck.rawValue) as? EditDeckTableViewController {
             vc.deck = decks[(decks.index { $0.id == id })!]
             navigationController?.pushViewController(vc, animated: true)
         }

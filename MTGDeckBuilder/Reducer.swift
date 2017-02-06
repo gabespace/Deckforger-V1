@@ -46,9 +46,9 @@ struct StateReducer: Reducer {
             
         case let action as ReceivedMemoryWarning:
             switch action.restorationIdentifier {
-            case StoryboardIdentifiers.addCard, StoryboardIdentifiers.filters:
+            case StoryboardIdentifiers.addCard.rawValue, StoryboardIdentifiers.filters.rawValue:
                 state.additionalCardResults = nil
-            case StoryboardIdentifiers.cardDetail:
+            case StoryboardIdentifiers.cardDetail.rawValue:
                 state.parameters = nil
                 state.cardResults = nil
             default:

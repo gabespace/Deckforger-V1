@@ -51,7 +51,7 @@
 		CB89B7A81DECE8E4009FCAA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A61DECE8E4009FCAA9 /* Model.xcdatamodeld */; };
 		CB89B7AA1DECF36F009FCAA9 /* DLTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7A91DECF36F009FCAA9 /* DLTVC+Delegate.swift */; };
 		CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7C51DECF91A009FCAA9 /* CardResult.swift */; };
-		CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7CA1DECFFF7009FCAA9 /* State.swift */; };
+		CB89B7CB1DECFFF7009FCAA9 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89B7CA1DECFFF7009FCAA9 /* States.swift */; };
 		CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */; };
 		CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2F7301DFF5EB200A5BDB6 /* DVC+Charts.swift */; };
 		CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */; };
@@ -114,7 +114,7 @@
 		CB89B7A71DECE8E4009FCAA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB89B7A91DECF36F009FCAA9 /* DLTVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DLTVC+Delegate.swift"; sourceTree = "<group>"; };
 		CB89B7C51DECF91A009FCAA9 /* CardResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResult.swift; sourceTree = "<group>"; };
-		CB89B7CA1DECFFF7009FCAA9 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		CB89B7CA1DECFFF7009FCAA9 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		CB9AAF9C1DFA9D88005970A4 /* CardResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResultTableViewCell.swift; sourceTree = "<group>"; };
 		CBB2F7301DFF5EB200A5BDB6 /* DVC+Charts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DVC+Charts.swift"; sourceTree = "<group>"; };
 		CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 		CB89B7CC1DED0003009FCAA9 /* ReSwift */ = {
 			isa = PBXGroup;
 			children = (
-				CB89B7CA1DECFFF7009FCAA9 /* State.swift */,
+				CB89B7CA1DECFFF7009FCAA9 /* States.swift */,
 				CB7883521DED00F500E45F7D /* Actions.swift */,
 				CB735B941DFB380500263E39 /* Action Creators */,
 				CB7883661DED06BD00E45F7D /* Reducer.swift */,
@@ -488,7 +488,7 @@
 				CB1217B31E1EF2E400AC8F91 /* PickerTableViewCell.swift in Sources */,
 				CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */,
 				CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */,
-				CB89B7CB1DECFFF7009FCAA9 /* State.swift in Sources */,
+				CB89B7CB1DECFFF7009FCAA9 /* States.swift in Sources */,
 				CB046DAD1E11D4BF006E059A /* DeckListTableViewCell.swift in Sources */,
 				CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */,
 				CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */,

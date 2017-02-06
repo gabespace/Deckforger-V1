@@ -113,7 +113,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case -1:
             // Commander
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creatureCell, for: indexPath) as! CardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.creatureCell.rawValue, for: indexPath) as! CardTableViewCell
             let creature = commanders[indexPath.row]
             cell.amountLabel.text = "\(creature.amount)"
             cell.title.text = creature.name
@@ -124,14 +124,14 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cardImageView.image = UIImage(data: creature.imageData! as Data)
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = creature.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.imageLabel.text = creature.isDownloadingImage ? ImageLabels.loading.rawValue : ImageLabels.none.rawValue
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: creature.manaCost?.createManaCostImages())
             return cell
         case 0:
             // Creature
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creatureCell, for: indexPath) as! CardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.creatureCell.rawValue, for: indexPath) as! CardTableViewCell
             let creature = creatures[indexPath.row]
             cell.amountLabel.text = "\(creature.amount)"
             cell.title.text = creature.name
@@ -142,14 +142,14 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cardImageView.image = UIImage(data: creature.imageData! as Data)
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = creature.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.imageLabel.text = creature.isDownloadingImage ? ImageLabels.loading.rawValue : ImageLabels.none.rawValue
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: creature.manaCost?.createManaCostImages())
             return cell
         case 1:
             // Spell
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.spellCell, for: indexPath)  as! CardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.spellCell.rawValue, for: indexPath)  as! CardTableViewCell
             let spell = spells[indexPath.row]
             cell.amountLabel.text = "\(spell.amount)"
             cell.title.text = spell.name
@@ -160,14 +160,14 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cardImageView.image = UIImage(data: spell.imageData! as Data)
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = spell.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.imageLabel.text = spell.isDownloadingImage ? ImageLabels.loading.rawValue : ImageLabels.none.rawValue
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: spell.manaCost?.createManaCostImages())
             return cell
         case 2:
             // Land
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.landCell, for: indexPath) as! CardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.landCell.rawValue, for: indexPath) as! CardTableViewCell
             let land = lands[indexPath.row]
             cell.amountLabel.text = "\(land.amount)"
             cell.title.text = land.name
@@ -178,13 +178,13 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cardImageView.image = UIImage(data: land.imageData! as Data)
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = land.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.imageLabel.text = land.isDownloadingImage ? ImageLabels.loading.rawValue : ImageLabels.none.rawValue
                 cell.cardImageView.isHidden = true
             }
             return cell
         default:
             // Sideboard
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.sideboardCell, for: indexPath) as! CardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.sideboardCell.rawValue, for: indexPath) as! CardTableViewCell
             let sideboardCard = sideboard[indexPath.row]
             cell.amountLabel.text = "\(sideboardCard.amount)"
             cell.title.text = sideboardCard.name
@@ -195,7 +195,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cardImageView.image = UIImage(data: sideboardCard.imageData! as Data)
             } else {
                 cell.imageLabel.isHidden = false
-                cell.imageLabel.text = sideboardCard.isDownloadingImage ? "Loading Image" : "No Image"
+                cell.imageLabel.text = sideboardCard.isDownloadingImage ? ImageLabels.loading.rawValue : ImageLabels.none.rawValue
                 cell.cardImageView.isHidden = true
             }
             cell.configureCost(from: sideboardCard.manaCost?.createManaCostImages())
@@ -204,7 +204,7 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail) as? CardDetailViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail.rawValue) as? CardDetailViewController {
             vc.deck = deck
             let section = isCommander ? indexPath.section - 1 : indexPath.section
             switch section {
@@ -228,11 +228,16 @@ extension DeckViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Supporting Functionality
     
-    struct Cell {
-        static let creatureCell = "Creature"
-        static let spellCell = "Spell"
-        static let landCell = "Land"
-        static let sideboardCell = "Sideboard"
+    enum Cells: String {
+        case creatureCell = "Creature"
+        case spellCell = "Spell"
+        case landCell = "Land"
+        case sideboardCell = "Sideboard"
+    }
+    
+    enum ImageLabels: String {
+        case loading = "Loading Image"
+        case none = "No Image"
     }
     
     func getCardAtIndexPath(_ indexPath: IndexPath) -> Card {

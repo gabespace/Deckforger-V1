@@ -52,13 +52,13 @@ class DeckListTableViewController: UITableViewController, StoreSubscriber {
     // MARK: - Methods
     
     @objc private func showSettings() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settings) as? SettingsTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settings.rawValue) as? SettingsTableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @objc private func addDeck() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck) as? EditDeckTableViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.editDeck.rawValue) as? EditDeckTableViewController {
             vc.isCreatingNewDeck = true
             navigationController?.pushViewController(vc, animated: true)
         }

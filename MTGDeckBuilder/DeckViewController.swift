@@ -138,7 +138,7 @@ class DeckViewController: UIViewController, StoreSubscriber {
     }
     
     @objc private func searchForCards() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.addCard) as? AddCardViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.addCard.rawValue) as? AddCardViewController {
             vc.deck = deck
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -156,7 +156,10 @@ class DeckViewController: UIViewController, StoreSubscriber {
             }
             tableView.reloadData()
         } else {
-            present(errorAlert(description: "Unable to access stored cards for this deck. Please close the app and try again.", title: "Loading Error"), animated: true)
+            present(
+                errorAlert(description: "Unable to access stored cards for this deck. Please close the app and try again.", title: "Loading Error"),
+                animated: true
+            )
             _ = navigationController?.popViewController(animated: true)
         }
     }
