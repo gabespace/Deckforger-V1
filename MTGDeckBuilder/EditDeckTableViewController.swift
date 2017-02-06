@@ -62,14 +62,13 @@ class EditDeckTableViewController: UITableViewController, StoreSubscriber, UITex
     
     // MARK: - Methods
     
-    func newState(state: State) {
-        if let error = state.error {
+    func newState(state: RootState) {
+        if let error = state.coreDataState.coreDataError {
             switch error {
             case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
             case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
             case .otherError(let description): present(errorAlert(description: description, title: nil), animated: true)
             }
-            return
         }
     }
     

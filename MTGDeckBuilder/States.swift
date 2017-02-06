@@ -10,28 +10,22 @@ import Foundation
 import ReSwift
 import Alamofire
 
-struct State: StateType {
+struct RootState: StateType {
+    var coreDataState: CoreDataState
+    var searchState: SearchState
+}
+
+struct CoreDataState: StateType {
     var decks: [Deck]!
+    var coreDataError: CoreDataError?
+    var isDownloadingImages: Bool
+}
+
+struct SearchState: StateType {
     var cardResults: Result<ApiResult>?
+    var additionalCardResults: Result<ApiResult>?
     var parameters: [String: Any]?
     var shouldSearch: Bool
     var isLoading: Bool
-    var additionalCardResults: Result<ApiResult>?
-    var isDownloadingImages: Bool
     var currentRequestPage: Int
-    var error: CoreDataError?
 }
-
-//struct SearchState: StateType {
-//    var parameters: [String: Any]?
-//    var shouldSearch: Bool
-//    var isLoading: Bool
-//    var isDownloadingImages: Bool
-//    var currentRequestPage: Int
-//}
-//
-//struct DataState: StateType {
-//    var decks: [Deck]!
-//    var cardResults: Result<ApiResult>?
-//    var additionalCardResults: Result<ApiResult>?
-//}

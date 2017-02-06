@@ -81,8 +81,8 @@ class AddCardViewController: UIViewController, StoreSubscriber {
     
     // MARK: - StoreSubscriber Delegate Methods
     
-    func newState(state: State) {
-        if let error = state.error {
+    func newState(state: RootState) {
+        if let error = state.coreDataState.coreDataError {
             switch error {
             case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
             case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
@@ -92,12 +92,12 @@ class AddCardViewController: UIViewController, StoreSubscriber {
         }
         guard isDirty else { return }
         
-        if let newParameters = state.parameters {
+        if let newParameters = state.searchState.parameters {
             parameters = newParameters
             searchBar.text = (parameters["name"] as? String) ?? nil
         }
         
-        if state.shouldSearch {
+        if state.searchState.shouldSearch {
             // Just came back from AdvancedSearchViewController with new parameters.
             currentPage = 1
             isDownloadingInitialResults = true
@@ -106,8 +106,8 @@ class AddCardViewController: UIViewController, StoreSubscriber {
             searchBar.selectedScopeButtonIndex = 0
             store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: nil, currentPage: currentPage))
         } else {
-            currentPage = state.currentRequestPage
-            if let result = state.cardResults {
+            currentPage = state.searchState.currentRequestPage
+            if let result = state.searchState.cardResults {
                 isDownloadingInitialResults = false
                 isDirty = false
                 if result.isSuccess {

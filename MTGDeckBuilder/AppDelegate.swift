@@ -10,7 +10,7 @@ import UIKit
 import ReSwift
 import CoreData
 
-let store = Store<State>(reducer: StateReducer(), state: nil)
+let store = Store<RootState>(reducer: StateReducer(), state: nil)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

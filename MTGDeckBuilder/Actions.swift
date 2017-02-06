@@ -41,16 +41,11 @@ struct DeleteEverything: Action { }
 
 // MARK: - Card Actions
 
-struct AddSideboardCardToDeck: Action {
-    let deck: Deck
-    let sideboardCard: Card
-    let amount: Int16
-}
-
 struct AddCardResultToDeck: Action {
     let deck: Deck
     let card: CardResult
     let amount: Int16
+    let toSideboard: Bool
 }
 
 struct AddMainboardCardToSideboard: Action {
@@ -59,34 +54,17 @@ struct AddMainboardCardToSideboard: Action {
     let amount: Int16
 }
 
-struct AddCardResultToSideboard: Action {
+struct AddSideboardCardToMainboard: Action {
     let deck: Deck
-    let card: CardResult
+    let sideboardCard: Card
     let amount: Int16
 }
 
-struct IncrementMainboardCardAmount: Action {
-    let deck: Deck
-    let card: Card
-    let amount: Int16
-}
-
-struct IncrementSideboardCardAmount: Action {
-    let deck: Deck
-    let card: Card
-    let amount: Int16
-}
-
-struct DecrementMainboardCardAmount: Action {
+struct UpdateCardAmount: Action {
     let deck: Deck
     let cardId: String
     let amount: Int16
-}
-
-struct DecrementSideboardCardAmount: Action {
-    let deck: Deck
-    let cardId: String
-    let amount: Int16
+    let isSideboard: Bool
 }
 
 struct RemoveCardFromDeck: Action {
@@ -113,6 +91,7 @@ struct UnmakeCardCommander: Action {
 struct ReDownloadImageForCard: Action {
     let card: Card
 }
+
 
 // MARK: - Search Actions
 

@@ -11,7 +11,7 @@ import ReSwift
 import Alamofire
 import ObjectMapper
 
-func searchForCardsActionCreator(url: URLConvertible, parameters: Parameters, previousResults: [CardResult]?, currentPage: Int) -> Store<State>.ActionCreator {
+func searchForCardsActionCreator(url: URLConvertible, parameters: Parameters, previousResults: [CardResult]?, currentPage: Int) -> Store<RootState>.ActionCreator {
     return { state, store in
         
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in

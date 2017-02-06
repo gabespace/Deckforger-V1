@@ -11,14 +11,13 @@ import ReSwift
 import Alamofire
 import ObjectMapper
 
-func searchForAdditionalCardsActionCreator(url: URLConvertible, parameters: Parameters) -> Store<State>.ActionCreator {
+func searchForAdditionalCardsActionCreator(url: URLConvertible, parameters: Parameters) -> Store<RootState>.ActionCreator {
     return { state, store in
         
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            // Completion handler
+            // Completion handler.
             
             guard let json = response.result.value else {
-                print("error retrieving cards")
                 let errorCode = ErrorCode(rawValue: response.response?.statusCode ?? 0)
                 let apiError = ApiError(status: errorCode, type: nil, message: "Unable to connect to online card database. Please check your network connection and try again.")
                 store.dispatch(SearchForAdditionalCards(result: Result.failure(apiError), isLoading: false))

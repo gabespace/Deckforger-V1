@@ -121,22 +121,22 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if shouldUseResult {
-            store.dispatch(AddCardResultToDeck(deck: deck, card: cardResult!, amount: 1))
+            store.dispatch(AddCardResultToDeck(deck: deck, card: cardResult!, amount: 1, toSideboard: false))
         } else {
             if card!.isSideboard {
-                store.dispatch(AddSideboardCardToDeck(deck: deck, sideboardCard: card!, amount: 1))
+                store.dispatch(AddSideboardCardToMainboard(deck: deck, sideboardCard: card!, amount: 1))
             } else {
-                store.dispatch(IncrementMainboardCardAmount(deck: deck, card: card!, amount: 1))
+                store.dispatch(UpdateCardAmount(deck: deck, cardId: id, amount: 1, isSideboard: false))
             }
         }
     }
     
     @IBAction func addToSideboardButtonPressed(_ sender: UIButton) {
         if shouldUseResult {
-            store.dispatch(AddCardResultToSideboard(deck: deck, card: cardResult!, amount: 1))
+            store.dispatch(AddCardResultToDeck(deck: deck, card: cardResult!, amount: 1, toSideboard: true))
         } else {
             if card!.isSideboard {
-                store.dispatch(IncrementSideboardCardAmount(deck: deck, card: card!, amount: 1))
+                store.dispatch(UpdateCardAmount(deck: deck, cardId: id, amount: 1, isSideboard: true))
             } else {
                 store.dispatch(AddMainboardCardToSideboard(deck: deck, mainboardCard: card!, amount: 1))
             }
@@ -144,11 +144,11 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        store.dispatch(DecrementMainboardCardAmount(deck: deck, cardId: id, amount: 1))
+        store.dispatch(UpdateCardAmount(deck: deck, cardId: id, amount: -1, isSideboard: false))
     }
     
     @IBAction func removeFromSideboardButtonPressed(_ sender: UIButton) {
-        store.dispatch(DecrementSideboardCardAmount(deck: deck, cardId: id, amount: 1))
+        store.dispatch(UpdateCardAmount(deck: deck, cardId: id, amount: -1, isSideboard: true))
     }
     
     
@@ -392,8 +392,8 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     
     // MARK: - StoreSubscriber Delegate Methods
     
-    func newState(state: State) {
-        if let error = state.error {
+    func newState(state: RootState) {
+        if let error = state.coreDataState.coreDataError {
             switch error {
             case .loadingError(let description): present(errorAlert(description: description, title: "Loading Error"), animated: true)
             case .savingError(let description): present(errorAlert(description: description, title: "Saving Error"), animated: true)
@@ -404,14 +404,14 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         getDeckCount()
         getSideboardCount()
         
-        if !state.isDownloadingImages {
+        if !state.coreDataState.isDownloadingImages {
             mainImageDownloadComplete()
         }
         
-        if waitingForFlippedResult && !state.isLoading {
+        if waitingForFlippedResult && !state.searchState.isLoading {
             waitingForFlippedResult = false
-            if state.additionalCardResults!.isSuccess {
-                flippedCard = state.additionalCardResults!.value!.cards[0]
+            if state.searchState.additionalCardResults!.isSuccess {
+                flippedCard = state.searchState.additionalCardResults!.value!.cards[0]
                 if let imageUrl = flippedCard?.imageUrl {
                     fetchFlipImage(from: imageUrl)
                 }

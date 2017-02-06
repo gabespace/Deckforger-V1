@@ -19,6 +19,8 @@
 		CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B01E1EED6E00AC8F91 /* RangeTableViewCell.swift */; };
 		CB1217B31E1EF2E400AC8F91 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B21E1EF2E400AC8F91 /* PickerTableViewCell.swift */; };
 		CB1217B51E1EF3DF00AC8F91 /* ASTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1217B41E1EF3DF00AC8F91 /* ASTVC+Delegate.swift */; };
+		CB14996A1E49039800CD0C33 /* CoreDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1499691E49039800CD0C33 /* CoreDataReducer.swift */; };
+		CB14996C1E49039D00CD0C33 /* SearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB14996B1E49039D00CD0C33 /* SearchReducer.swift */; };
 		CB16D3631DF2079200893C3E /* ASTVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */; };
 		CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212251DEF8AE500C51044 /* AddCardViewController.swift */; };
 		CB2212291DEF930400C51044 /* ACVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212281DEF930400C51044 /* ACVC+Delegate.swift */; };
@@ -74,6 +76,8 @@
 		CB1217B01E1EED6E00AC8F91 /* RangeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeTableViewCell.swift; sourceTree = "<group>"; };
 		CB1217B21E1EF2E400AC8F91 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		CB1217B41E1EF3DF00AC8F91 /* ASTVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTVC+Delegate.swift"; sourceTree = "<group>"; };
+		CB1499691E49039800CD0C33 /* CoreDataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataReducer.swift; sourceTree = "<group>"; };
+		CB14996B1E49039D00CD0C33 /* SearchReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchReducer.swift; sourceTree = "<group>"; };
 		CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB2212251DEF8AE500C51044 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		CB2212281DEF930400C51044 /* ACVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACVC+Delegate.swift"; sourceTree = "<group>"; };
@@ -216,6 +220,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CB1499681E4902F200CD0C33 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				CB7883661DED06BD00E45F7D /* Reducer.swift */,
+				CB1499691E49039800CD0C33 /* CoreDataReducer.swift */,
+				CB14996B1E49039D00CD0C33 /* SearchReducer.swift */,
+			);
+			name = Reducers;
+			sourceTree = "<group>";
+		};
 		CB2212231DEF845C00C51044 /* DeckList Viewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,7 +338,7 @@
 				CB89B7CA1DECFFF7009FCAA9 /* States.swift */,
 				CB7883521DED00F500E45F7D /* Actions.swift */,
 				CB735B941DFB380500263E39 /* Action Creators */,
-				CB7883661DED06BD00E45F7D /* Reducer.swift */,
+				CB1499681E4902F200CD0C33 /* Reducers */,
 			);
 			name = ReSwift;
 			sourceTree = "<group>";
@@ -474,6 +488,7 @@
 				CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */,
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
 				CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */,
+				CB14996A1E49039800CD0C33 /* CoreDataReducer.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */,
 				CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */,
 				CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */,
@@ -482,6 +497,7 @@
 				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DVC+TableViewData.swift in Sources */,
 				CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */,
+				CB14996C1E49039D00CD0C33 /* SearchReducer.swift in Sources */,
 				CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */,
 				CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */,
 				CB271ABC1DEE3F6A00AD44FD /* ApiResult.swift in Sources */,

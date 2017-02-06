@@ -89,11 +89,11 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
                 cell.subtitleLabel.text = "\(result.type!)"
                 cell.setRarityLabel.text = "\(result.setName!)"
                 switch result.rarity {
-                case "Mythic Rare": cell.setRarityLabel.textColor = UIColor.red
-                case "Rare": cell.setRarityLabel.textColor = UIColor(red: 0.98, green: 0.7, blue: 0.1, alpha: 1.0)
-                case "Uncommon": cell.setRarityLabel.textColor = UIColor.gray
-                case "Special": cell.setRarityLabel.textColor = UIColor.blue
-                default: cell.setRarityLabel.textColor = UIColor.black
+                case "Mythic Rare": cell.setRarityLabel.textColor = RarityColors.mythic
+                case "Rare": cell.setRarityLabel.textColor = RarityColors.rare
+                case "Uncommon": cell.setRarityLabel.textColor = RarityColors.uncommon
+                case "Special": cell.setRarityLabel.textColor = RarityColors.special
+                default: cell.setRarityLabel.textColor = RarityColors.common
                 }
                 cell.configureCost(from: result.manaCost?.createManaCostImages())
                 return cell
@@ -110,13 +110,16 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         self.searchBar.resignFirstResponder()
         
         if indexPath.row == cardResults.count {
-            tableView.cellForRow(at: indexPath)!.textLabel?.text = CellLabels.retrievingCards
-            tableView.deselectRow(at: indexPath, animated: true)
+            // Retrieve next page of cards.
+            tableView.cellForRow(at: indexPath)?.textLabel?.text = CellLabels.retrievingCards
             currentPage += 1
             isDownloadingAdditionalPages = true
             isDirty = true
-            store.dispatch(searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: cardResults, currentPage: currentPage))
+            store.dispatch(
+                searchForCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters, previousResults: cardResults, currentPage: currentPage)
+            )
         } else {
+            // Display selected card.
             rowIsSelected = false
             let card = cardResults[indexPath.row]
             if let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.cardDetail.rawValue) as? CardDetailViewController {
@@ -141,5 +144,13 @@ extension AddCardViewController: UITableViewDelegate, UITableViewDataSource, UIS
         static let retrievingCards = "Retrieving Cards..."
         static let noResults = "No Results"
         static let showMoreResults = "Show More Results"
+    }
+    
+    struct RarityColors {
+        static let mythic = UIColor.red
+        static let rare = UIColor(red: 0.98, green: 0.7, blue: 0.1, alpha: 1.0)
+        static let uncommon = UIColor.gray
+        static let common = UIColor.black
+        static let special = UIColor.blue
     }
 }
