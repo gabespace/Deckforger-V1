@@ -65,18 +65,19 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return 3
+        switch section {
+        case 0: return 1
+        case 1: return 3
+        default: return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsCell, for: indexPath)
             return cell
-        } else {
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.creditsCell, for: indexPath)
             cell.textLabel?.text = credits[indexPath.row]
             return cell
@@ -84,9 +85,9 @@ class SettingsTableViewController: UITableViewController, StoreSubscriber {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard indexPath.section == 0 else { return }
         
-        tableView.deselectRow(at: indexPath, animated: true)
         let ac = UIAlertController(title: "Delete All Data", message: "Are you sure? This action cannot be undone.", preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.addAction(UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in

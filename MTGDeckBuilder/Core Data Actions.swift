@@ -1,20 +1,14 @@
 //
-//  Actions.swift
-//  MTGPrices
+//  Core Data Actions.swift
+//  Deckforger
 //
-//  Created by Gabriele Pregadio on 11/28/16.
-//  Copyright © 2016 Gabriele Pregadio. All rights reserved.
+//  Created by Gabriele Pregadio on 2/15/17.
+//  Copyright © 2017 Gabriele Pregadio. All rights reserved.
 //
 
 import Foundation
 import ReSwift
 import Alamofire
-
-// MARK: - Misc Actions
-
-struct ReceivedMemoryWarning: Action {
-    let restorationIdentifier: String
-}
 
 
 // MARK: - Deck Actions
@@ -91,24 +85,3 @@ struct UnmakeCardCommander: Action {
 struct ReDownloadImageForCard: Action {
     let card: Card
 }
-
-
-// MARK: - Search Actions
-
-struct PrepareForSearch: Action {
-    let parameters: [String: Any]
-}
-
-struct SearchForCards: Action {
-    let result: Result<ApiResult>?
-    let parameters: [String: Any]
-    let isLoading: Bool
-    let currentPage: Int
-}
-
-struct SearchForAdditionalCards: Action {
-    let result: Result<ApiResult>?
-    let isLoading: Bool
-}
-
-struct ImagesDownloadComplete: Action { }

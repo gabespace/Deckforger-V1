@@ -6,7 +6,7 @@
 //  Copyright © 2017 Gabriele Pregadio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum StoryboardIdentifiers: String {
     case settings = "SettingsTableViewController"

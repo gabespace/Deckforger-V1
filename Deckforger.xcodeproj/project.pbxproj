@@ -24,7 +24,7 @@
 		CB16D3631DF2079200893C3E /* ASTVC+TableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */; };
 		CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212251DEF8AE500C51044 /* AddCardViewController.swift */; };
 		CB2212291DEF930400C51044 /* ACVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2212281DEF930400C51044 /* ACVC+Delegate.swift */; };
-		CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */; };
+		CB26D6691E3133640044F9AC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26D6681E3133640044F9AC /* Constants.swift */; };
 		CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB51DEE275A00AD44FD /* Search For Cards AC.swift */; };
 		CB271AB81DEE293500AD44FD /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB71DEE293500AD44FD /* ApiError.swift */; };
 		CB271ABA1DEE2A8800AD44FD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB271AB91DEE2A8800AD44FD /* Errors.swift */; };
@@ -36,7 +36,6 @@
 		CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */; };
 		CB6CFB0C1DF2AC1D0035E181 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */; };
 		CB735B931DFB380200263E39 /* Search For Additional Cards AC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB735B921DFB380200263E39 /* Search For Additional Cards AC.swift */; };
-		CB7883531DED00F500E45F7D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7883521DED00F500E45F7D /* Actions.swift */; };
 		CB7883621DED05C200E45F7D /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835C1DED05C200E45F7D /* Deck+CoreDataClass.swift */; };
 		CB7883631DED05C200E45F7D /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835D1DED05C200E45F7D /* Deck+CoreDataProperties.swift */; };
 		CB7883641DED05C200E45F7D /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */; };
@@ -58,6 +57,11 @@
 		CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2F7301DFF5EB200A5BDB6 /* DVC+Charts.swift */; };
 		CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */; };
 		CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */; };
+		CBD74FC31E54CB4B003ED360 /* ImagesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD74FC21E54CB4B003ED360 /* ImagesReducer.swift */; };
+		CBD74FC51E54CC1C003ED360 /* Core Data Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD74FC41E54CC1C003ED360 /* Core Data Actions.swift */; };
+		CBD74FC71E54CC5C003ED360 /* Search Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD74FC61E54CC5C003ED360 /* Search Actions.swift */; };
+		CBD74FC91E54CD31003ED360 /* Images Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD74FC81E54CD31003ED360 /* Images Actions.swift */; };
+		CBD74FCB1E54CDAC003ED360 /* Fetch Images ACs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD74FCA1E54CDAC003ED360 /* Fetch Images ACs.swift */; };
 		CBDF2D811DF100A400579430 /* String+MTG.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF2D801DF100A400579430 /* String+MTG.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +85,7 @@
 		CB16D3621DF2079200893C3E /* ASTVC+TableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTVC+TableViewData.swift"; sourceTree = "<group>"; };
 		CB2212251DEF8AE500C51044 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		CB2212281DEF930400C51044 /* ACVC+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACVC+Delegate.swift"; sourceTree = "<group>"; };
-		CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiers.swift; sourceTree = "<group>"; };
+		CB26D6681E3133640044F9AC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB271AB51DEE275A00AD44FD /* Search For Cards AC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search For Cards AC.swift"; sourceTree = "<group>"; };
 		CB271AB71DEE293500AD44FD /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		CB271AB91DEE2A8800AD44FD /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -101,7 +105,6 @@
 		CB6294931DF0BC710014F139 /* AdvancedSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchTableViewController.swift; sourceTree = "<group>"; };
 		CB6CFB0B1DF2AC1D0035E181 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		CB735B921DFB380200263E39 /* Search For Additional Cards AC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search For Additional Cards AC.swift"; sourceTree = "<group>"; };
-		CB7883521DED00F500E45F7D /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		CB78835C1DED05C200E45F7D /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CB78835D1DED05C200E45F7D /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB78835E1DED05C200E45F7D /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -123,6 +126,11 @@
 		CBB2F7301DFF5EB200A5BDB6 /* DVC+Charts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DVC+Charts.swift"; sourceTree = "<group>"; };
 		CBBCC2DE1DF6181100344614 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		CBCE49171E15D01D00A57E1B /* ConstraintTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintTableViewCell.swift; sourceTree = "<group>"; };
+		CBD74FC21E54CB4B003ED360 /* ImagesReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesReducer.swift; sourceTree = "<group>"; };
+		CBD74FC41E54CC1C003ED360 /* Core Data Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Core Data Actions.swift"; sourceTree = "<group>"; };
+		CBD74FC61E54CC5C003ED360 /* Search Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search Actions.swift"; sourceTree = "<group>"; };
+		CBD74FC81E54CD31003ED360 /* Images Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Images Actions.swift"; sourceTree = "<group>"; };
+		CBD74FCA1E54CDAC003ED360 /* Fetch Images ACs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fetch Images ACs.swift"; sourceTree = "<group>"; };
 		CBDF2D801DF100A400579430 /* String+MTG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MTG.swift"; sourceTree = "<group>"; };
 		CF1028AFF6DDB60F45F98EC6 /* Pods-Deckforger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deckforger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deckforger/Pods-Deckforger.release.xcconfig"; sourceTree = "<group>"; };
 		FAA6C7CE683C95CB609CAA7B /* Pods_Deckforger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deckforger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0F99981DECE5F70085C721 /* Main.storyboard */,
-				CB26D6681E3133640044F9AC /* StoryboardIdentifiers.swift */,
+				CB26D6681E3133640044F9AC /* Constants.swift */,
 				CB7CA2731DEE66FB00C95B83 /* View Controllers */,
 				CB89B7C71DECF923009FCAA9 /* Model */,
 				CB89B7C41DECF3FF009FCAA9 /* Core Data */,
@@ -226,6 +234,7 @@
 				CB7883661DED06BD00E45F7D /* Reducer.swift */,
 				CB1499691E49039800CD0C33 /* CoreDataReducer.swift */,
 				CB14996B1E49039D00CD0C33 /* SearchReducer.swift */,
+				CBD74FC21E54CB4B003ED360 /* ImagesReducer.swift */,
 			);
 			name = Reducers;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 			children = (
 				CB271AB51DEE275A00AD44FD /* Search For Cards AC.swift */,
 				CB735B921DFB380200263E39 /* Search For Additional Cards AC.swift */,
+				CBD74FCA1E54CDAC003ED360 /* Fetch Images ACs.swift */,
 			);
 			name = "Action Creators";
 			sourceTree = "<group>";
@@ -336,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				CB89B7CA1DECFFF7009FCAA9 /* States.swift */,
-				CB7883521DED00F500E45F7D /* Actions.swift */,
+				CBD74FCC1E54D21D003ED360 /* Actions */,
 				CB735B941DFB380500263E39 /* Action Creators */,
 				CB1499681E4902F200CD0C33 /* Reducers */,
 			);
@@ -353,6 +363,16 @@
 				CB7A34F81E25AB09009CB46D /* CorneredImageView.swift */,
 			);
 			name = "Card Detail";
+			sourceTree = "<group>";
+		};
+		CBD74FCC1E54D21D003ED360 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CBD74FC41E54CC1C003ED360 /* Core Data Actions.swift */,
+				CBD74FC61E54CC5C003ED360 /* Search Actions.swift */,
+				CBD74FC81E54CD31003ED360 /* Images Actions.swift */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,21 +507,24 @@
 				CB0F99971DECE5F70085C721 /* DeckListTableViewController.swift in Sources */,
 				CBBCC2DF1DF6181100344614 /* CardDetailViewController.swift in Sources */,
 				CB6294941DF0BC710014F139 /* AdvancedSearchTableViewController.swift in Sources */,
+				CBD74FC51E54CC1C003ED360 /* Core Data Actions.swift in Sources */,
 				CB48F3741E20375C007BF8F8 /* SettingsViewController.swift in Sources */,
 				CB14996A1E49039800CD0C33 /* CoreDataReducer.swift in Sources */,
 				CBB2F7311DFF5EB200A5BDB6 /* DVC+Charts.swift in Sources */,
 				CB4F1A491E3050F9000ECDC0 /* DVC+TabBarDelegate.swift in Sources */,
-				CB26D6691E3133640044F9AC /* StoryboardIdentifiers.swift in Sources */,
+				CB26D6691E3133640044F9AC /* Constants.swift in Sources */,
 				CB89B7AA1DECF36F009FCAA9 /* DLTVC+Delegate.swift in Sources */,
 				CB271AB61DEE275A00AD44FD /* Search For Cards AC.swift in Sources */,
 				CB7A34F91E25AB09009CB46D /* CorneredImageView.swift in Sources */,
 				CB48D3741DEFB53A00004F4D /* DVC+TableViewData.swift in Sources */,
 				CB9AAF9D1DFA9D88005970A4 /* CardResultTableViewCell.swift in Sources */,
+				CBD74FCB1E54CDAC003ED360 /* Fetch Images ACs.swift in Sources */,
 				CB14996C1E49039D00CD0C33 /* SearchReducer.swift in Sources */,
 				CB1217B11E1EED6E00AC8F91 /* RangeTableViewCell.swift in Sources */,
 				CBCE49181E15D01D00A57E1B /* ConstraintTableViewCell.swift in Sources */,
 				CB271ABC1DEE3F6A00AD44FD /* ApiResult.swift in Sources */,
 				CB1217B31E1EF2E400AC8F91 /* PickerTableViewCell.swift in Sources */,
+				CBD74FC31E54CB4B003ED360 /* ImagesReducer.swift in Sources */,
 				CB2212261DEF8AE500C51044 /* AddCardViewController.swift in Sources */,
 				CB046DB21E11E13D006E059A /* DeckNameTableViewCell.swift in Sources */,
 				CB89B7CB1DECFFF7009FCAA9 /* States.swift in Sources */,
@@ -510,14 +533,15 @@
 				CB857AC11E258DD2000C2B5F /* CostFieldTableViewCell.swift in Sources */,
 				CB7883671DED06BD00E45F7D /* Reducer.swift in Sources */,
 				CB271ABA1DEE2A8800AD44FD /* Errors.swift in Sources */,
+				CBD74FC71E54CC5C003ED360 /* Search Actions.swift in Sources */,
 				CBDF2D811DF100A400579430 /* String+MTG.swift in Sources */,
 				CB857ABD1E25841B000C2B5F /* CDVC+TableViewData.swift in Sources */,
 				CB89B7C61DECF91A009FCAA9 /* CardResult.swift in Sources */,
 				CB7CA2751DEE673000C95B83 /* DeckViewController.swift in Sources */,
-				CB7883531DED00F500E45F7D /* Actions.swift in Sources */,
 				CB7883621DED05C200E45F7D /* Deck+CoreDataClass.swift in Sources */,
 				CB16D3631DF2079200893C3E /* ASTVC+TableViewData.swift in Sources */,
 				CB735B931DFB380200263E39 /* Search For Additional Cards AC.swift in Sources */,
+				CBD74FC91E54CD31003ED360 /* Images Actions.swift in Sources */,
 				CB7883631DED05C200E45F7D /* Deck+CoreDataProperties.swift in Sources */,
 				CB0F99951DECE5F70085C721 /* AppDelegate.swift in Sources */,
 				CB046DAF1E11DE17006E059A /* EditDeckTableViewController.swift in Sources */,

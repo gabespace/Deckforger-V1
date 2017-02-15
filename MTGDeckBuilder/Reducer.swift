@@ -15,7 +15,8 @@ struct StateReducer: Reducer {
         // Delegate to sub-reducers.
         return RootState(
             coreDataState: coreDataReducer(action: action, state: state?.coreDataState),
-            searchState: searchReducer(action: action, state: state?.searchState)
+            searchState: searchReducer(action: action, state: state?.searchState),
+            imagesState: imagesReducer(action: action, state: state?.imagesState)
         )
     }
 }

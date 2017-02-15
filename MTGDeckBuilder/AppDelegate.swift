@@ -10,7 +10,15 @@ import UIKit
 import ReSwift
 import CoreData
 
-let store = Store<RootState>(reducer: StateReducer(), state: nil)
+let store = Store<RootState>(reducer: StateReducer(), state: nil, middleware: [middleware])
+let middleware: Middleware = { dispatch, getState in
+    return { next in
+        return { action in
+            print("\n---\nACTION CALLED:\n\(action)\n---\n")
+            return next(action)
+        }
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
         return true
     }
 

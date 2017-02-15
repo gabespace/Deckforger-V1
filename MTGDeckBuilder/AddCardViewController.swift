@@ -119,9 +119,11 @@ class AddCardViewController: UIViewController, StoreSubscriber {
                     headers = result.value!.headers
                     tableView.reloadData()
                 } else {
-                    tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
-                    if let error = result.error as? ApiError {
-                        present(errorAlert(description: error.message, title: "Connection Error"), animated: true)
+                    if tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text != "Error Retrieving Cards" {
+                        tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text = "Error Retrieving Cards"
+                        if let error = result.error as? ApiError {
+                            present(errorAlert(description: error.message, title: "Connection Error"), animated: true)
+                        }
                     }
                 }
             }

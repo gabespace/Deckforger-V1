@@ -122,12 +122,12 @@ func coreDataReducer(action: Action, state: CoreDataState?) -> CoreDataState {
                             DispatchQueue.main.async {
                                 card.imageData = data as NSData
                                 card.isDownloadingImage = false
-                                store.dispatch(ImagesDownloadComplete())
+                                state.isDownloadingImages = false
                             }
                         } else {
                             DispatchQueue.main.async {
                                 card.isDownloadingImage = false
-                                store.dispatch(ImagesDownloadComplete())
+                                state.isDownloadingImages = false
                             }
                         }
                     }
@@ -277,12 +277,12 @@ func coreDataReducer(action: Action, state: CoreDataState?) -> CoreDataState {
                                 DispatchQueue.main.async {
                                     card.imageData = data as NSData
                                     card.isDownloadingImage = false
-                                    store.dispatch(ImagesDownloadComplete())
+                                    state.isDownloadingImages = false
                                 }
                             } else {
                                 DispatchQueue.main.async {
                                     card.isDownloadingImage = false
-                                    store.dispatch(ImagesDownloadComplete())
+                                    state.isDownloadingImages = false
                                 }
                             }
                         }
@@ -334,7 +334,11 @@ func coreDataReducer(action: Action, state: CoreDataState?) -> CoreDataState {
         }
         
     case let action as ReDownloadImageForCard:
-        guard let urlString = action.card.imageUrl else { break }
+        guard let urlString = action.card.imageUrl else {
+            action.card.isDownloadingImage = false
+            state.isDownloadingImages = false
+            break
+        }
         
         action.card.isDownloadingImage = true
         state.isDownloadingImages = true
@@ -344,19 +348,16 @@ func coreDataReducer(action: Action, state: CoreDataState?) -> CoreDataState {
                     DispatchQueue.main.async {
                         action.card.imageData = data as NSData
                         action.card.isDownloadingImage = false
-                        store.dispatch(ImagesDownloadComplete())
+                        state.isDownloadingImages = false
                     }
                 } else {
                     DispatchQueue.main.async {
                         action.card.isDownloadingImage = false
-                        store.dispatch(ImagesDownloadComplete())
+                        state.isDownloadingImages = false
                     }
                 }
             }
         }
-        
-    case is ImagesDownloadComplete:
-        state.isDownloadingImages = false
         
     default:
         break

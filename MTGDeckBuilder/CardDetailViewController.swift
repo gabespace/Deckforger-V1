@@ -75,34 +75,53 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         return self.shouldUseResult ? self.cardResult!.toughness : self.card!.toughness
     }()
     
+    lazy var imageUrl: URL? = {
+        if self.shouldUseResult {
+            if let urlString = self.cardResult!.imageUrl {
+                return URL(string: urlString)
+            }
+        } else {
+            if let urlString = self.card!.imageUrl {
+                return URL(string: urlString)
+            }
+        }
+        return nil
+    }()
+    
     var tableViewData = Array<String>(repeatElement("", count: Sections.names.count))
     
     var mainImage: UIImage?
     
     var flippedCard: CardResult?
     var flippedImage: UIImage?
-    var waitingForFlippedResult = false
     var isFlipped = false
+    var fetchFlipSideRequested = false
     
     var image: UIImage? {
         didSet {
             imageView.image = image
+            spinner.stopAnimating()
         }
     }
     
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 50
+        }
+    }
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var imageUnavailableLabel: UILabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var imageView: CorneredImageView!
+    @IBOutlet weak var imageUnavailableLabel: UILabel! { didSet { imageUnavailableLabel.isHidden = true } }
+    @IBOutlet weak var spinner: UIActivityIndicatorView! { didSet { spinner.hidesWhenStopped = true } }
+    @IBOutlet weak var imageView: CorneredImageView! { didSet { imageView.clipsToBounds = true } }
     @IBOutlet weak var sideboardButton: UIButton!
     @IBOutlet weak var decrementSideboardButton: UIButton!
     @IBOutlet weak var makeCommanderButton: UIButton!
-    @IBOutlet weak var deckCountButton: UIButton!
-    @IBOutlet weak var sideCountButton: UIButton!
+    @IBOutlet weak var deckCountButton: UIButton! { didSet { deckCountButton.isUserInteractionEnabled = false } }
+    @IBOutlet weak var sideCountButton: UIButton! { didSet { sideCountButton.isUserInteractionEnabled = false } }
     
     
     // MARK: - IBActions
@@ -157,14 +176,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 50
-        
-        imageView.clipsToBounds = true
-        
-        deckCountButton.isUserInteractionEnabled = false
-        sideCountButton.isUserInteractionEnabled = false
-        
         title = name
         
         formatSideboardButtons()
@@ -207,45 +218,42 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
     }
     
     private func formatMainImage() {
-        spinner.hidesWhenStopped = true
-        imageUnavailableLabel.isHidden = true
+        guard let imageUrl = imageUrl else {
+            imageUnavailableLabel.isHidden = false
+            imageView.isHidden = true
+            return
+        }
+        
         spinner.startAnimating()
-        if let imageUrl = cardResult?.imageUrl {
-            // Download card result image.
-            fetchMainImage(from: imageUrl)
-        } else if !shouldUseResult && card!.imageData == nil {
-            // No image.
-            spinner.stopAnimating()
-            imageUnavailableLabel.isHidden = false
-            imageView.isHidden = true
-        } else if !shouldUseResult && !card!.isDownloadingImage {
-            // Display existing card image.
-            mainImage = UIImage(data: card!.imageData! as Data)
-            image = mainImage
-            spinner.stopAnimating()
-        } else if !shouldUseResult && card!.isDownloadingImage {
-            // Card image is being downloaded - keep animating spinner.
+        
+        if shouldUseResult {
+            store.dispatch(fetchMainImageActionCreator(url: imageUrl))
         } else {
-            // No image.
-            spinner.stopAnimating()
-            imageUnavailableLabel.isHidden = false
-            imageView.isHidden = true
+            if card!.imageData == nil {
+                spinner.stopAnimating()
+                imageUnavailableLabel.isHidden = false
+                imageView.isHidden = true
+            } else if !card!.isDownloadingImage {
+                mainImage = UIImage(data: card!.imageData! as Data)
+                image = mainImage
+            }
         }
     }
     
     private func formatFlipCard() {
-        if layout == "double-faced" {
-            waitingForFlippedResult = true
-            var parameters: [String: Any] = [:]
-            parameters["name"] = getFlippedName()
-            if name != names?[0] {
-                parameters["setName"] = set
-            }
-            let flipSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            flipSpinner.startAnimating()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: flipSpinner)
-            store.dispatch(searchForAdditionalCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
+        guard layout == "double-faced" else { return }
+        
+        let flipSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        flipSpinner.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: flipSpinner)
+        
+        fetchFlipSideRequested = true
+        var parameters: [String: Any] = [:]
+        parameters["name"] = getFlippedName()
+        if name != names?[0] {
+            parameters["setName"] = set
         }
+        store.dispatch(searchForAdditionalCardsActionCreator(url: "https://api.magicthegathering.io/v1/cards", parameters: parameters))
     }
     
     private func formatSideboardButtons() {
@@ -261,22 +269,10 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         }
     }
     
-    func displayFlipButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain, target: self, action: #selector(flipButtonPressed))
-    }
-    
     @objc private func flipButtonPressed() {
         isFlipped ? displayMainSideInfo() : displayFlipSideInfo()
         isFlipped = !isFlipped
         tableView.reloadData()
-    }
-    
-    private func mainImageDownloadComplete() {
-        if !shouldUseResult && spinner.isAnimating {
-            mainImage = UIImage(data: card!.imageData! as Data)
-            image = mainImage
-            spinner.stopAnimating()
-        }
     }
     
     private func displayFlipSideInfo() {
@@ -301,40 +297,6 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
         tableViewData[6] = text ?? ""
         tableViewData[7] = flavor ?? ""
         image = mainImage
-    }
-    
-    private func fetchMainImage(from urlString: String) {
-        let cardUrl = URL(string: urlString)!
-        
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            if let data = try? Data(contentsOf: cardUrl) {
-                DispatchQueue.main.async {
-                    let mainImage = UIImage(data: data)
-                    self?.spinner.stopAnimating()
-                    self?.image = mainImage
-                    self?.mainImage = mainImage
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self?.spinner.stopAnimating()
-                    self?.imageUnavailableLabel.isHidden = false
-                    self?.imageView.isHidden = true
-                }
-            }
-        }
-    }
-    
-    private func fetchFlipImage(from urlString: String) {
-        let cardUrl = URL(string: urlString)!
-        
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            if let data = try? Data(contentsOf: cardUrl) {
-                DispatchQueue.main.async {
-                    self?.flippedImage = UIImage(data: data)
-                    self?.displayFlipButton()
-                }
-            }
-        }
     }
     
     private func getDeckCount() {
@@ -401,24 +363,49 @@ class CardDetailViewController: UIViewController, StoreSubscriber {
             }
             return
         }
+        
+        // Update card counts.
         getDeckCount()
         getSideboardCount()
         
-        if !state.coreDataState.isDownloadingImages {
-            mainImageDownloadComplete()
+        let imagesState = state.imagesState
+        
+        // Main CardResult image download.
+        if shouldUseResult {
+            if imagesState.mainImageDownloadFailed {
+                spinner.stopAnimating()
+                imageUnavailableLabel.isHidden = false
+                imageView.isHidden = true
+            } else if let mainImage = imagesState.mainImage {
+                self.mainImage = mainImage
+                image = mainImage
+            }
         }
         
-        if waitingForFlippedResult && !state.searchState.isLoading {
-            waitingForFlippedResult = false
-            if state.searchState.additionalCardResults!.isSuccess {
-                flippedCard = state.searchState.additionalCardResults!.value!.cards[0]
-                if let imageUrl = flippedCard?.imageUrl {
-                    fetchFlipImage(from: imageUrl)
-                }
-            } else {
+        // Flip CardResult image download.
+        if layout == "double-faced", let flipImage = imagesState.flipImage {
+            flippedImage = flipImage
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain, target: self, action: #selector(flipButtonPressed))
+        }
+        
+        // Main image download completed from a request made by a prior view controller.
+        if !state.coreDataState.isDownloadingImages && !shouldUseResult && spinner.isAnimating {
+            mainImage = UIImage(data: card!.imageData! as Data)
+            image = mainImage
+        }
+        
+        // Flip side card download complete.
+        if fetchFlipSideRequested, let flippedResult = state.searchState.additionalCardResults {
+            fetchFlipSideRequested = false
+            if flippedResult.isFailure {
                 flippedCard = nil
                 navigationItem.rightBarButtonItems?.removeAll()
                 present(errorAlert(description: "Unable to retrieve flipped card data.", title: "Connection Error"), animated: true)
+            } else {
+                flippedCard = state.searchState.additionalCardResults?.value?.cards[0]
+                if let flippedImageUrlString = flippedCard?.imageUrl, let flippedImageUrl = URL(string: flippedImageUrlString) {
+                    store.dispatch(fetchFlipImageActionCreator(url: flippedImageUrl))
+                }
             }
         }
     }

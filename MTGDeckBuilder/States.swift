@@ -13,6 +13,7 @@ import Alamofire
 struct RootState: StateType {
     var coreDataState: CoreDataState
     var searchState: SearchState
+    var imagesState: ImagesState
 }
 
 struct CoreDataState: StateType {
@@ -28,4 +29,15 @@ struct SearchState: StateType {
     var shouldSearch: Bool
     var isLoading: Bool
     var currentRequestPage: Int
+}
+
+struct ImagesState: StateType {
+    var mainImage: UIImage?
+    var currentMainImageRequestUrl: URL?
+    var isMainImageLoading: Bool
+    var mainImageDownloadFailed: Bool
+    var flipImage: UIImage?
+    var currentFlipImageRequestUrl: URL?
+    var isFlipImageLoading: Bool
+    var flipImageDownloadFailed: Bool
 }
